@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//ログイン
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -40,3 +41,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//トップ画面
+Route::get('/top', 'TopController@top');
+
+//チャット画面
+Route::get('/chat', 'ChatController@chat');
+
+//エントリー画面
+Route::get('/entry', 'EntryController@entry');
+
+//マイページ画面
+Route::get('/mypage', 'MypageController@mypage');
+//マイページ編集
+Route::post('/mypage/edit', 'MypageController@edit');
