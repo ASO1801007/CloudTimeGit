@@ -27,7 +27,9 @@ class MembersSeeder extends Seeder
         for($i = 0; $i < count($memberUser_id); $i++){
             DB::table('members')->insert([
                 'user_id' => $memberUser_id[$i],
-                'capsule_id' => '1'
+                'capsule_id' => '1',
+                'created_at' => '2021-09-01 00:09:00',
+                'updated_at' => '2021-09-01 00:09:00'
             ]);
         }
     }

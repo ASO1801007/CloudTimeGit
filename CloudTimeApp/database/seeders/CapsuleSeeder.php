@@ -19,7 +19,9 @@ class CapsuleSeeder extends Seeder
             'thumbnail' => 'noImage.png',
             'intro' => '希望が峰学園のズッ友あつまれー！',
             'entry_code' => '000000',
-            'user_id' => '2'
+            'user_id' => '2',
+            'created_at' => '2021-09-01 00:09:00',
+            'updated_at' => '2021-09-01 00:09:00'
         ]);
     }
 }

@@ -45,7 +45,9 @@ class User_infoSeeder extends Seeder
                 'junior_high' => '稲妻町立雷門中学校',
                 'elementary' => '東京都立立川小学校',
                 'profile_pic' => 'noImage.png',
-                'user_id' => $user_infoUser_id[$i]
+                'user_id' => $user_infoUser_id[$i],
+                'created_at' => '2021-09-01 00:09:00',
+                'updated_at' => '2021-09-01 00:09:00'
             ]);
         }
     }
