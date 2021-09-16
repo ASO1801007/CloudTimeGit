@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCapsulesTable extends Migration
+class CreateBbssTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateCapsulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('capsules', function (Blueprint $table) {
+        Schema::create('bbss', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
-            $table->dateTime('open_date');
-            $table->string('thumbnail',255);
-            $table->string('intro',255);
-            $table->string('entry_code',50);
+            $table->string('bbs_body',255);
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('capsule_id')->constrained();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateCapsulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('capsules');
+        Schema::dropIfExists('bbss');
     }
 }
