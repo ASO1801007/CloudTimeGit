@@ -19,39 +19,21 @@ Route::get('/', function () {
 
 //ログイン
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //トップ画面
-Route::get('/top', 'TopController@top');
+Route::get('/top', [App\Http\Controllers\TopController::class, 'top']);
 
 //チャット画面
-Route::get('/chat', 'ChatController@chat');
+Route::get('/chat', [App\Http\Controllers\ChatController::class,'chat']);
 
 //エントリー画面
-Route::get('/entry', 'EntryController@entry');
+Route::get('/entry', [App\Http\Controllers\EntryController::class,'entry']);
 
 //マイページ画面
-Route::get('/mypage', 'MypageController@mypage');
+Route::get('/mypage', [App\Http\Controllers\MypageController::class,'mypage']);
 //マイページ編集
-Route::post('/mypage/edit', 'MypageController@edit');
+Route::post('/mypage/edit', [App\Http\Controllers\MypageController::class,'edit']);
+
+//カプセルホーム画面
+Route::get('/capsule/{capsule_id}',[App\Http\Controllers\CapsuleController::class,'home']);
