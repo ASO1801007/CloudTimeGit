@@ -39,6 +39,14 @@ class UserSeeder extends Seeder
                 'name' => $userName[$i],
                 'email' => $userEmail[$i],
                 'password' => Hash::make('00000000'),
+                'birthday' => '1999-01-01',
+                'location' => '福岡',
+                'intro' => 'よろしくお願いします！',
+                'job' => '新米サラリーマン',
+                'high' => '私立希望ヶ峰学園',
+                'junior_high' => '稲妻町立雷門中学校',
+                'elementary' => '東京都立立川小学校',
+                'profile_pic' => 'noImage.png',
                 'created_at' => '2021-09-01 00:09:00',
                 'updated_at' => '2021-09-01 00:09:00'
             ]);
