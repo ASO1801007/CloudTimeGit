@@ -20,7 +20,8 @@ class CapsuleController extends Controller
     // カプセル作成ボタン押下時
     public function capsule_create(Request $req){
         $this -> capsule_grand_create_system($req);
-        return view('Top.Top');
+        $data = $this -> show_top();
+        return redirect('/top');
     }
 
 
@@ -147,5 +148,22 @@ class CapsuleController extends Controller
         }
         return $ret_data;
 
+    }
+
+    //元気ページ
+    private function show_top(){
+        //ログインしているユーザーのIDを取得
+        $login = Auth::id();
+
+        //ログインしているユーザーIDを取得
+        $user_id = User::find($login)->id;
+        
+        //自分が参加しているカプセル情報を取得
+        $join_capsule_id = Member::where('user_id',$login)->get();
+        $count = count($join_capsule_id);
+
+        //変数のままじゃ送れないため、代入
+        $data = ["capsule_data"=>$join_capsule_id, "count"=>$count];
+        return $data;
     }
 }
