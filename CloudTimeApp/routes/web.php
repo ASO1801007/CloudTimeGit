@@ -35,5 +35,11 @@ Route::get('/mypage', [App\Http\Controllers\MypageController::class,'mypage']);
 //マイページ編集
 Route::post('/mypage/edit', [App\Http\Controllers\MypageController::class,'edit']);
 
+//カプセル作成画面
+Route::get('/capsule_entry',[App\Http\Controllers\CapsuleController::class,'show_entry']);
+
+//カプセル作成->ホーム画面
+Route::post('/capsule_create',[App\Http\Controllers\CapsuleController::class,'capsule_create']);
+
 //カプセルホーム画面
-Route::get('/capsule/{capsule_id}',[App\Http\Controllers\CapsuleController::class,'home']);
+Route::get('/capsule_info/{capsule_id}',[App\Http\Controllers\CapsuleController::class,'show_info']);
