@@ -29,12 +29,22 @@
 
 	@if( $open_flag == 1 )
 	<div class="btn-warning p-2 text-center">
-		開封する
+	<form method="POST" action="{{ route('image.index') }}">
+		@csrf
+		 	<input type = "hidden" name = "capsule_id" value = "{{$capsuleRow->id}}">
+			<input type = "submit" name = "add" value="+">
+			開封する
+		</form>
 	</div>
 	@elseif( $open_flag == 0 )
 	<div class="btn-primary p-1 text-center">
-		(＋)<br>
-		写真を追加
+		<form method="POST" action="{{ route('image.index') }}">
+		@csrf
+		 	<input type = "hidden" name = "capsule_id" value = "{{$capsuleRow->id}}">
+			<input type = "submit" name = "add" value="+">
+			(＋)<br>
+			写真を追加
+		</form>
 	</div>
 	@else
 	open_flagの値が適切ではありません。

@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             '1801007@s.asojuku.ac.jp',
             '1801012@s.asojuku.ac.jp',
             '1801016@s.asojuku.ac.jp',
-            '1901023@s.asojuku.ac.jp',
+            '1801023@s.asojuku.ac.jp',
             '1801030@s.asojuku.ac.jp'
         ];
 
