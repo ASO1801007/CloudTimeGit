@@ -1,5 +1,7 @@
 @extends('layouts.ctc')
 
+@section('nav_title','カプセルプロフィール')
+
 @section('content')
 
 <div>
