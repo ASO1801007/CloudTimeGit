@@ -6,9 +6,9 @@
 
 	@if( strcmp($capsuleRow->thumbnail,'noImage.png') == 0)
 
-	<a href="#" class="bard">
-		<img src="{{ asset('/sampleImage.png') }}" loading="lazy" class="bard__img">
-		<div class="bard__title">
+	<a href="#" class="thum">
+		<img src="{{ asset('/sampleImage.png') }}" loading="lazy" class="thum__img">
+		<div class="thum__title">
 			{{$capsuleRow->name}}(id:{{$capsuleRow->id}})<br>
 			開封予定日 : {{$capsuleRow->open_date_str}}
 		</div>
@@ -37,14 +37,9 @@
 		</form>
 	</div>
 	@elseif( $open_flag == 0 )
-	<div class="btn-primary p-1 text-center">
-		<form method="POST" action="{{ route('image.index') }}">
-		@csrf
-		 	<input type = "hidden" name = "capsule_id" value = "{{$capsuleRow->id}}">
-			<input type = "submit" name = "add" value="+">
-			(＋)<br>
-			写真を追加
-		</form>
+	<div id="modalActivate" class="btn-primary p-1 text-center waves-effect" data-toggle="modal" data-target="#modalPreview0">
+		(＋)<br>
+		写真を追加
 	</div>
 	@else
 	open_flagの値が適切ではありません。
@@ -81,6 +76,37 @@
 	<!-- カプセル破棄ボタンの有無 -->
 </div>
 
+<!-- 思い出追加ポップアップ -->
+<form method="POST" action="{{ route('image.store') }}" enctype="multipart/form-data">
+    @csrf
+	<div class="modal fade right" id="modalPreview0" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel0" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h3 class="modal-title" id="modalPreviewLabel0">思い出を追加します</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding:40px;">
+					<h6 class="pb-2">□写真を選択し、思い出をアップロードしてください。<br></h6>
+					<input id="image" type="file" name="image"><br>
+					<input type="hidden" name = "capsule_id" value="{{$capsuleRow->id}}">
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary btn-block waves-effect">アップロード</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
+<!-- 思い出追加ポップアップ -->
+
+
+
+
 
 <style>
 .thumnail_flame {
@@ -103,14 +129,14 @@
 }
 
 
-.bard {
+.thum {
   display: block;
   position: relative;
   overflow: hidden;
   border-radius: 5px;
 }
 /* テキストをカード下に固定配置する */
-.bard__title {
+.thum__title {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -121,14 +147,14 @@
   font-weight: bold;
   font-size: 1.6em;
 }
-.bard__img {
+.thum__img {
   display: block;
   width: 100%;
   filter: brightness(70%); /* フィルター */
   transition: 0.3s; /* トランジション */
 }
 /* カードホバー時 */
-.bard:hover .bard__img {
+.thum:hover .thum__img {
   filter: brightness(150%); /* フィルターを変更 */
   transform: scale(1.3); /* 画像を拡大 */
 }
