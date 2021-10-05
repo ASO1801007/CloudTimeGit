@@ -47,5 +47,3 @@ Route::get('/capsule_info/{capsule_id}',[App\Http\Controllers\CapsuleController:
 //画像追加画面
 Route::post('/capsule_info/image',[App\Http\Controllers\ImageController::class,'index'])->name('image.index');
 Route::post('/capsule_info//image',[App\Http\Controllers\ImageController::class,'store'])->name('image.store');
-
-//カプセル開封
