@@ -6,16 +6,18 @@
 
 <div>
 
-	<a href="#" class="bard">
-		<img src="{{ $capsuleRow->thumbnail }}" loading="lazy" class="bard__img">
-		<div class="bard__title">
+	<a href="#" class="thum">
+		<img src="{{ $capsuleRow->thumbnail }}" loading="lazy" class="thum__img">
+		<div class="thum__title">
 			{{$capsuleRow->name}}(id:{{$capsuleRow->id}})<br>
 			開封予定日 : {{$capsuleRow->open_date_str}}
 		</div>
 	</a>
 
 	<div><!-- 概要 -->
+		<hr>
 		{{$capsuleRow->intro}}
+		<hr>
 	</div>
 
 
@@ -42,7 +44,6 @@
 
 	<!-- 追加ボタンor開封ボタン -->
 
-	チャット
 	<div class="card p-3 mt-2">
 		最近の投稿<hr>
 		有光：おはよう！
@@ -57,7 +58,7 @@
 	<!-- カプセル破棄ボタンの有無 -->
 
 	@if( $admin_flag == 1 )
-	<div class="btn-danger p-2 text-center">
+	<div class="btn-danger p-2 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1">
 		タイムカプセルを破棄
 	</div>
 	@elseif( $admin_flag == 0 )
@@ -98,6 +99,27 @@
 	</div>
 </form>
 <!-- 思い出追加ポップアップ -->
+
+<!-- 破棄前ポップアップ -->
+<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalPreviewLabel1">タイムカプセルを破棄</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding:40px;">
+                <h6 class="pb-5">□このカプセルを削除します。この操作は取り消せません。<br><br>※この操作を実行すると、カプセルとその中身、チャットも完全に削除されます。</h6>
+            </div>
+            <div class="modal-footer">
+				<button type="submit" class="btn btn-danger btn-block waves-effect">OK(Beta)</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 破棄前ポップアップ -->
 
 
 
