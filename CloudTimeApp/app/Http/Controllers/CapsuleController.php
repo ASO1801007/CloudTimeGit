@@ -10,12 +10,13 @@ use App\Models\Bbs;
 use App\Models\Member;
 use Auth;
 
-class CapsuleController extends Controller
-{
+class CapsuleController extends Controller{
+
     //カプセル新規作成画面
     public function show_entry($id=0){
         return view('capsule.capsule_entry');
     }
+
 
     // カプセル作成ボタン押下時
     public function capsule_create(Request $req){
@@ -50,7 +51,7 @@ class CapsuleController extends Controller
 
 
         // 開ける日付を切り取り文字列化
-        $capsule->open_date_str = date('Y月-n日-j日',strtotime($capsule->open_date));
+        $capsule->open_date_str = date('Y-n-j',strtotime($capsule->open_date));
 
         $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsuleRow'=>$capsule];
         return view('capsule.capsule_info',$data);
