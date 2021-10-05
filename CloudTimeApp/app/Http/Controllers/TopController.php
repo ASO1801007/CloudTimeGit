@@ -9,8 +9,7 @@ use App\Models\Member;
 use App\Models\Capsule;
 use Auth;
 
-class TopController extends Controller
-{
+class TopController extends Controller {
     //ログイン後トップ画面
     public function top(){
 

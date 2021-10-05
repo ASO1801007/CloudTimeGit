@@ -11,6 +11,7 @@ use Auth;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class ImageController extends Controller
 {
@@ -31,6 +32,21 @@ class ImageController extends Controller
 
     public function store(Request $request)
     {
+        $rulus = [
+            'image' => 'required',
+        ];
+
+        $message = [
+            'image.required' => '画像を選択してください,'
+        ];
+
+        $validator = Validator::make($request->all(), $rulus, $message);
+
+        if($validator->fails()){
+            return view('error.error_page')
+            ->withErrors($validator);
+        }
+        
         $image = new Image();
         $uploadImg = $image->image = $request->file('image');
         $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
