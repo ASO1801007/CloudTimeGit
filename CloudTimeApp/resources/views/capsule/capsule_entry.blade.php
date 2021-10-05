@@ -34,8 +34,9 @@
 
 				<div class="">
 					<div class="md-form">
-						<input type="text" id="form3" name="thumbnail" size="50" maxlength="20" class="form-control" value="noImage.png">
-						<label for="form3">カプセルの表紙を決める</label>
+				
+							<input type="file" id="form3" name="thumbnail" size="50" maxlength="20" class="form-control" value="noImage.png" accept=".png,.jpg,.jpeg,image/png,image/jpg">
+			
 					</div>
 				</div>
 

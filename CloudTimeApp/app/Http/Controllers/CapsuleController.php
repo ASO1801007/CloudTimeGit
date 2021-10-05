@@ -9,6 +9,7 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CapsuleController extends Controller{
 
@@ -80,7 +81,9 @@ class CapsuleController extends Controller{
     private function capsule_formdata_cast_system($req,$i_am,$capsule){
         $capsule -> name = $req -> name;
         $capsule -> open_date = $req -> open_date;
-        $capsule -> thumbnail = $req -> thumbnail;
+        $uploadImg = $capsule-> thumbnail = $req->file('thumbnail');
+        $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
+        $capsule->thumbnail = Storage::disk('s3')->url($path);
         $capsule -> intro = $req -> intro;
         $capsule -> entry_code = $this -> make_entry_code_system();
         $capsule -> user_id = $i_am;

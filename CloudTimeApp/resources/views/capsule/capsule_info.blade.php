@@ -6,20 +6,13 @@
 
 <div>
 
-	@if( strcmp($capsuleRow->thumbnail,'noImage.png') == 0)
-
-	<a href="#" class="thum">
-		<img src="{{ asset('/sampleImage.png') }}" loading="lazy" class="thum__img">
-		<div class="thum__title">
+	<a href="#" class="bard">
+		<img src="{{ $capsuleRow->thumbnail }}" loading="lazy" class="bard__img">
+		<div class="bard__title">
 			{{$capsuleRow->name}}(id:{{$capsuleRow->id}})<br>
 			開封予定日 : {{$capsuleRow->open_date_str}}
 		</div>
 	</a>
-
-
-	@else
-	<img src="{{ asset('/storage/' . $capsuleRow->thumbnail ) }}">
-	@endif
 
 	<div><!-- 概要 -->
 		{{$capsuleRow->intro}}
@@ -93,7 +86,7 @@
 				</div>
 				<div class="modal-body" style="padding:40px;">
 					<h6 class="pb-2">□写真を選択し、思い出をアップロードしてください。<br></h6>
-					<input id="image" type="file" name="image"><br>
+					<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
 					<input type="hidden" name = "capsule_id" value="{{$capsuleRow->id}}">
 				</div>
 				<div class="modal-footer">
