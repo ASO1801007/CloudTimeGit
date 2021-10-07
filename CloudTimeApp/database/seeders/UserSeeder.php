@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
                 'high' => '私立希望ヶ峰学園',
                 'junior_high' => '稲妻町立雷門中学校',
                 'elementary' => '東京都立立川小学校',
-                'profile_pic' => 'noImage.png',
+                'profile_pic' => '0',
                 'created_at' => '2021-09-01 00:09:00',
                 'updated_at' => '2021-09-01 00:09:00'
             ]);
