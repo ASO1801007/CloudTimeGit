@@ -18,7 +18,7 @@ class CreateCapsulesTable extends Migration
             $table->string('name',50);
             $table->dateTime('open_date');
             $table->string('thumbnail',255);
-            $table->string('intro',255);
+            $table->string('intro',255)->nullable();
             $table->string('entry_code',50);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
