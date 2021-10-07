@@ -10,6 +10,7 @@ use App\Models\Bbs;
 use App\Models\Member;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class CapsuleController extends Controller{
 
@@ -21,6 +22,24 @@ class CapsuleController extends Controller{
 
     // カプセル作成ボタン押下時
     public function capsule_create(Request $req){
+        $rulus = [
+            'name' => 'required',
+            'thumbnail' => 'required',
+            'open_date' => 'required'
+        ];
+
+        $message = [
+            'name.required' => 'カプセル名を入力してください',
+            'thumbnail.required' => 'サムネイルを選択してください',
+            'open_date.required' => '開封日を入力してください（例 2000-01-11）'
+        ];
+
+        $validator = Validator::make($req->all(), $rulus, $message);
+
+        if($validator->fails()){
+            return redirect('/capsule_entry')
+            ->withErrors($validator);
+        }
         $this -> capsule_grand_create_system($req);
         $data = $this -> show_top();
         return redirect('/top');
@@ -49,7 +68,6 @@ class CapsuleController extends Controller{
         if($member_flag == 0){
             return view('error.error_page');
         }
-
 
         // 開ける日付を切り取り文字列化
         $capsule->open_date_str = date('Y-n-j',strtotime($capsule->open_date));

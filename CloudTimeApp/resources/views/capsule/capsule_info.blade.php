@@ -4,6 +4,10 @@
 
 @section('content')
 
+<head>
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
 <div>
 
 	<a href="#" class="thum">
@@ -87,7 +91,10 @@
 				</div>
 				<div class="modal-body" style="padding:40px;">
 					<h6 class="pb-2">□写真を選択し、思い出をアップロードしてください。<br></h6>
-					<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
+					<div class="md-form">
+						<img id="img_prv" src="{{ asset('/noImage.png') }}">
+						<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
+					</div>
 					<input type="hidden" name = "capsule_id" value="{{$capsuleRow->id}}">
 				</div>
 				<div class="modal-footer">
@@ -178,6 +185,23 @@
 
 
 </style>
+
+<script>
+//画像が選択される度に、この中の処理が走る
+$('#image').on('change', function (ev) {
+	//コンソールタブで適切に処理が動いているか確認
+	console.log("image is changed");
+	//このFileReaderが画像を読み込む上で大切
+	const reader = new FileReader();
+	//--ファイル名を取得
+	const fileName = ev.target.files[0].name;
+	//--画像が読み込まれた時の動作を記述
+	reader.onload = function (ev) {
+		$('#img_prv').attr('src', ev.target.result).css('width', '150px').css('height', '150px');
+	}
+	reader.readAsDataURL(this.files[0]);
+})
+</script>
 
 @endsection
 	

@@ -4,6 +4,20 @@
 
 @section('content')
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    </div>
+@endif
+
+<head>
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
 <div>
 	<form action="{{ url('/capsule_create') }}" method="post" enctype="multipart/form-data">
 	{{ csrf_field() }}
@@ -13,7 +27,7 @@
 			<div class="">
 				<div class="">
 					<div class="md-form">
-						<input type="text" id="form1" name="name" size="50" maxlength="20" class="form-control" value="新しいカプセル">
+						<input type="text" id="name" name="name" size="50" maxlength="20" class="form-control" value="新しいカプセル">
 						<label for="form1">名前を決める</label>
 					</div>
 				</div>
@@ -27,16 +41,16 @@
 
 				<div class="">
 					<div class="md-form">
-						<input type="text" id="form3" name="open_date" size="50" maxlength="20" class="form-control" value="2021-12-31">
+						<input type="text" id="open_date" name="open_date" size="50" maxlength="20" class="form-control" value="2021-12-31">
 						<label for="form3">開封日を決める</label>
 					</div>
 				</div>
 
 				<div class="">
+				<label for="form4">サムネイルを決める</label>
 					<div class="md-form">
-				
-							<input type="file" id="form3" name="thumbnail" size="50" maxlength="20" class="form-control" value="noImage.png" accept=".png,.jpg,.jpeg,image/png,image/jpg">
-			
+							<img id="img_prv" src="{{ asset('/noImage.png') }}">
+							<input type="file" id="image" name="thumbnail" size="50" maxlength="20" class="form-control" accept=".png,.jpg,.jpeg,image/png,image/jpg">
 					</div>
 				</div>
 
@@ -55,8 +69,24 @@
 
 <style>
 
-
 </style>
+
+<script>
+//画像が選択される度に、この中の処理が走る
+$('#image').on('change', function (ev) {
+	//コンソールタブで適切に処理が動いているか確認
+	console.log("image is changed");
+	//このFileReaderが画像を読み込む上で大切
+	const reader = new FileReader();
+	//--ファイル名を取得
+	const fileName = ev.target.files[0].name;
+	//--画像が読み込まれた時の動作を記述
+	reader.onload = function (ev) {
+		$('#img_prv').attr('src', ev.target.result).css('width', '150px').css('height', '150px');
+	}
+	reader.readAsDataURL(this.files[0]);
+})
+</script>
 
 @endsection
 	
