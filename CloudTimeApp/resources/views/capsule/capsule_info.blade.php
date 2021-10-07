@@ -108,24 +108,30 @@
 <!-- 思い出追加ポップアップ -->
 
 <!-- 破棄前ポップアップ -->
-<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalPreviewLabel1">タイムカプセルを破棄</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="padding:40px;">
-                <h6 class="pb-5">□このカプセルを削除します。この操作は取り消せません。<br><br>※この操作を実行すると、カプセルとその中身、チャットも完全に削除されます。</h6>
-            </div>
-            <div class="modal-footer">
-				<button type="submit" class="btn btn-danger btn-block waves-effect">OK(Beta)</button>
-            </div>
-        </div>
-    </div>
-</div>
+<form method="POST" action="{{ url('/capsule_delete') }}" enctype="multipart/form-data">
+    @csrf
+	<input type="hidden" name ="capsule_id" value="{{$capsuleRow->id}}">
+
+	<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="modalPreviewLabel1">タイムカプセルを破棄</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding:40px;">
+					<h6 class="pb-5">□このカプセルを削除します。この操作は取り消せません。<br><br>※この操作を実行すると、カプセルとその中身、チャットも完全に削除されます。</h6>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-block waves-effect">OK(Beta)</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>
 <!-- 破棄前ポップアップ -->
 
 

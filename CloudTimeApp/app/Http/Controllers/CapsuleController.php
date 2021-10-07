@@ -19,7 +19,6 @@ class CapsuleController extends Controller{
         return view('capsule.capsule_entry');
     }
 
-
     // カプセル作成ボタン押下時
     public function capsule_create(Request $req){
         $rulus = [
@@ -41,8 +40,13 @@ class CapsuleController extends Controller{
             ->withErrors($validator);
         }
         $this -> capsule_grand_create_system($req);
-        $data = $this -> show_top();
         return redirect('/top');
+    }
+
+    // カプセル削除ボタン押下時
+    public function capsule_delete(Request $req){
+        $this -> capsule_grand_delete_system($req->capsule_id);
+        return redirect()->route('top.top');
     }
 
 
@@ -52,7 +56,7 @@ class CapsuleController extends Controller{
         $i_am = Auth::id();
 
         //ログインしているユーザーIDを取得
-        $i_am_info = User_info::find($i_am);
+        $i_am_info = User::find($i_am);
 
         $capsule = Capsule::find($id);
 
@@ -68,6 +72,7 @@ class CapsuleController extends Controller{
         if($member_flag == 0){
             return view('error.error_page');
         }
+
 
         // 開ける日付を切り取り文字列化
         $capsule->open_date_str = date('Y-n-j',strtotime($capsule->open_date));
@@ -106,6 +111,33 @@ class CapsuleController extends Controller{
         $capsule -> entry_code = $this -> make_entry_code_system();
         $capsule -> user_id = $i_am;
         return $capsule;
+    }
+
+    // カプセル削除時の各テーブルへのアクション
+    private function capsule_grand_delete_system($capsule_id){
+        // $this -> chat_delete_system($capsule_id);
+        $this -> member_delete_system($capsule_id,0);
+        $this -> capsule_delete_system($capsule_id);
+    }
+
+    // カプセルテーブルから削除
+    private function capsule_delete_system($capsule_id){
+        $capsule = Capsule::find($capsule_id)-> delete();;
+    }
+
+    // メンバーテーブルから削除(第二引数 : 0=全メンバー削除, 1<=指定メンバー削除)
+    private function member_delete_system($capsule_id,$user_id){
+        if($user_id == 0){
+            $member = Member::where('capsule_id',$capsule_id);
+            $member -> delete();
+        }
+        elseif($user_id > 0){
+            $member = Member::where([
+                ['capsule_id',$capsule_id],
+                ['user_id',$user_id]
+            ])
+            -> delete();
+        }
     }
 
     // 招待コード生成システム
