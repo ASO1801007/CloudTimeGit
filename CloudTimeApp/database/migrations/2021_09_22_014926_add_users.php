@@ -21,7 +21,7 @@ class AddUsers extends Migration
             $table->string('high',50)->nullable();
             $table->string('junior_high',50)->nullable();
             $table->string('elementary',50)->nullable();
-            $table->string('profile_pic',255)->nullable(); 
+            $table->string('profile_pic',255)->default(0);
         });
     }
 
