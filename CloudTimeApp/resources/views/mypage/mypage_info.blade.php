@@ -4,10 +4,16 @@
 
 @section('content')
 
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
 <div>
 
 	<div>
-		<img src="{{ $user_data->profile_pic }}">
+		<img src="{{$user_data->profile_pic}}" width="200" height="200">
 	</div>
 	<div>
 		<h5><b>名前 : </b>{{ $user_data->name }}</h5>

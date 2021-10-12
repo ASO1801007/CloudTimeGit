@@ -9,7 +9,9 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use Auth;
+use strcmp;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class MypageController extends Controller{
 
@@ -39,13 +41,37 @@ class MypageController extends Controller{
     // ユーザーテーブル更新処理
     public function mypage_update(Request $req){
         $i_am = Auth::id();
+        $user = User::find($i_am);
+        $data = ['user_data' => $user];
+        $rulus = [
+            'image' => 'required',
+            'name' => 'required',
+        ];
+
+        $message = [
+            'image.required' => '画像を選択してください',
+            'name.required' => '名前を入力してください',
+        ];
+
+        $validator = Validator::make($req->all(), $rulus, $message);
+
+        if($validator->fails()){
+            return view('mypage.mypage_edit',$data)
+            ->withErrors($validator);
+        }
         $this -> user_update_system($i_am,$req);
-        return redirect()->route('mypage.show_info', ['user_id' => $i_am]);
+        return redirect()->route('mypage.show_info', ['user_id' => $i_am])->with('message','編集しました');
     }
 
     private function user_update_system($user_id,$req){
         $user = User::find($user_id);
-        $uploadImg = $user -> profile_pic = $req->file('profile_pic');
+        if( strcmp( $user->profile_pic, "0" ) != 0 ){
+            $delete_path = basename($user->profile_pic);
+            $delete_path = str_replace('https://example.s3-ap-northeast-1.amazonaws.com/', '', $delete_path);
+            $disk = Storage::disk('s3');
+            $disk->delete($delete_path);
+        };
+        $uploadImg = $user -> profile_pic = $req->file('image');
         $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
         $user->profile_pic = Storage::disk('s3')->url($path);
         $user -> name = $req -> name;
