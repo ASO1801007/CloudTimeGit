@@ -35,7 +35,7 @@
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-white shadow-sm">
             <div class="container">
                 <!-- 戻るボタン_要処理 -->
-                <a class="navbar-brand" href="javascript:history.back()">＜</a>
+                @yield('back_button')
                 <div>
                     @yield('nav_title')
                 </div>
