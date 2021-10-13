@@ -1,5 +1,9 @@
 @extends('layouts.ctc')
 
+@section('back_button')
+<a class="navbar-brand" href="{{route('top.top')}}">＜</a>
+@endsection
+
 @section('nav_title','プロフィール編集')
 
 @section('content')

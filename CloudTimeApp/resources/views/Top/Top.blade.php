@@ -1,10 +1,6 @@
 @extends('layouts.ctc')
 
-@section('back_button')
-<a class="navbar-brand" href="javascript:history.back()">＜</a>
-@endsection
-
-@section('nav_title','トップ')
+@section('nav_title','　　　　　　　　　トップ')
 
 @section('content')
 <head>
