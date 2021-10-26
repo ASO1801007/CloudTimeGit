@@ -9,18 +9,57 @@
 
 <div>
 
-    @for($i=0; $i<$count; $i++)
-        <a href="/capsule_info/{{$capsule_data[$i]->capsule->id}}">
-            <div class="card p-2">
-        
-                {{ $capsule_data[$i]->capsule->name }}
+    
+
+    @foreach($capsule_data as $capsule_data)
+        <a href="/capsule_info/{{$capsule_data->capsule->id}}" class="thum">
+            <img src="{{ $capsule_data->capsule->thumbnail }}" loading="lazy" class="thum__img">
+            <div class="thum__title">
+                {{$capsule_data->capsule->name}}(id:{{$capsule_data->capsule->id}})<br>
+                <h6>開封予定日 : {{$capsule_data->open_date_str}}</h6>
             </div>
         </a>
         <br>
-    @endfor
+    @endforeach
+
+
+
     <a href="capsule_entry" class="btn btn--orange btn--circle btn--circle-a btn--shadow">＋</a>
 
 </div>
 
+<style>
+.thum {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+/* テキストをカード下に固定配置する */
+.thum__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 13px;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 1.6em;
+}
+.thum__img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* 縦横比維持 */
+  filter: brightness(70%); /* フィルター */
+  transition: 0.3s; /* トランジション */
+}
+/* カードホバー時 */
+.thum:hover .thum__img {
+  filter: brightness(150%); /* フィルターを変更 */
+  transform: scale(1.3); /* 画像を拡大 */
+}
+</style>
 
 @endsection

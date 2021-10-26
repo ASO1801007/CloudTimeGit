@@ -65,7 +65,7 @@ class ImageController extends Controller
             return view('error.error_page');
         }
         $capsule->open_date_str = date('Y月-n日-j日',strtotime($capsule->open_date));
-        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsuleRow'=>$capsule];
+        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule];
         return view('capsule.capsule_info',$data)->with('message','思い出を追加したよ！');
     }
 

@@ -24,8 +24,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <style>
-        a{color:red}
-        body { background: white}
+        a{color:black}
+        body {
+            background: white;
+        }
+        .card{
+            background: white;
+        }
     </style>
 
 </head>
@@ -87,12 +92,44 @@
             </div>
         </nav>
 
-        <main class="py-4 mt-5">
+        <main class="py-4 my-5">
             <div class="container">
             @yield('content')
             </div>
         </main>
+
+        <div class="fixed-bottom">
+            <div class="container">
+                <div card="card" style="border:solid; background-color:white;">
+                    <div class="row text-center p-1">
+
+                        <div class="col-3">
+                            <a href="{{ route('mypage.show_info') }}">
+                                <i class="fa fa-2x fa-user" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="">
+                                <i class="fa fa-2x fa-comment" aria-hidden="true" style="color:#AAAAAA;"></i>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="{{ route('top.top') }}">
+                                <i class="fa fa-2x fa-home" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="">
+                                <i class="fa fa-2x fa-sign-in" aria-hidden="true" style="color:#AAAAAA;"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- fixed-bottom -->
         
+
     </div>
 
     <!-- JQuery -->

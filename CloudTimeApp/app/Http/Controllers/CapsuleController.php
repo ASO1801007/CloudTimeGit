@@ -21,26 +21,35 @@ class CapsuleController extends Controller{
 
     // カプセル作成ボタン押下時
     public function capsule_create(Request $req){
-        $rulus = [
-            'name' => 'required',
-            'thumbnail' => 'required',
-            'open_date' => 'required'
-        ];
 
-        $message = [
-            'name.required' => 'カプセル名を入力してください',
-            'thumbnail.required' => 'サムネイルを選択してください',
-            'open_date.required' => '開封日を入力してください（例 2000-01-11）'
-        ];
-
-        $validator = Validator::make($req->all(), $rulus, $message);
-
+        // 入力不備時のバリデーション発動
+        $validator = $this -> capsule_create_validate_system($req);
         if($validator->fails()){
             return redirect('/capsule_entry')
             ->withErrors($validator);
         }
+
         $this -> capsule_grand_create_system($req);
         return redirect('/top');
+    }
+
+    // カプセル編集ボタン押下時
+    public function show_edit($id){
+        $capsule = Capsule::find($id);
+        $data = ['data'=>$capsule];
+        return view('capsule.capsule_edit',$data);
+    }
+
+    public function capsule_update(Request $req){
+        $capsule = Capsule::find($req -> id);
+        $capsule -> name = $req -> name;
+        $capsule -> open_date = $req -> open_date;
+        $uploadImg = $capsule-> thumbnail = $req->file('thumbnail');
+        $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
+        $capsule->thumbnail = Storage::disk('s3')->url($path);
+        $capsule -> intro = $req -> intro;
+        $capsule -> save();
+        return redirect()->route('capsule.show_info', ['capsule_id' => $req -> id]);
     }
 
     // カプセル削除ボタン押下時
@@ -48,7 +57,6 @@ class CapsuleController extends Controller{
         $this -> capsule_grand_delete_system($req->capsule_id);
         return redirect()->route('top.top');
     }
-
 
     //カプセルホーム画面
     public function show_info($id=0){
@@ -68,7 +76,6 @@ class CapsuleController extends Controller{
 
         // 参加者フラグ判定の関数呼び出し
         $member_flag = $this -> member_flag_system($capsule->id);
-
         if($member_flag == 0){
             return view('error.error_page');
         }
@@ -77,7 +84,7 @@ class CapsuleController extends Controller{
         // 開ける日付を切り取り文字列化
         $capsule->open_date_str = date('Y-n-j',strtotime($capsule->open_date));
 
-        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsuleRow'=>$capsule];
+        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule];
         return view('capsule.capsule_info',$data);
     }
 
@@ -113,6 +120,26 @@ class CapsuleController extends Controller{
         return $capsule;
     }
 
+    // カプセル作成時のバリデーションシステム
+    private function capsule_create_validate_system($req){
+        $ret_data = 0;
+
+        $rulus = [
+            'name' => 'required',
+            'thumbnail' => 'required',
+            'open_date' => 'required'
+        ];
+        $message = [
+            'name.required' => 'カプセル名を入力してください',
+            'thumbnail.required' => 'サムネイルを選択してください',
+            'open_date.required' => '開封日を入力してください（例 2000-01-11）'
+        ];
+
+        $ret_data = Validator::make($req->all(), $rulus, $message);
+
+        return $ret_data;
+    }
+
     // カプセル削除時の各テーブルへのアクション
     private function capsule_grand_delete_system($capsule_id){
         // $this -> chat_delete_system($capsule_id);
@@ -122,7 +149,7 @@ class CapsuleController extends Controller{
 
     // カプセルテーブルから削除
     private function capsule_delete_system($capsule_id){
-        $capsule = Capsule::find($capsule_id)-> delete();;
+        $capsule = Capsule::find($capsule_id)-> delete();
     }
 
     // メンバーテーブルから削除(第二引数 : 0=全メンバー削除, 1<=指定メンバー削除)

@@ -15,16 +15,16 @@
 <div>
 
 	<a href="#" class="thum">
-		<img src="{{ $capsuleRow->thumbnail }}" loading="lazy" class="thum__img">
+		<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
 		<div class="thum__title">
-			{{$capsuleRow->name}}(id:{{$capsuleRow->id}})<br>
-			開封予定日 : {{$capsuleRow->open_date_str}}
+			{{$capsule_data->name}}(id:{{$capsule_data->id}})<br>
+			開封予定日 : {{$capsule_data->open_date_str}}
 		</div>
 	</a>
 
 	<div><!-- 概要 -->
 		<hr>
-		{{$capsuleRow->intro}}
+		{{$capsule_data->intro}}
 		<hr>
 	</div>
 
@@ -36,7 +36,7 @@
 	<div class="btn-warning p-2 text-center">
 	<form method="POST" action="{{ route('image.index') }}">
 		@csrf
-		 	<input type = "hidden" name = "capsule_id" value = "{{$capsuleRow->id}}">
+		 	<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
 			<input type = "submit" name = "add" value="+">
 			開封する
 		</form>
@@ -60,17 +60,22 @@
 		メンバー一覧
 	</div>
 	<div class="card p-3 mt-2">
-		招待コード : {{ $capsuleRow->entry_code }}
+		招待コード : {{ $capsule_data->entry_code }}
 	</div>
 
 	<!-- カプセル破棄ボタンの有無 -->
 
 	@if( $admin_flag == 1 )
-	<div class="btn-danger p-2 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1">
+	<a href="/capsule_edit/{{$capsule_data->id}}">
+		<div class="btn-primary m-2 p-3 text-center waves-effect">
+			タイムカプセルを編集
+		</div>
+	</a>
+	<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1">
 		タイムカプセルを破棄
 	</div>
 	@elseif( $admin_flag == 0 )
-	<div class="btn-light p-2 text-center text-white">
+	<div class="btn-light m-2 p-3 text-center text-white">
 		タイムカプセルを破棄
 	</div>
 	@else
@@ -99,7 +104,7 @@
 						<img id="img_prv" src="{{ asset('/noImage.png') }}">
 						<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
 					</div>
-					<input type="hidden" name = "capsule_id" value="{{$capsuleRow->id}}">
+					<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary btn-block waves-effect">アップロード</button>
@@ -114,7 +119,7 @@
 <!-- 破棄前ポップアップ -->
 <form method="POST" action="{{ url('/capsule_delete') }}" enctype="multipart/form-data">
     @csrf
-	<input type="hidden" name ="capsule_id" value="{{$capsuleRow->id}}">
+	<input type="hidden" name ="capsule_id" value="{{$capsule_data->id}}">
 
 	<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -143,24 +148,6 @@
 
 
 <style>
-.thumnail_flame {
-	position: relative;/*相対配置*/
-}
-
-.thumnail_flame img {
-	width:100%;
-	object-fit: cover; /* この一行を追加するだけ！ */
-}
-
-.thumnail_flame p {
-	position: absolute;
-	color: white;
-	font-weight: bold; /*太字*/
-	font-size: 2em;/*サイズ2倍*/
-	font-family :Quicksand, sans-serif; /*Google Font*/
-	top: 0;
-	left: 0;
-}
 
 
 .thum {

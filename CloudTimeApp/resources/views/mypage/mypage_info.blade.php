@@ -10,10 +10,40 @@
     </div>
 @endif
 
+<div class="row">
+	<div class="col-12 text-center mt-5">
+		<img src="{{$user_data->profile_pic}}" class="prf_img">
+	</div>
+	<div class="col-12 text-center mt-3">
+		<div class="name_tag">{{ $user_data->name }}</div>
+	</div>
+	<div class="col-12 text-center mt-1">
+		<div class="job_tag">{{ $user_data->location }}・{{ $user_data->job }}・21歳</div>
+	</div>
+	<div class="col-12 text-center">
+		<div class="introbox-top">
+			<p>{{ $user_data->intro }}</p>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="row text-center">
+	<div class="col-4">高</div>
+	<div class="col-4">中</div>
+	<div class="col-4">小</div>
+</div>
+<div class="row">
+	<div class="col-4 scholl_sq">高</div>
+</div>
+
+</div>
+
+<hr>
+
 <div>
 
 	<div>
-		<img src="{{$user_data->profile_pic}}" width="200" height="200">
+		<img src="{{$user_data->profile_pic}}" class="prf_img">
 	</div>
 	<div>
 		<h5><b>名前 : </b>{{ $user_data->name }}</h5>
@@ -47,6 +77,48 @@
 
 
 <style>
+.prf_img{
+	border-radius: 50%;
+	width=:100px;
+	height:100px;
+}
+.name_tag{
+	font-size:25px;
+	font-weight:bold;
+}
+.job_tag{
+	font-size:15px;
+	color:#BBBBBB;
+}
+.introbox-top {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 10px;
+}
+.introbox-top:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #e0edff;
+}
+.introbox-top p {
+  margin: 0;
+  padding: 0;
+}
+.school_sq{
+	
+}
+
 
 
 </style>

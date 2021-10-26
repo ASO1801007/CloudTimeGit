@@ -31,7 +31,7 @@ Route::get('/chat', [App\Http\Controllers\ChatController::class,'chat'])->middle
 Route::get('/entry', [App\Http\Controllers\EntryController::class,'entry'])->middleware('auth');
 
 //マイページ画面
-Route::get('/mypage_info/{user_id}', [App\Http\Controllers\MypageController::class,'show_info'])->name('mypage.show_info')->middleware('auth');
+Route::get('/mypage_info/{user_id?}', [App\Http\Controllers\MypageController::class,'show_info'])->name('mypage.show_info')->middleware('auth');
 //マイページ編集
 Route::get('/mypage_edit', [App\Http\Controllers\MypageController::class,'show_edit'])->middleware('auth');
 //マイページ更新->マイページ画面
@@ -44,7 +44,13 @@ Route::get('/capsule_entry',[App\Http\Controllers\CapsuleController::class,'show
 Route::post('/capsule_create',[App\Http\Controllers\CapsuleController::class,'capsule_create'])->middleware('auth');
 
 //カプセル詳細画面
-Route::get('/capsule_info/{capsule_id}',[App\Http\Controllers\CapsuleController::class,'show_info'])->middleware('auth');
+Route::get('/capsule_info/{capsule_id}',[App\Http\Controllers\CapsuleController::class,'show_info'])->name('capsule.show_info')->middleware('auth');
+
+//カプセル編集画面
+Route::get('/capsule_edit/{capsule_id}',[App\Http\Controllers\CapsuleController::class,'show_edit'])->middleware('auth');
+
+//カプセル編集->カプセルホーム画面
+Route::post('/capsule_update',[App\Http\Controllers\CapsuleController::class,'capsule_update'])->middleware('auth');
 
 //カプセル削除->ホーム画面
 Route::post('/capsule_delete',[App\Http\Controllers\CapsuleController::class,'capsule_delete'])->middleware('auth');

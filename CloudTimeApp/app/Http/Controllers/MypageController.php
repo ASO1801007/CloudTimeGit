@@ -18,7 +18,11 @@ class MypageController extends Controller{
     // 表示画面
     public function show_info($id=0){
         $i_am = Auth::id();
-        $user = User::find($id);
+        if($id == 0){
+            $user = User::find($i_am);
+        }else if($id > 0){
+            $user = User::find($id);
+        }
 
         // 開くページが自身のページかを判定
         $i_am_flag = $this -> i_am_flag_system($i_am,$id);
@@ -88,7 +92,7 @@ class MypageController extends Controller{
 
     private function i_am_flag_system($my_id,$url_id){
         $ret_data = 0;
-        if($my_id == $url_id){
+        if($my_id == $url_id or 0 == $url_id){
             $ret_data = 1;
         }
         return $ret_data;

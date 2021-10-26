@@ -1,6 +1,11 @@
 @extends('layouts.ctc')
 
-@section('nav_title','カプセルプロフィール')
+@section('back_button')
+<a class="navbar-brand" href="">＜</a>
+@endsection
+
+
+@section('nav_title','カプセル開封')
 
 @section('content')
 

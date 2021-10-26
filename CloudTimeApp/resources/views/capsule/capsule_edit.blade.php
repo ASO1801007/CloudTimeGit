@@ -4,7 +4,7 @@
 <a class="navbar-brand" href="{{route('top.top')}}">＜</a>
 @endsection
 
-@section('nav_title','カプセルプロフィール設定')
+@section('nav_title','カプセルプロフィール編集')
 
 @section('content')
 
@@ -24,29 +24,30 @@
 </head>
 
 <div>
-	<form action="{{ url('/capsule_create') }}" method="post" enctype="multipart/form-data">
+	<form action="{{ url('/capsule_update') }}" method="post" enctype="multipart/form-data">
 	{{ csrf_field() }}
+	<input type="hidden" name="id" value="{{ $data->id }}">
 
 		<div class="card_before">
-			新しいタイムカプセルを作成します。情報を入力してください。<br><hr>
+			タイムカプセルの情報を編集します。情報を再入力してください。<br><hr>
 			<div class="">
 				<div class="">
 					<div class="md-form">
-						<input type="text" id="name" name="name" size="50" maxlength="20" class="form-control" value="新しいカプセル">
+						<input type="text" id="name" name="name" size="50" maxlength="20" class="form-control" value="{{ $data->name }}">
 						<label for="form1">名前を決める</label>
 					</div>
 				</div>
 
 				<div class="">
 					<div class="md-form amber-textarea active-amber-textarea-2">
-						<textarea id="form2" name="intro" class="md-textarea form-control" rows="3">説明</textarea>
+						<textarea id="form2" name="intro" class="md-textarea form-control" rows="3">{{ $data->intro }}</textarea>
 						<label for="form2">概要を書く</label>
 					</div>
 				</div>
 
 				<div class="">
 					<div class="md-form">
-						<input type="text" id="open_date" name="open_date" size="50" maxlength="20" class="form-control" value="2021-12-31">
+						<input type="text" id="open_date" name="open_date" size="50" maxlength="20" class="form-control" value="{{ $data->open_date }}">
 						<label for="form3">開封日を決める</label>
 					</div>
 				</div>
@@ -54,7 +55,7 @@
 				<div class="">
 				<label for="form4">サムネイルを決める</label>
 					<div class="md-form">
-							<img id="img_prv" src="{{ asset('/noImage.png') }}">
+							<img id="img_prv" src="{{ $data->thumbnail }}" style="width:100%">
 							<input type="file" id="image" name="thumbnail" size="50" maxlength="20" class="form-control" accept=".png,.jpg,.jpeg,image/png,image/jpg">
 					</div>
 				</div>
