@@ -48,12 +48,12 @@ class MypageController extends Controller{
         $user = User::find($i_am);
         $data = ['user_data' => $user];
         $rulus = [
-            'image' => 'required',
+        
             'name' => 'required',
         ];
 
         $message = [
-            'image.required' => '画像を選択してください',
+           
             'name.required' => '名前を入力してください',
         ];
 
@@ -69,15 +69,17 @@ class MypageController extends Controller{
 
     private function user_update_system($user_id,$req){
         $user = User::find($user_id);
-        if( strcmp( $user->profile_pic, "0" ) != 0 ){
-            $delete_path = basename($user->profile_pic);
-            $delete_path = str_replace('https://example.s3-ap-northeast-1.amazonaws.com/', '', $delete_path);
-            $disk = Storage::disk('s3');
-            $disk->delete($delete_path);
+        if($req->image != null){
+            if( strcmp( $user->profile_pic, "0" ) != 0 ){
+                $delete_path = basename($user->profile_pic);
+                $delete_path = str_replace('https://example.s3-ap-northeast-1.amazonaws.com/', '', $delete_path);
+                $disk = Storage::disk('s3');
+                $disk->delete($delete_path);
+            };
+            $uploadImg = $user -> profile_pic = $req->file('image');
+            $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
+            $user->profile_pic = Storage::disk('s3')->url($path);
         };
-        $uploadImg = $user -> profile_pic = $req->file('image');
-        $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
-        $user->profile_pic = Storage::disk('s3')->url($path);
         $user -> name = $req -> name;
         $user -> email = $req -> email;
         $user -> birthday = $req -> birthday;

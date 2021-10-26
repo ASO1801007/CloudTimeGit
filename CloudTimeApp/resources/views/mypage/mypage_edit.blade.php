@@ -30,7 +30,7 @@
 	<p>
 		写真：<br>
 		<img id="img_prv" src="{{ $user_data->profile_pic }}" width="200" height="200"><br>
-		<input id="image"type="file" name="image" value="{{ $user_data->profile_pic }}" accept=".png,.jpg,.jpeg,image/png,image/jpg">
+		<input id="image" type="file" name="image" value="{{ $user_data->profile_pic }}" accept=".png,.jpg,.jpeg,image/png,image/jpg">
 	</p>
 	<p>
 		名前：<br>
