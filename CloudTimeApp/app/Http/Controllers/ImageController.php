@@ -11,7 +11,6 @@ use Auth;
 use App\Models\Img;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Image\Facades\Image;
 use Validator;
 
 class ImageController extends Controller
