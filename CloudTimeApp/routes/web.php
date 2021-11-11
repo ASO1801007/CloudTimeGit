@@ -58,3 +58,5 @@ Route::post('/capsule_delete',[App\Http\Controllers\CapsuleController::class,'ca
 //画像追加画面
 Route::post('/capsule_info/image',[App\Http\Controllers\ImageController::class,'index'])->name('image.index')->middleware('auth');
 Route::post('/capsule_info//image',[App\Http\Controllers\ImageController::class,'store'])->name('image.store')->middleware('auth');
+
+Route::get('/mail',[App\Http\Controllers\MailController::class,'sendmail'])->middleware('auth');
