@@ -13,7 +13,7 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('imgs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('capsule_id')->constrained();
             $table->string('image');

@@ -8,7 +8,7 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use Auth;
-use App\Models\Image;
+use App\Models\Img;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Validator;
@@ -19,7 +19,7 @@ class ImageController extends Controller
     public function index(Request $data)
     {
         $capsule_id = $data->capsule_id;
-        $images = Image::where('capsule_id',$capsule_id)->get();
+        $images = Img::where('capsule_id',$capsule_id)->get();
         $open_date = Capsule::find($capsule_id)->open_date;
         $ret_data = 0;
         date_default_timezone_set('Asia/Tokyo');
@@ -47,7 +47,7 @@ class ImageController extends Controller
             ->withErrors($validator);
         }
         
-        $image = new Image();
+        $image = new Img();
         $uploadImg = $image->image = $request->file('image');
         $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
         $image->image = Storage::disk('s3')->url($path);
