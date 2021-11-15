@@ -21,6 +21,8 @@ class CreateCapsulesTable extends Migration
             $table->string('intro',255)->nullable();
             $table->string('entry_code',50);
             $table->foreignId('user_id')->constrained();
+            $table->string('lat',50)->nullable();
+            $table->string('lng',50)->nullable();
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@
 
 <div>
 
+
 	<a href="#" class="thum">
 		<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
 		<div class="thum__title">
@@ -35,11 +36,21 @@
 	@if( $open_flag == 1 )
 	<div class="btn-warning p-2 text-center">
 	<form method="POST" action="{{ route('image.index') }}">
-		@csrf
-		 	<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-			<input type = "submit" name = "add" value="+">
-			開封する
-		</form>
+	@csrf
+	@if( $capsule_data->lat == null)
+		<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
+		<input type = "submit" name = "add" value="+">
+		開封する
+	@else
+		<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
+		<input type = "submit" name = "add" value="+">
+		<input type = "hidden" id = "lat" name = "lat" value = "">
+		<input type = "hidden" id = "lng"  name = "lng" value = "">
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
+		<script src="{{ asset('/js/futachi.js') }}"></script>
+		開封する
+	@endif
+	</form>
 	</div>
 	@elseif( $open_flag == 0 )
 	<div id="modalActivate" class="btn-primary p-1 text-center waves-effect" data-toggle="modal" data-target="#modalPreview0">

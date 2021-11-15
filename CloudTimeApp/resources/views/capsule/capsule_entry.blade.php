@@ -4,7 +4,7 @@
 <a class="navbar-brand" href="{{route('top.top')}}">＜</a>
 @endsection
 
-@section('nav_title','カプセルプロフィール設定')
+@section('nav_title','カプセル新規作成')
 
 @section('content')
 
@@ -60,21 +60,44 @@
 				</div>
 
 				<div class="">
+					<div class="md-form amber-textarea active-amber-textarea-2">
+						<textarea id="form2" name="intro" class="md-textarea form-control" rows="3">説明</textarea>
+						<label for="form2">概要を書く</label>
+					</div>
+				</div>
+
+				<div>
+					<label><input type="checkbox" id="" name="map＿" onclick="checkdiv(this,'checkBox')">位置情報を使用する</label>
+					<div id="checkBox" style="display:none;">
+						<p>住所や駅名、目印などで検索できます。</p>
+						<form onsubmit="return false;">
+						<input type="text" id="address">
+						<button type="button" value="検索" id="map_button">検索</button>
+						</form>
+						<!-- 地図を表示させる要素 -->
+						<div class="map_box01"><div id="map-canvas" style="width: 500px;height: 350px;"></div></div>
+						
+						<p>マーカーのある位置の<br>
+						緯度 <input type="text" id="lat" name="lat" value=""><br>
+						経度 <input type="text" id="lng" name="lng" value=""><br>
+						地図上をクリックするとマーカーを移動できます。</p>
+						
+						<!-- APIを取得 -->
+						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
+						<script src="{{ asset('/js/map.js') }}"></script>
+					</div>
+				</div>
+
+				<div class="">
 					<button type="submit" class="btn btn-primary btn-block waves-effect">OK</button>
 				</div>
+
 			</div>
-
-
 
 		</div>
 
 	</form>
 </div>
-
-
-<style>
-
-</style>
 
 <script>
 //画像が選択される度に、この中の処理が走る
@@ -93,5 +116,15 @@ $('#image').on('change', function (ev) {
 })
 </script>
 
-@endsection
-	
+<script type="text/javascript">
+function checkdiv( obj,id ) {
+if( obj.checked ){
+document.getElementById(id).style.display = "block";
+}
+else {
+document.getElementById(id).style.display = "none";
+}
+}
+</script>
+
+@endsection	

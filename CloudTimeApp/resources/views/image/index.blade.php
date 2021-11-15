@@ -4,7 +4,6 @@
 <a class="navbar-brand" href="">＜</a>
 @endsection
 
-
 @section('nav_title','カプセル開封')
 
 @section('content')
@@ -18,3 +17,14 @@
 @endif
 
 @endsection
+
+<script>
+window.onload = function(){
+    if( {{$genzaiti}} == 1){
+        var select = confirm("開封地点から離れているようですが、開封してよろしいですか？");
+        if( select == false){
+            location.href = "https://www.google.com";
+        }
+    }
+}
+</script>

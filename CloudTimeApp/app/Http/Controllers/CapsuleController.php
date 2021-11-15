@@ -49,6 +49,7 @@ class CapsuleController extends Controller{
         $capsule->thumbnail = Storage::disk('s3')->url($path);
         $capsule -> intro = $req -> intro;
         $capsule -> save();
+        unset($capsule);
         return redirect()->route('capsule.show_info', ['capsule_id' => $req -> id]);
     }
 
@@ -73,6 +74,8 @@ class CapsuleController extends Controller{
 
         // 開封日フラグ判定の関数呼び出し
         $open_flag = $this -> open_flag_system($capsule->open_date);
+
+        // 位置情報を使用しているか判定
 
         // 参加者フラグ判定の関数呼び出し
         $member_flag = $this -> member_flag_system($capsule->id);
@@ -117,6 +120,8 @@ class CapsuleController extends Controller{
         $capsule -> intro = $req -> intro;
         $capsule -> entry_code = $this -> make_entry_code_system();
         $capsule -> user_id = $i_am;
+        $capsule -> lat = $req -> lat;
+        $capsule -> lng = $req -> lng;
         return $capsule;
     }
 
@@ -127,13 +132,19 @@ class CapsuleController extends Controller{
         $rulus = [
             'name' => 'required',
             'thumbnail' => 'required',
-            'open_date' => 'required'
+            'open_date' => 'required',
         ];
+        if(isset($req['map'])){
+            $rulus += array('lat' => 'required', 'lng' => 'required');
+        }
         $message = [
             'name.required' => 'カプセル名を入力してください',
             'thumbnail.required' => 'サムネイルを選択してください',
             'open_date.required' => '開封日を入力してください（例 2000-01-11）'
         ];
+        if(isset($req['map'])){
+            $message += array('lat.required' => '緯度 空白にしないでください', 'lng.required' => '軽度 空白にしないでください');
+        }
 
         $ret_data = Validator::make($req->all(), $rulus, $message);
 

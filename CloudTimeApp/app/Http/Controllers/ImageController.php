@@ -15,21 +15,98 @@ use Validator;
 
 class ImageController extends Controller
 {
-    //画像保存
+    //開封ボタン押下後
     public function index(Request $data)
     {
         $capsule_id = $data->capsule_id;
         $images = Img::where('capsule_id',$capsule_id)->get();
         $open_date = Capsule::find($capsule_id)->open_date;
+        if(Capsule::find($capsule_id)->lat != null){
+            $lat1 = Capsule::find($capsule_id)->lat;
+            $lng1 = Capsule::find($capsule_id)->lng;
+            $lat2 = $data->lat;
+            $lng2 = $data->lng;
+            //２地点間の距離
+            $a = 6378137.00000; 
+            $b = 6356752.314245; 
+            $e2 = ( pow( $a, 2) - pow( $b, 2)) / pow( $a, 2);
+            $x1 = deg2rad( $lng1 );
+            $y1 = deg2rad( $lat1 );
+            $x2 = deg2rad( $lng2 );
+            $y2 = deg2rad( $lat2 );
+            $dy = $y1 - $y2;
+            $dx = $x1 - $x2;
+            $mu_y = ( $y1 + $y2 ) / 2.0;
+            $W = sqrt( 1.0 - ( $e2 * pow( sin( $mu_y ), 2 )));
+            $N = $a / $W;
+            $M = ( $a * ( 1 - $e2 )) / pow( $W, 3 );
+            $d = sqrt( pow( $dy * $M, 2 ) + pow( $dx * $N * cos( $mu_y ), 2 ));
+            $ret_data = 0;
+            date_default_timezone_set('Asia/Tokyo');
+            $now_date = date('Y-m-d H:i:s');
+            if($now_date >= $open_date){
+            $ret_data = 1;
+            }
+            if($d<=500){
+                $genzaiti = 1;
+                return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
+            }else{
+                $genzaiti = 0;
+                return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
+            }
+        }
         $ret_data = 0;
         date_default_timezone_set('Asia/Tokyo');
         $now_date = date('Y-m-d H:i:s');
         if($now_date >= $open_date){
             $ret_data = 1;
         }
-        return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data]);
+        $genzaiti = 0;
+        return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
     }
 
+    public function hantei(Request $data)
+    {
+        $capsule_id = $data->capsule_id;
+        $images = Img::where('capsule_id',$capsule_id)->get();
+        $open_date = Capsule::find($capsule_id)->open_date;
+        $lat1 = Capsule::find($capsule_id)->lat;
+        $lng1 = Capsule::find($capsule_id)->lng;
+        $ret_data = 0;
+        $lat2 = $data->lat;
+        $lng2 = $data->lng;
+
+        //２地点間の距離
+        $a = 6378137.00000; 
+        $b = 6356752.314245; 
+        $e2 = ( pow( $a, 2) - pow( $b, 2)) / pow( $a, 2);
+        $x1 = deg2rad( $lng1 );
+        $y1 = deg2rad( $lat1 );
+        $x2 = deg2rad( $lng2 );
+        $y2 = deg2rad( $lat2 );
+        $dy = $y1 - $y2;
+        $dx = $x1 - $x2;
+        $mu_y = ( $y1 + $y2 ) / 2.0;
+        $W = sqrt( 1.0 - ( $e2 * pow( sin( $mu_y ), 2 )));
+        $N = $a / $W;
+        $M = ( $a * ( 1 - $e2 )) / pow( $W, 3 );
+        $d = sqrt( pow( $dy * $M, 2 ) + pow( $dx * $N * cos( $mu_y ), 2 ));
+
+        date_default_timezone_set('Asia/Tokyo');
+        $now_date = date('Y-m-d H:i:s');
+        if($now_date >= $open_date){
+            $ret_data = 1;
+        }
+
+        if($d <= 700){
+            $genzaiti = 1;
+            return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
+        }else{
+            return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data]);
+        }
+    }
+
+    //画像保存処理
     public function store(Request $request)
     {
         $rulus = [
@@ -106,7 +183,4 @@ class ImageController extends Controller
         }
         return $ret_data;
     }
-
-    //開封
-    
 }
