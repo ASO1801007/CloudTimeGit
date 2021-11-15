@@ -37,7 +37,7 @@
 
     <div class="plus_button">
       <a href="capsule_entry">
-      <i class="fa fa-plus" aria-hidden="true"></i>
+        <i class="fa fa-plus" aria-hidden="true"></i>
       </a>
     </div>
 
