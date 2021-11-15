@@ -1,7 +1,7 @@
 @extends('layouts.ctc')
 
 @section('back_button')
-<a class="navbar-brand" href="{{route('top.top')}}">＜</a>
+<a class="navbar-brand" href="javascript:history.back();">＜</a>
 @endsection
 
 @section('nav_title','プロフィール編集')

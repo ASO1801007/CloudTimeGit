@@ -12,8 +12,13 @@
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
-<div>
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 
+<div>
 
 	<a href="#" class="thum">
 		<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
@@ -67,11 +72,20 @@
 		最近の投稿<hr>
 		有光：おはよう！
 	</div>
-	<div class="card p-3 mt-2">
-		メンバー一覧
-	</div>
+	<a href="/member_list/{{$capsule_data->id}}">
+		<div class="card p-3 mt-2">
+			メンバー一覧
+		</div>
+	</a>
 	<div class="card p-3 mt-2">
 		招待コード : {{ $capsule_data->entry_code }}
+		<hr>
+		<a href="/member_add_select/{{$capsule_data->id}}">
+			<div class="btn btn-primary text-center">
+				直接招待
+			</div>
+		</a>
+		
 	</div>
 
 	<!-- カプセル破棄ボタンの有無 -->
@@ -86,7 +100,10 @@
 		タイムカプセルを破棄
 	</div>
 	@elseif( $admin_flag == 0 )
-	<div class="btn-light m-2 p-3 text-center text-white">
+	<div class="btn-primary m-2 p-3 text-center text-white waves-effect">
+		タイムカプセルを編集
+	</div>
+	<div class="btn-light m-2 p-3 text-center text-white waves-effect">
 		タイムカプセルを破棄
 	</div>
 	@else
@@ -152,7 +169,7 @@
 	</div>
 
 </form>
-<!-- 破棄前ポップアップ -->
+<!-- 破棄前ポップアップ- -->
 
 
 

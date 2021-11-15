@@ -7,24 +7,39 @@
     <link rel="stylesheet" href="css/genki.css">
 </head>
 
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
 <div>
 
     
 
-    @foreach($capsule_data as $capsule_data)
-        <a href="/capsule_info/{{$capsule_data->capsule->id}}" class="thum">
-            <img src="{{ $capsule_data->capsule->thumbnail }}" loading="lazy" class="thum__img">
-            <div class="thum__title">
-                {{$capsule_data->capsule->name}}(id:{{$capsule_data->capsule->id}})<br>
-                <h6>開封予定日 : {{$capsule_data->open_date_str}}</h6>
+    <div class="row">
+        @foreach($capsule_data as $capsule_data)
+            <div class="col-12 col-sm-6 mb-2">
+                <a href="/capsule_info/{{$capsule_data->capsule->id}}" class="thum">
+                    <img src="{{ $capsule_data->capsule->thumbnail }}" loading="lazy" class="thum__img">
+                    <div class="thum__title">
+                        {{$capsule_data->capsule->name}}(id:{{$capsule_data->capsule->id}})<br>
+                        <h6>開封予定日 : {{$capsule_data->open_date_str}}</h6>
+                    </div>
+                </a>
             </div>
-        </a>
-        <br>
-    @endforeach
+        @endforeach
+    </div>
 
 
 
-    <a href="capsule_entry" class="btn btn--orange btn--circle btn--circle-a btn--shadow">＋</a>
+    
+
+    <div class="plus_button">
+      <a href="capsule_entry">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+    </div>
 
 </div>
 
@@ -59,6 +74,19 @@
 .thum:hover .thum__img {
   filter: brightness(150%); /* フィルターを変更 */
   transform: scale(1.3); /* 画像を拡大 */
+}
+
+.plus_button {
+    width: 50px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #2779bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
 </style>
 

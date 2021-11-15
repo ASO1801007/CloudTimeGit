@@ -30,7 +30,7 @@ class CapsuleController extends Controller{
         }
 
         $this -> capsule_grand_create_system($req);
-        return redirect('/top');
+        return redirect('/top')->with('message','カプセルを作成しました。');
     }
 
     // カプセル編集ボタン押下時
@@ -40,6 +40,7 @@ class CapsuleController extends Controller{
         return view('capsule.capsule_edit',$data);
     }
 
+    //カプセル更新処理
     public function capsule_update(Request $req){
         $capsule = Capsule::find($req -> id);
         $capsule -> name = $req -> name;
@@ -74,8 +75,6 @@ class CapsuleController extends Controller{
 
         // 開封日フラグ判定の関数呼び出し
         $open_flag = $this -> open_flag_system($capsule->open_date);
-
-        // 位置情報を使用しているか判定
 
         // 参加者フラグ判定の関数呼び出し
         $member_flag = $this -> member_flag_system($capsule->id);

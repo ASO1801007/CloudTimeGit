@@ -60,3 +60,12 @@ Route::post('/capsule_info/image',[App\Http\Controllers\ImageController::class,'
 Route::post('/capsule_info//image',[App\Http\Controllers\ImageController::class,'store'])->name('image.store')->middleware('auth');
 
 Route::get('/mail',[App\Http\Controllers\MailController::class,'sendmail'])->middleware('auth');
+
+// メンバーリスト
+Route::get('/member_list/{capsule_id}',[App\Http\Controllers\MemberController::class,'show_member_list'])->name('member.show_member_list')->middleware('auth');
+
+// カプセルから招待する画面
+Route::get('/member_add_select/{capsule_id}',[App\Http\Controllers\MemberController::class,'show_member_add_select'])->name('member.show_member_add_select')->middleware('auth');
+
+// メンバー招待処理
+Route::post('/member_update',[App\Http\Controllers\MemberController::class,'member_update'])->name('member.member_update')->middleware('auth');

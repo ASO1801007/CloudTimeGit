@@ -41,7 +41,7 @@
             <div class="container">
                 <!-- 戻るボタン_要処理 -->
                 @yield('back_button')
-                <div>
+                <div class="text-center">
                     @yield('nav_title')
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

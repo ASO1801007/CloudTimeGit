@@ -11,7 +11,7 @@
 @endif
 
 <div class="row">
-	<div class="col-12 text-center mt-5">
+	<div class="col-12 text-center" style="margin-top:150px;">
 		<img src="{{$user_data->profile_pic}}" class="prf_img">
 	</div>
 	<div class="col-12 text-center mt-3">
@@ -32,29 +32,38 @@
 	<div class="col-4">中</div>
 	<div class="col-4">小</div>
 </div>
-<div class="row">
-	<div class="col-4 scholl_sq">高</div>
-</div>
-
-</div>
 
 <hr>
+
+<div class="row">
+	<div class="col-4">
+		<div class="sq_flame">
+			<img src="{{ url('/image/scale_b.jpg') }}" />
+			<p>{{ $user_data->high }}</p>	
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="sq_flame">
+			<img src="{{ url('/image/scale_g.jpg') }}" />
+			<p>{{ $user_data->junior_high }}</p>	
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="sq_flame">
+			<img src="{{ url('/image/scale_r.jpg') }}" />
+			<p>{{ $user_data->elementary }}</p>	
+		</div>
+	</div>
+</div>
 
 <div>
 
 	<div>
-		<img src="{{$user_data->profile_pic}}" class="prf_img">
-	</div>
-	<div>
 		<h5><b>名前 : </b>{{ $user_data->name }}</h5>
 		<h5><b>メール : </b>{{ $user_data->email }}</h5>
 		<h5><b>誕生日 : </b>{{ $user_data->birthday }}</h5>
-		<h5><b>紹介 : </b>{{ $user_data->intro }}</h5>
 		<h5><b>場所 : </b>{{ $user_data->location }}</h5>
 		<h5><b>職業 : </b>{{ $user_data->job }}</h5>
-		<h5><b>高校 : </b>{{ $user_data->high }}</h5>
-		<h5><b>中学 : </b>{{ $user_data->junior_high }}</h5>
-		<h5><b>小学 : </b>{{ $user_data->elementary }}</h5>
 	</div>
 	<div>
 		<hr>
@@ -73,14 +82,20 @@
 </div>
 
 
-
-
-
 <style>
+
+body{
+	background-image: url('/image/prf_1.jpg');
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:0% 7%;
+}
+
 .prf_img{
 	border-radius: 50%;
 	width=:100px;
 	height:100px;
+	border: 4px solid #FFFFFF;
 }
 .name_tag{
 	font-size:25px;
@@ -115,9 +130,26 @@
   margin: 0;
   padding: 0;
 }
-.school_sq{
-	
-}
+.sq_flame {
+  position: relative;
+  }
+
+.sq_flame p {
+	color:white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	margin:0;
+	padding:0;
+	/*文字の装飾は省略*/
+	}
+
+.sq_flame img {
+  width: 100%;
+  }
 
 
 

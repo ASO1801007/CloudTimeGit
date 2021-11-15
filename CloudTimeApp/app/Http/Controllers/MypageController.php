@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class MypageController extends Controller{
-
-    // 表示画面
+    // プロフィール表示画面
     public function show_info($id=0){
         $i_am = Auth::id();
         if($id == 0){
@@ -32,7 +31,7 @@ class MypageController extends Controller{
         return view('mypage.mypage_info',$data);
     }
 
-    // 編集画面
+    // プロフィール編集画面
     public function show_edit($id=0){
         $i_am = Auth::id();
         $user = User::find($i_am);
