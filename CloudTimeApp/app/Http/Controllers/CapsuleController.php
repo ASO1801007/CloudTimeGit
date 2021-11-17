@@ -45,9 +45,15 @@ class CapsuleController extends Controller{
         $capsule = Capsule::find($req -> id);
         $capsule -> name = $req -> name;
         $capsule -> open_date = $req -> open_date;
-        $uploadImg = $capsule-> thumbnail = $req->file('thumbnail');
-        $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
-        $capsule->thumbnail = Storage::disk('s3')->url($path);
+        if($req->thumbnail != null){
+            $delete_path = basename($capsule->thumbnail);
+            $delete_path = str_replace('https://example.s3-ap-northeast-1.amazonaws.com/', '', $delete_path);
+            $disk = Storage::disk('s3');
+            $disk->delete($delete_path);
+            $uploadImg = $capsule-> thumbnail = $req->file('thumbnail');
+            $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
+            $capsule->thumbnail = Storage::disk('s3')->url($path);
+        }
         $capsule -> intro = $req -> intro;
         $capsule -> save();
         unset($capsule);
@@ -113,9 +119,14 @@ class CapsuleController extends Controller{
     private function capsule_formdata_cast_system($req,$i_am,$capsule){
         $capsule -> name = $req -> name;
         $capsule -> open_date = $req -> open_date;
-        $uploadImg = $capsule-> thumbnail = $req->file('thumbnail');
-        $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
-        $capsule->thumbnail = Storage::disk('s3')->url($path);
+        if($req->thumbnail != null){
+            $uploadImg = $capsule-> thumbnail = $req->file('thumbnail');
+            $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
+            $capsule->thumbnail = Storage::disk('s3')->url($path);
+        }else{
+            $capsule -> thumbnail = "noImage.png";
+        }
+        
         $capsule -> intro = $req -> intro;
         $capsule -> entry_code = $this -> make_entry_code_system();
         $capsule -> user_id = $i_am;
@@ -130,7 +141,6 @@ class CapsuleController extends Controller{
 
         $rulus = [
             'name' => 'required',
-            'thumbnail' => 'required',
             'open_date' => 'required',
         ];
         if(isset($req['map'])){
@@ -138,7 +148,6 @@ class CapsuleController extends Controller{
         }
         $message = [
             'name.required' => 'カプセル名を入力してください',
-            'thumbnail.required' => 'サムネイルを選択してください',
             'open_date.required' => '開封日を入力してください（例 2000-01-11）'
         ];
         if(isset($req['map'])){

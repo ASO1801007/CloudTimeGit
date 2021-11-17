@@ -8,13 +8,15 @@
 
 @section('content')
 
-@if( $open_flg == 1)
-    @foreach($images as $image)
-        <div>
-            <img src="{{ $image->image }}" alt="image" style="width: 30%; height: auto;"/>
-        </div>
-    @endforeach
-@endif
+
+    @if( $open_flg == 1)
+        @foreach($images as $image)
+            <div>
+                <img src="{{ $image->image }}" alt="image" style="width: 30%; height: auto;"/>
+            </div>
+        @endforeach
+    @endif
+
 
 @endsection
 
@@ -23,7 +25,7 @@ window.onload = function(){
     if( {{$genzaiti}} == 1){
         var select = confirm("開封地点から離れているようですが、開封してよろしいですか？");
         if( select == false){
-            location.href = "https://www.google.com";
+            location.href = "/top";
         }
     }
 }
