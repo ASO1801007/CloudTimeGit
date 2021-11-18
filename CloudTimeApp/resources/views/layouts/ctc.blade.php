@@ -30,6 +30,23 @@
         }
         .card{
             background: white;
+            border-radius:15px;
+        }
+        .alert{
+            text-align: center;
+            border-radius:15px;
+        }
+        .point_button {
+            width: 50px;
+            height: 50px;
+            color: #ffffff;
+            background-color: #2779ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
         }
     </style>
 
@@ -100,12 +117,12 @@
 
         <div class="fixed-bottom">
             <div class="container">
-                <div card="card" style="border:solid; background-color:white;">
+                <div card="card" style="border-radius:10px; border:solid; background-color:white;">
                     <div class="row text-center p-1">
 
                         <div class="col-3">
-                            <a href="{{ route('mypage.show_info') }}">
-                                <i class="fa fa-2x fa-user" aria-hidden="true"></i>
+                            <a href="{{ route('top.top') }}">
+                                <i class="fa fa-2x fa-home" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div class="col-3">
@@ -114,13 +131,13 @@
                             </a>
                         </div>
                         <div class="col-3">
-                            <a href="{{ route('top.top') }}">
-                                <i class="fa fa-2x fa-home" aria-hidden="true"></i>
+                            <a href="">
+                                <i class="fa fa-2x fa-sign-in" aria-hidden="true" style="color:#AAAAAA;"></i>
                             </a>
                         </div>
                         <div class="col-3">
-                            <a href="">
-                                <i class="fa fa-2x fa-sign-in" aria-hidden="true" style="color:#AAAAAA;"></i>
+                            <a href="{{ route('mypage.show_info') }}">
+                                <i class="fa fa-2x fa-user" aria-hidden="true"></i>
                             </a>
                         </div>
 

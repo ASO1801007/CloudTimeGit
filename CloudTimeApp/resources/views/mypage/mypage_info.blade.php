@@ -4,21 +4,16 @@
 
 @section('content')
 
-@if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-@endif
-
 <div class="row">
-	<div class="col-12 text-center" style="margin-top:150px;">
+	<div class="col-12 text-center" style="margin-top:135px;">
 		<img src="{{$user_data->profile_pic}}" class="prf_img">
 	</div>
 	<div class="col-12 text-center mt-3">
 		<div class="name_tag">{{ $user_data->name }}</div>
 	</div>
 	<div class="col-12 text-center mt-1">
-		<div class="job_tag">{{ $user_data->location }}・{{ $user_data->job }}・21歳</div>
+		<div class="sub_tag">{{ $user_data->birthday }}</div>
+		<div class="sub_tag">{{ $user_data->location }}・{{ $user_data->job }}</div>
 	</div>
 	<div class="col-12 text-center">
 		<div class="introbox-top">
@@ -27,55 +22,75 @@
 	</div>
 </div>
 <hr>
-<div class="row text-center">
-	<div class="col-4">高</div>
-	<div class="col-4">中</div>
-	<div class="col-4">小</div>
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+	<hr>
+@endif
+
+<!-- 学歴カード -->
+
+<div class="school_card card p-4">
+	<div class="row">
+		<div class="col-3 text-center">
+			<i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i>
+		</div>
+		<div class="col-9">
+			<h7>high school</h7>
+			<h6>{{ $user_data->high }}</h6>
+		</div>
+		<div class="col-3"></div>
+		<div class="col-9">
+			<h7>junior high school</h7>
+			<h6>{{ $user_data->junior_high }}</h6>
+		</div>
+		<div class="col-3"></div>
+		<div class="col-9">
+			<h7>elementary school</h7>
+			<h6>{{ $user_data->elementary }}</h6>
+		</div>
+	</div>
 </div>
+
+<!-- 学歴カード -->
 
 <hr>
 
-<div class="row">
-	<div class="col-4">
-		<div class="sq_flame">
-			<img src="{{ url('/image/scale_b.jpg') }}" />
-			<p>{{ $user_data->high }}</p>	
+<!-- 蛇足カード -->
+
+<div hidden class="school_card card p-4">
+	<div class="row">
+		<div class="col-3 text-center">
+			<i class="fa fa-2x fa-user" aria-hidden="true"></i>
 		</div>
-	</div>
-	<div class="col-4">
-		<div class="sq_flame">
-			<img src="{{ url('/image/scale_g.jpg') }}" />
-			<p>{{ $user_data->junior_high }}</p>	
+		<div class="col-9">
+			<h7>E-mail</h7>
+			<h6>{{ $user_data->email }}</h6>
 		</div>
-	</div>
-	<div class="col-4">
-		<div class="sq_flame">
-			<img src="{{ url('/image/scale_r.jpg') }}" />
-			<p>{{ $user_data->elementary }}</p>	
+		<div class="col-3"></div>
+		<div class="col-9">
+			<h7>BirthDay</h7>
+			<h6>{{ $user_data->birthday }}</h6>
 		</div>
 	</div>
 </div>
+
+<!-- 蛇足カード -->
+
 
 <div>
 
 	<div>
-		<h5><b>名前 : </b>{{ $user_data->name }}</h5>
-		<h5><b>メール : </b>{{ $user_data->email }}</h5>
-		<h5><b>誕生日 : </b>{{ $user_data->birthday }}</h5>
-		<h5><b>場所 : </b>{{ $user_data->location }}</h5>
-		<h5><b>職業 : </b>{{ $user_data->job }}</h5>
-	</div>
-	<div>
 		<hr>
 		@if( $i_am_flag == 0 )
-		<p>このページはあなたのページではありません。(編集不可)</p>
 		@elseif( $i_am_flag == 1 )
-		<p>このページはあなたのページです。(編集可)</p>
-		<a href="{{ url('/mypage_edit') }}">
-			<h5>編集ボタン</h5>
-		</a>
+		<div class="point_button">
+			<a href="{{ url('/mypage_edit') }}" style="color:white;">
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+			</a>
+		</div>
 		@endif
-		<hr>
 	</div>
 
 
@@ -85,10 +100,18 @@
 <style>
 
 body{
-	background-image: url('/image/prf_1.jpg');
+	background-image: url('/image/prf_{{$user_data->birth_type}}.jpg');
 	background-repeat:no-repeat;
 	background-size:contain;
-	background-position:0% 7%;
+	background-position:0% 6%;
+}
+.card{
+	background-image: url('/image/scale_r.jpg');
+	background-size:cover;
+	color:white;
+}
+h7{
+	font-size:13px;
 }
 
 .prf_img{
@@ -101,9 +124,9 @@ body{
 	font-size:25px;
 	font-weight:bold;
 }
-.job_tag{
+.sub_tag{
 	font-size:15px;
-	color:#BBBBBB;
+	color:#AAAAAA;
 }
 .introbox-top {
   position: relative;

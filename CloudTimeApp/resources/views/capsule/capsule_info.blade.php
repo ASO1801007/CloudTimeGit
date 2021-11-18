@@ -69,22 +69,38 @@
 	<!-- 追加ボタンor開封ボタン -->
 
 	<div class="card p-3 mt-2">
-		最近の投稿<hr>
-		有光：おはよう！
+		<div class="row">
+			<div class="col-12">
+				最近の投稿
+			</div>
+		</div>
+		<hr color="#FFFFFF">
+		　有光：おはよう！
 	</div>
 	<a href="/member_list/{{$capsule_data->id}}">
 		<div class="card p-3 mt-2">
-			メンバー一覧
+			<div class="row">
+				<div class="col-12">
+					<span style="display:inline-block; vertical-align:middle;"><i class="fa fa-2x fa-users" aria-hidden="true"></i>　メンバー一覧　</span>
+				</div>
+			</div>
 		</div>
 	</a>
 	<div class="card p-3 mt-2">
-		招待コード : {{ $capsule_data->entry_code }}
+		招待する
 		<hr>
-		<a href="/member_add_select/{{$capsule_data->id}}">
-			<div class="btn btn-primary text-center">
-				直接招待
+		<div class="row">
+			<div class="col-6">
+				招待コード : {{ $capsule_data->entry_code }}
 			</div>
-		</a>
+			<div class="col-6">
+				<a href="/member_add_select/{{$capsule_data->id}}">
+					<div class="btn btn-primary text-center">
+						直接招待
+					</div>
+				</a>
+			</div>
+		</div>
 		
 	</div>
 
@@ -177,12 +193,17 @@
 
 <style>
 
+.card{
+	background-image: url('/image/scale_r.jpg');
+	background-size:cover;
+	color:white;
+}
 
 .thum {
   display: block;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 /* テキストをカード下に固定配置する */
 .thum__title {
@@ -207,6 +228,7 @@
   filter: brightness(150%); /* フィルターを変更 */
   transform: scale(1.3); /* 画像を拡大 */
 }
+
 
 
 </style>

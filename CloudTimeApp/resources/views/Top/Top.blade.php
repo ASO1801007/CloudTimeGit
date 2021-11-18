@@ -35,8 +35,8 @@
 
     
 
-    <div class="plus_button">
-      <a href="capsule_entry">
+    <div class="point_button">
+      <a href="capsule_entry" style="color:white;">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </a>
     </div>
@@ -48,7 +48,7 @@
   display: block;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 /* テキストをカード下に固定配置する */
 .thum__title {
@@ -74,19 +74,6 @@
 .thum:hover .thum__img {
   filter: brightness(150%); /* フィルターを変更 */
   transform: scale(1.3); /* 画像を拡大 */
-}
-
-.plus_button {
-    width: 50px;
-    height: 50px;
-    color: #ffffff;
-    background-color: #2779bd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    cursor: pointer;
 }
 </style>
 

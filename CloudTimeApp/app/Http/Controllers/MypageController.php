@@ -26,6 +26,9 @@ class MypageController extends Controller{
         // 開くページが自身のページかを判定
         $i_am_flag = $this -> i_am_flag_system($i_am,$id);
 
+        // 誕生日タイプ取得
+        $user->birth_type = $this -> get_birth_type_system($user->birthday);
+
         $data = ['user_data' => $user, 'i_am_flag' => $i_am_flag];
 
         return view('mypage.mypage_info',$data);
@@ -63,7 +66,7 @@ class MypageController extends Controller{
             ->withErrors($validator);
         }
         $this -> user_update_system($i_am,$req);
-        return redirect()->route('mypage.show_info', ['user_id' => $i_am])->with('message','編集しました');
+        return redirect()->route('mypage.show_info', ['user_id' => $i_am])->with('message','プロフィールを更新しました。');
     }
 
     private function user_update_system($user_id,$req){
@@ -89,6 +92,23 @@ class MypageController extends Controller{
         $user -> junior_high = $req -> junior_high;
         $user -> elementary = $req -> elementary;
         $user -> save();
+    }
+
+    // 誕生月に応じたプロフィールページの背景設定用の値取得 (春:1,夏:2,秋:3,冬:4)
+    private function get_birth_type_system($birth_data){
+        $ret_data = 0;
+        $birth_month_str = substr($birth_data,5,2);
+        $birth_month_int = (int)$birth_month_str;
+        if($birth_month_int == 12 || $birth_month_int <= 2){
+            $ret_data = 4;
+        }else if($birth_month_int >= 9){
+            $ret_data = 3;
+        }else if($birth_month_int >= 6){
+            $ret_data = 2;
+        }else if($birth_month_int >= 3){
+            $ret_data = 1;
+        }
+        return $ret_data;
     }
 
     private function i_am_flag_system($my_id,$url_id){
