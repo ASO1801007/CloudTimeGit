@@ -69,3 +69,7 @@ Route::get('/member_add_select/{capsule_id}',[App\Http\Controllers\MemberControl
 
 // メンバー招待処理
 Route::post('/member_update',[App\Http\Controllers\MemberController::class,'member_update'])->name('member.member_update')->middleware('auth');
+
+Route::get('/mail', [App\Http\Controllers\HomeController::class, 'mail'])->name('mail');
+
+Route::get('/testmaill', [App\Http\Controllers\HomeController::class, 'testmail'])->name('testmail');
