@@ -27,53 +27,104 @@
 
 <form action="{{ url('/mypage_update') }}" method="post" enctype="multipart/form-data">
 	@csrf
-	<p>
-		写真：<br>
-		<img id="img_prv" src="{{ $user_data->profile_pic }}" width="200" height="200"><br>
-		<input id="image" type="file" name="image" value="{{ $user_data->profile_pic }}" accept=".png,.jpg,.jpeg,image/png,image/jpg">
-	</p>
-	<p>
-		名前：<br>
-		<input type="text" name="name" value="{{ $user_data->name }}">
-	</p>
-	<p>
-		メール：<br>
-		<input type="text" name="email" value="{{ $user_data->email }}">
-	</p>
-	<p>
-		誕生日：<br>
-		<input type="text" name="birthday" value="{{ $user_data->birthday }}">
-	</p>
-	<p>
-		紹介：<br>
-		<input type="text" name="intro" value="{{ $user_data->intro }}">
-	</p>
-	<p>
-		場所：<br>
-		<input type="text" name="location" value="{{ $user_data->location }}">
-	</p>
-	<p>
-		職業：<br>
-		<input type="text" name="job" value="{{ $user_data->job }}">
-	</p>
-	<p>
-		高校：<br>
-		<input type="text" name="high" value="{{ $user_data->high }}">
-	</p>
-	<p>
-		中学：<br>
-		<input type="text" name="junior_high" value="{{ $user_data->junior_high }}">
-	</p>
-	<p>
-		小学：<br>
-		<input type="text" name="elementary" value="{{ $user_data->elementary }}">
-	</p>
+	<div class="row">
+		<div class="col-12 text-center" style="margin-top:135px;">
+			<img id="img_prv" src="{{$user_data->profile_pic}}" class="prf_img">
+			<input id="image" type="file" name="image" value="{{ $user_data->profile_pic }}" accept=".png,.jpg,.jpeg,image/png,image/jpg">
+		</div>
+		<i hidden class="fa fa-question-circle-o text-primary waves-effect" aria-hidden="true" data-toggle="modal" data-target="#helpPop"></i>
+		<div class="col-12">
+			<div class="md-form">
+				<input type="text" id="name" name="name" size="50" maxlength="20" class="form-control" value="{{ $user_data->name }}">
+				<label for="form1">名前</label>
+			</div>
+			<div class="md-form">
+				<input type="text" id="birthday" name="birthday" size="50" maxlength="20" class="form-control" value="{{ $user_data->birthday }}">
+				<label for="form2">誕生日</label>
+			</div>
+			<div class="md-form">
+				<input type="text" id="location" name="location" size="50" maxlength="20" class="form-control" value="{{ $user_data->location }}">
+				<label for="form3">場所</label>
+			</div>
+			<div class="md-form">
+				<input type="text" id="job" name="job" size="50" maxlength="20" class="form-control" value="{{ $user_data->job }}">
+				<label for="form4">職業</label>
+			</div>
+		</div>
+		<div class="col-12">
+			<!--Basic textarea-->
+			<div class="md-form amber-textarea active-amber-textarea-2">
+				<textarea id="form9" name="intro" class="md-textarea form-control" rows="3">{{ $user_data->intro }}</textarea>
+				<label for="form9">自己紹介</label>
+			</div>
+			<!--Basic textarea-->
+		</div>
+	</div>
+	
 
-	<button type="submit">更新</button>
+
+	<!-- 学歴カード -->
+
+	<div class="row">
+		<div class="col-12">
+			卒業した学校
+		</div>
+		<div class="col-12">
+			<div class="school_card card p-4">
+				<div class="row">
+					<div class="col-12">
+						<div class="form-outline mb-4">
+							<label class="form-label" for="high">高校</label>
+							<input type="text" name="high" id="high" class="form-control" value="{{ $user_data->high }}" />
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-outline mb-4">
+							<label class="form-label" for="junior_high">中学校</label>
+							<input type="text" name="junior_high" id="junior_high" class="form-control" value="{{ $user_data->junior_high }}" />
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-outline mb-4">
+							<label class="form-label" for="elementary">小学校</label>
+							<input type="text" name="elementary" id="elementary" class="form-control" value="{{ $user_data->elementary }}" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 学歴カード -->
+
+	<button type="submit" class="btn btn-primary">更新</button>
 
 </form>
 
 </div>
+
+<style>
+body{
+	background-image: url('/image/prf_{{$user_data->birth_type}}.jpg');
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:0% 5%;
+}
+
+.card{
+	background-image: url('/image/scale_r.jpg');
+	background-size:cover;
+	color:white;
+}
+
+.prf_img{
+	border-radius: 50%;
+	width=:100px;
+	height:100px;
+	border: 4px solid #FFFFFF;
+}
+
+</style>
 
 <script>
 //画像が選択される度に、この中の処理が走る

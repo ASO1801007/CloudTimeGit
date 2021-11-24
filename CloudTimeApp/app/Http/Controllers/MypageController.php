@@ -39,6 +39,9 @@ class MypageController extends Controller{
         $i_am = Auth::id();
         $user = User::find($i_am);
 
+        // 誕生日タイプ取得
+        $user->birth_type = $this -> get_birth_type_system($user->birthday);
+
         $data = ['user_data' => $user];
 
         return view('mypage.mypage_edit',$data);
@@ -83,7 +86,6 @@ class MypageController extends Controller{
             $user->profile_pic = Storage::disk('s3')->url($path);
         };
         $user -> name = $req -> name;
-        $user -> email = $req -> email;
         $user -> birthday = $req -> birthday;
         $user -> intro = $req -> intro;
         $user -> location = $req -> location;

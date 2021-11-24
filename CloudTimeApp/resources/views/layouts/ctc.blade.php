@@ -117,7 +117,7 @@
 
         <div class="fixed-bottom">
             <div class="container">
-                <div card="card" style="border-radius:10px; border:solid; background-color:white;">
+                <div card="card" style="border-radius:10px 10px 0; border:solid; background-color:white;">
                     <div class="row text-center p-1">
 
                         <div class="col-3">

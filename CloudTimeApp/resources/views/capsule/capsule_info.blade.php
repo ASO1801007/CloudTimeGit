@@ -78,13 +78,21 @@
 		</div>
 	</a>
 	<div class="card p-3 mt-2">
-		招待コード : {{ $capsule_data->entry_code }}
+		招待する
 		<hr>
-		<a href="/member_add_select/{{$capsule_data->id}}">
-			<div class="btn btn-primary text-center">
-				直接招待
+		<div class="row">
+			<div class="col-5">
+				招待コード :<br>
+				{{ $capsule_data->entry_code }}
 			</div>
-		</a>
+			<div class="col-7">
+				<a href="/member_add_select/{{$capsule_data->id}}">
+					<div class="btn btn-primary text-center">
+						直接招待
+					</div>
+				</a>
+			</div>
+		</div>
 		
 	</div>
 
@@ -177,7 +185,11 @@
 
 <style>
 
-
+.card{
+	background-image: url('/image/scale_r.jpg');
+	background-size:cover;
+	color:white;
+}
 .thum {
   display: block;
   position: relative;

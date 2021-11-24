@@ -75,6 +75,28 @@
   filter: brightness(150%); /* フィルターを変更 */
   transform: scale(1.3); /* 画像を拡大 */
 }
+
+.plus_button {
+    width: 50px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #2779ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.point_button {
+  position:fixed;
+  bottom: 70px;
+  right: 30px;
+  transition:1s;
+  border-radius:100px;
+}
+
 </style>
 
 @endsection

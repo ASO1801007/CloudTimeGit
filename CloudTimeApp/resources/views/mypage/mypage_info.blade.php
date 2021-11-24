@@ -174,6 +174,14 @@ h7{
   width: 100%;
   }
 
+.point_button {
+  position:fixed;
+  bottom: 70px;
+  right: 30px;
+  transition:1s;
+  border-radius:100px;
+}
+
 
 
 </style>
