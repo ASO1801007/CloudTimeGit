@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CapsuleSeeder::class,
             MembersSeeder::class,
             BbsSeeder::class,
+            MessagesTableSeeder::class,
         ]);
     }
 }

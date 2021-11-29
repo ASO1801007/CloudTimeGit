@@ -25,7 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/top', [App\Http\Controllers\TopController::class, 'top'])->name('top.top')->middleware('auth');
 
 //チャット画面
-Route::get('/chat', [App\Http\Controllers\ChatController::class,'chat'])->middleware('auth');
+Route::get('/chat/{capsule_id}', [App\Http\Controllers\ChatController::class,'index'])->middleware('auth');
+Route::get('/ajax/chat', [App\Http\Controllers\Ajax\ChatController::class,'index']);// メッセージ一覧を取得
+Route::get('/ajax/message_create', [App\Http\Controllers\Ajax\ChatController::class,'create']);// チャット登録
 
 //エントリー画面
 Route::get('/entry', [App\Http\Controllers\EntryController::class,'entry'])->middleware('auth');
