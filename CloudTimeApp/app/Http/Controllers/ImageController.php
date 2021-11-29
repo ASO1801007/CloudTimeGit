@@ -68,27 +68,17 @@ class ImageController extends Controller
     //画像保存処理
     public function store(Request $request)
     {
-        $rulus = [
-            'image' => 'required',
-        ];
-
-        $message = [
-            'image.required' => '画像を選択してください,'
-        ];
-
-        $validator = Validator::make($request->all(), $rulus, $message);
-
-        if($validator->fails()){
-            return view('error.error_page')
-            ->withErrors($validator);
+        //画像を選択していたら保存処理を実行する
+        if($request->has('image')){
+            $image = new Img();
+            $uploadImg = $image->image = $request->file('image');
+            $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
+            $image->image = Storage::disk('s3')->url($path);
+            $image->capsule_id = $request->capsule_id;
+            $image->title = $request->title;
+            $image->save();
+            unset($image);
         }
-        
-        $image = new Img();
-        $uploadImg = $image->image = $request->file('image');
-        $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
-        $image->image = Storage::disk('s3')->url($path);
-        $image->capsule_id = $request->capsule_id;
-        $image->save();
 
         //CapusuleControllerからコピペ
         $i_am = Auth::id();

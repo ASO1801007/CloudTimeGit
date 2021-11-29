@@ -12,6 +12,7 @@
     @if( $open_flg == 1)
         @foreach($images as $image)
             <div>
+                {{$image->title}} {{$image->created_at}} <br>
                 <img src="{{ $image->image }}" alt="image" style="width: 30%; height: auto;"/>
             </div>
         @endforeach
@@ -29,6 +30,8 @@ window.onload = function(){
         if( select == false){
             location.href = "/top";
         }
+    }else{
+        document.getElementById('xyz').style.display = "block";
     }
 }
 </script>

@@ -136,6 +136,8 @@
 				</div>
 				<div class="modal-body" style="padding:40px;">
 					<h6 class="pb-2">・写真を選択し、思い出をアップロードしてください。<br></h6>
+					<h7>タイトル:</h7>
+					<input type="text" name="title" placeholder="(例)あの頃の一枚">
 					<div class="md-form">
 						<img id="img_prv" src="{{ asset('/noImage.png') }}">
 						<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
