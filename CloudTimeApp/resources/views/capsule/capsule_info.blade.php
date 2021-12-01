@@ -101,19 +101,16 @@
 
 	@if( $admin_flag == 1 )
 	<a href="/capsule_edit/{{$capsule_data->id}}">
-		<div class="btn-primary m-2 p-3 text-center waves-effect">
+		<div class="btn-primary m-2 p-3 text-center waves-effect" style="border-radius:15px;">
 			タイムカプセルを編集
 		</div>
 	</a>
-	<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1">
+	<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1" style="border-radius:15px;">
 		タイムカプセルを破棄
 	</div>
 	@elseif( $admin_flag == 0 )
-	<div class="btn-primary m-2 p-3 text-center text-white waves-effect" style="border-radius: 15px;">
-		タイムカプセルを編集
-	</div>
 	<div class="btn-light m-2 p-3 text-center text-white waves-effect" style="border-radius: 15px;">
-		タイムカプセルを破棄
+		タイムカプセルから脱退
 	</div>
 	@else
 	※admin_flagの値が適切ではありません。※
