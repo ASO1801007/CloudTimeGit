@@ -28,6 +28,7 @@ Route::get('/top', [App\Http\Controllers\TopController::class, 'top'])->name('to
 Route::get('/chat/{capsule_id}', [App\Http\Controllers\ChatController::class,'index'])->middleware('auth');
 Route::get('/ajax/chat', [App\Http\Controllers\Ajax\ChatController::class,'index']);// メッセージ一覧を取得
 Route::get('/ajax/message_create', [App\Http\Controllers\Ajax\ChatController::class,'create']);// チャット登録
+Route::get('/demochat', [App\Http\Controllers\ChatController::class,'view']);
 
 //エントリー画面
 Route::get('/entry', [App\Http\Controllers\EntryController::class,'entry'])->middleware('auth');
