@@ -21,7 +21,11 @@
 <div>
 
 	<a href="#" class="thum">
-		<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
+		@if($capsule_data->thumbnail == 'noImage.png')
+			<img src="/noImage.png" loading="lazy" class="thum__img">
+		@else
+			<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
+		@endif
 		<div class="thum__title">
 			{{$capsule_data->name}}(id:{{$capsule_data->id}})<br>
 			開封予定日 : {{$capsule_data->open_date_str}}
@@ -39,13 +43,12 @@
 	<!-- 追加ボタンor開封ボタンの有無 -->
 
 	@if( $open_flag == 1 )
-	<div class="btn-warning p-2 text-center">
 	<form method="POST" action="{{ route('image.index') }}">
 	@csrf
 	@if( $capsule_data->lat == null)
 		<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-		<input type = "submit" name = "add" value="+">
-		開封する
+		<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
+		
 	@else
 		<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
 		<input type = "submit" name = "add" value="+">
@@ -56,10 +59,8 @@
 		開封する
 	@endif
 	</form>
-	</div>
 	@elseif( $open_flag == 0 )
-	<div id="modalActivate" class="btn-primary p-1 text-center waves-effect" data-toggle="modal" data-target="#modalPreview0">
-		(＋)<br>
+	<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
 		写真を追加
 	</div>
 	@else
@@ -87,7 +88,7 @@
 			</div>
 			<div class="col-7">
 				<a href="/member_add_select/{{$capsule_data->id}}">
-					<div class="btn btn-primary text-center">
+					<div class="btn btn-primary text-center"  style="border-radius: 15px;">
 						直接招待
 					</div>
 				</a>
@@ -108,10 +109,10 @@
 		タイムカプセルを破棄
 	</div>
 	@elseif( $admin_flag == 0 )
-	<div class="btn-primary m-2 p-3 text-center text-white waves-effect">
+	<div class="btn-primary m-2 p-3 text-center text-white waves-effect" style="border-radius: 15px;">
 		タイムカプセルを編集
 	</div>
-	<div class="btn-light m-2 p-3 text-center text-white waves-effect">
+	<div class="btn-light m-2 p-3 text-center text-white waves-effect" style="border-radius: 15px;">
 		タイムカプセルを破棄
 	</div>
 	@else
@@ -196,7 +197,7 @@
   display: block;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 /* テキストをカード下に固定配置する */
 .thum__title {
