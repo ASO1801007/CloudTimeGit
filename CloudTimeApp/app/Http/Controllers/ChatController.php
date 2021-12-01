@@ -12,4 +12,8 @@ class ChatController extends Controller
         return view('chat',$data); // フォームページのビュー
     
     }
+
+    public function view(){
+        return view('chat.chat');
+    }
 }
