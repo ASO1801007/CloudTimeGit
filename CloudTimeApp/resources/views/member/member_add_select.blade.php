@@ -34,8 +34,7 @@
             @endforeach
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">招待する
-            </button>
+            <button type="submit" class="btn-primary btn-block p-3" style="border-radius:15px;">招待する</button>
         </div>
     </form>
 </div>

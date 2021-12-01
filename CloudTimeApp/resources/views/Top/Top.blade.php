@@ -44,6 +44,8 @@
 </div>
 
 <style>
+
+/* ホームサムネイル */
 .thum {
   display: block;
   position: relative;
@@ -76,6 +78,7 @@
   transform: scale(1.3); /* 画像を拡大 */
 }
 
+
 .plus_button {
     width: 50px;
     height: 50px;
@@ -96,7 +99,7 @@
   transition:1s;
   border-radius:100px;
 }
-
+/* ホームサムネイル */
 </style>
 
 @endsection

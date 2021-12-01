@@ -131,7 +131,7 @@
                             </a>
                         </div>
                         <div class="col-3">
-                            <a href="">
+                            <a href="{{ route('entry.show_entry_form') }}">
                                 <i class="fa fa-2x fa-sign-in" aria-hidden="true" style="color:#AAAAAA;"></i>
                             </a>
                         </div>

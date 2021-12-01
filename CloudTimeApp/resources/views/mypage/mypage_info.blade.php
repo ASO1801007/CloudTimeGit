@@ -82,8 +82,12 @@
 <div>
 
 	<div>
-		<hr>
 		@if( $i_am_flag == 0 )
+		<a href="/invitation/{{$user_data->id}}">
+			<div class="btn-primary mt-2 p-3 text-center waves-effect" style="border-radius:15px;">
+				カプセルに招待する
+			</div>
+		</a>
 		@elseif( $i_am_flag == 1 )
 		<div class="point_button">
 			<a href="{{ url('/mypage_edit') }}" style="color:white;">
@@ -91,6 +95,7 @@
 			</a>
 		</div>
 		@endif
+		<hr>
 	</div>
 
 

@@ -69,6 +69,18 @@ Route::get('/member_list/{capsule_id}',[App\Http\Controllers\MemberController::c
 // カプセルから招待する画面
 Route::get('/member_add_select/{capsule_id}',[App\Http\Controllers\MemberController::class,'show_member_add_select'])->name('member.show_member_add_select')->middleware('auth');
 
+// コードから参加する画面
+Route::get('/entry_form',[App\Http\Controllers\EntryController::class,'show_entry_form'])->name('entry.show_entry_form')->middleware('auth');
+
+// コードから参加する画面->検索
+Route::post('/entry_search',[App\Http\Controllers\EntryController::class,'entry_select'])->name('entry.entry_select')->middleware('auth');
+
+// コードから参加する画面->参加ボタン押下
+Route::post('/entry_commit',[App\Http\Controllers\EntryController::class,'entry_commit'])->name('entry.entry_commit')->middleware('auth');
+
+// ページから直接招待する
+Route::get('/invitation/{user_id}',[App\Http\Controllers\EntryController::class,'show_invitation'])->name('entry.show_invitation')->middleware('auth');
+
 // メンバー招待処理
 Route::post('/member_update',[App\Http\Controllers\MemberController::class,'member_update'])->name('member.member_update')->middleware('auth');
 

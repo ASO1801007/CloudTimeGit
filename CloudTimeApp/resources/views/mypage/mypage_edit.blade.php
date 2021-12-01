@@ -66,8 +66,8 @@
 	<!-- 学歴カード -->
 
 	<div class="row">
-		<div class="col-12">
-			卒業した学校
+		<div class="col-12 mb-1">
+			<div style="font-size:14px; color:#777777;">卒業した学校</div>
 		</div>
 		<div class="col-12">
 			<div class="school_card card p-4">
@@ -96,8 +96,11 @@
 	</div>
 
 	<!-- 学歴カード -->
-
-	<button type="submit" class="btn btn-primary">更新</button>
+	<div class="row">
+		<div class="col-12">
+			<button type="submit" class="btn-primary btn-block p-3 mt-3" style="border-radius:15px;">更新</button>
+		</div>
+	</div>
 
 </form>
 
