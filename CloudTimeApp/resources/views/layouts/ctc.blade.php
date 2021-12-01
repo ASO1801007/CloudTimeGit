@@ -132,7 +132,7 @@
                         </div>
                         <div class="col-3">
                             <a href="{{ route('entry.show_entry_form') }}">
-                                <i class="fa fa-2x fa-sign-in" aria-hidden="true" style="color:#AAAAAA;"></i>
+                                <i class="fa fa-2x fa-sign-in" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div class="col-3">
