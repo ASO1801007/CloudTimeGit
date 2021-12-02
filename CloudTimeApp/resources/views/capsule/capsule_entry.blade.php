@@ -69,22 +69,38 @@
 				<div>
 					<label><input type="checkbox" id="" name="map＿" onclick="checkdiv(this,'checkBox')">位置情報を使用する</label>
 					<div id="checkBox" style="display:none;">
-						<p>住所や駅名、目印などで検索できます。</p>
-						<form onsubmit="return false;">
-						<input type="text" id="address">
-						<button type="button" value="検索" id="map_button">検索</button>
-						</form>
-						<!-- 地図を表示させる要素 -->
-						<div class="map_box01"><div id="map-canvas" style="width: 500px;height: 350px;"></div></div>
-						
-						<p>マーカーのある位置の<br>
-						緯度 <input type="text" id="lat" name="lat" value=""><br>
-						経度 <input type="text" id="lng" name="lng" value=""><br>
-						地図上をクリックするとマーカーを移動できます。</p>
-						
-						<!-- APIを取得 -->
-						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
-						<script src="{{ asset('/js/map.js') }}"></script>
+						<div class="row">
+							<div class="col-12">
+								<div class="card p-3">
+									<p>住所や駅名、目印などで検索できます。</p>
+									<form onsubmit="return false;">
+										<div class="form-outline mb-4">
+											<label class="form-label" for="entry_code">ワードで検索</label>
+											<input type="text" name="entry_code" id="address" class="form-control" value="東京駅" />
+										</div>
+										<input type="button" class="btn-primary btn-block text-center waves-effect p-2" value="検索" id="map_button" style="border-radius:15px;">
+									</form>
+									<!-- 地図を表示させる要素 -->
+									<div class="map_box01 mt-2">
+										<div id="map-canvas" style="width: 100%;height: 350px; border-radius:15px; "></div>
+									</div>
+									
+									<p>
+										地図上のマーカーをクリックすると<br>
+										マーカーを移動できます。
+									</p>
+
+									<div hidden>
+										緯度 <input type="text" id="lat" name="lat" value=""><br>
+										経度 <input type="text" id="lng" name="lng" value=""><br>
+									</div>
+									
+									<!-- APIを取得 -->
+									<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
+									<script src="{{ asset('/js/map.js') }}"></script>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -126,5 +142,13 @@ document.getElementById(id).style.display = "none";
 }
 }
 </script>
+
+<style>
+.card{
+	background-image: url('/image/scale_r.jpg');
+	background-size:cover;
+	color:white;
+}
+</style>
 
 @endsection	

@@ -26,7 +26,9 @@
     <style>
         a{color:black}
         body {
-            background: white;
+            background-image: url('/image/scale_r.jpg');
+            background-size:cover;
+            color: white;
         }
         .card{
             background: white;
@@ -54,7 +56,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md fixed-top navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md fixed-top navbar-light shadow-sm" style="background-color:#FF00FF;">
             <div class="container">
                 <!-- 戻るボタン_要処理 -->
                 @yield('back_button')
@@ -109,7 +111,7 @@
             </div>
         </nav>
 
-        <main class="py-4 my-5">
+        <main class="bodyer py-4 my-5">
             <div class="container">
             @yield('content')
             </div>

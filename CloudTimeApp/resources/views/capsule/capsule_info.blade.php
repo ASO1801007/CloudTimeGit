@@ -143,7 +143,7 @@
 					<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary btn-block waves-effect">アップロード</button>
+					<button type="submit" class="btn btn-primary btn-block waves-effect p-3" style="border-radius:15px;">アップロード</button>
 				</div>
 
 			</div>
