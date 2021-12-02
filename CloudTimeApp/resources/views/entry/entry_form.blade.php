@@ -4,17 +4,9 @@
 
 @section('content')
 
-
-@if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-	<hr>
-@endif
-
 <div>招待</div>
 
-<!-- 招待カード -->
+<!-- 検索カード -->
 
 <div class="school_card card p-4 mb-2">
 	<div class="row">
@@ -33,7 +25,14 @@
 	</div>
 </div>
 
-<!-- 招待カード -->
+<!-- 検索カード -->
+
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+	<hr>
+@endif
 
 @if(isset($search_data))
 

@@ -26,9 +26,13 @@
     <style>
         a{color:black}
         body {
-            background-image: url('/image/scale_r.jpg');
-            background-size:cover;
+            /* background-image: url('/image/scale_r.jpg');
+            background-size:cover; */
+            background-color: #660033;
             color: white;
+        }
+        .bar-icon{
+            color:#FFFFFF;
         }
         .card{
             background: white;
@@ -56,7 +60,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md fixed-top navbar-light shadow-sm" style="background-color:#FF00FF;">
+        <nav class="bar-dom navbar navbar-expand-md fixed-top navbar-light shadow-sm" style="background-color: #770000;">
             <div class="container">
                 <!-- 戻るボタン_要処理 -->
                 @yield('back_button')
@@ -118,28 +122,28 @@
         </main>
 
         <div class="fixed-bottom">
-            <div class="container">
-                <div card="card" style="border-radius:10px 10px 0; border:solid; background-color:white;">
+            <div class="container py-2" style="border:solid; border-width: 1px 0 0 0; background-color: #770000;">
+                <div card="card" style="bar-dom border-radius:10px 10px 0 0;">
                     <div class="row text-center p-1">
 
                         <div class="col-3">
                             <a href="{{ route('top.top') }}">
-                                <i class="fa fa-2x fa-home" aria-hidden="true"></i>
+                                <i class="bar-icon fa fa-2x fa-home" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div class="col-3">
                             <a href="">
-                                <i class="fa fa-2x fa-comment" aria-hidden="true" style="color:#AAAAAA;"></i>
+                                <i class="bar-icon fa fa-2x fa-comment" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div class="col-3">
                             <a href="{{ route('entry.show_entry_form') }}">
-                                <i class="fa fa-2x fa-sign-in" aria-hidden="true"></i>
+                                <i class="bar-icon fa fa-2x fa-sign-in" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div class="col-3">
                             <a href="{{ route('mypage.show_info') }}">
-                                <i class="fa fa-2x fa-user" aria-hidden="true"></i>
+                                <i class="bar-icon fa fa-2x fa-user" aria-hidden="true"></i>
                             </a>
                         </div>
 

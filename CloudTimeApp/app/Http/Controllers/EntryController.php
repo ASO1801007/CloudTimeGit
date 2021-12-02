@@ -20,20 +20,65 @@ class EntryController extends Controller
 
     public function show_invitation($id=0){
         $i_am = Auth::id();
-        $my_capsule = Capsule::find($i_am);
-        $your_capsule = Capsule::find($id);
+
+        // 自身が参加しているカプセルのIDを取得
+        $my_member = Member::where('user_id',$i_am)->get();
+        $my_member_id = array();
+        foreach($my_member as $i){
+            $my_member_id[] = $i->capsule_id;
+        }
+        
+        // 相手が参加しているカプセルのIDを取得
+        $your_member = Member::where('user_id',$id)->get();
+        $your_member_id = array();
+        foreach($your_member as $i){
+            $your_member_id[] = $i->capsule_id;
+        }
+
+        $ret_member_id = array_diff($my_member_id, $your_member_id);
+        $ret_member_id = array_values($ret_member_id);
+
+        $ret_member = Member::whereIn('capsule_id',$ret_member_id)->get();
+        dd($ret_member_id);
+
+        $data = ['member_data' => $ret_member];
+
+        return view('entry.invitation',$data);
+
     }
 
     public function entry_select(Request $req){
+        $i_am = Auth::id();
         $capsule = Capsule::where('entry_code',$req->entry_code)->get();
-        if(count($capsule) > 0){
+
+        // 検索したカプセルのIDを取得
+        $capsule = Capsule::where('entry_code',$req->entry_code)->get();
+        $capsule_id = array();
+        foreach($capsule as $i){
+            $capsule_id[] = $i->id;
+        }
+
+        // 自身が参加しているカプセルのIDを取得
+        $my_member = Member::where('user_id',$i_am)->get();
+        $my_member_id = array();
+        foreach($my_member as $i){
+            $my_member_id[] = $i->capsule_id;
+        }
+
+        $ret_capsule_id = array_diff($capsule_id, $my_member_id);
+        $ret_capsule_id = array_values($ret_capsule_id);
+
+        $ret_capsule = Capsule::whereIn('id',$ret_capsule_id)->get();
+
+        if(count($ret_capsule) > 0){
             // 開ける日付を切り取り文字列化
-            $capsule = $this -> open_date_str_system($capsule);
-            $data = ['search_data' => $capsule];
+            $ret_capsule = $this -> open_date_str_system($ret_capsule);
+            $data = ['search_data' => $ret_capsule];
+            dd($ret_capsule);
             return view('entry.entry_form',$data);
         }
         else{
-            return view('entry.entry_form')->with('message','一致するカプセルはありませんでした。');
+            return view('entry.entry_form')->with('message','一致するカプセルが存在しないか、既に参加しているカプセルです。');
         }
     }
 
