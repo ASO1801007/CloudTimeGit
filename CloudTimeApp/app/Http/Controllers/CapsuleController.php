@@ -63,6 +63,7 @@ class CapsuleController extends Controller{
 
     // カプセル削除ボタン押下時
     public function capsule_delete(Request $req){
+        $delete_image = Img::where('capsule_id',$req->capsule_id)->delete();
         $this -> capsule_grand_delete_system($req->capsule_id);
         return redirect()->route('top.top');
     }
