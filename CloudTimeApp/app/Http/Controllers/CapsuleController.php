@@ -65,12 +65,14 @@ class CapsuleController extends Controller{
     public function capsule_delete(Request $req){
         $delete_image = Img::where('capsule_id',$req->capsule_id)->delete();
         $this -> capsule_grand_delete_system($req->capsule_id);
-        return redirect()->route('top.top');
+        return redirect('/top')->with('message','カプセルを削除しました。');
     }
 
     // カプセル脱退ボタン押下時
-    public function capsule_exit(){
-        return 0;
+    public function capsule_exit(Request $req){
+        $i_am = Auth::id();
+        $this -> member_delete_system($req->capsule_id,$i_am);
+        return redirect('/top')->with('message','カプセルから脱退しました。');
     }
 
     //カプセルホーム画面
