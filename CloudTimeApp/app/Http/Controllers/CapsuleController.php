@@ -95,7 +95,7 @@ class CapsuleController extends Controller{
 
         //最新のchat
         $capsule_id = $req->capsule_id;
-        $first_chat = Message::where('capsule_id',$capsule_id)->orderBy('id','desc')->first();
+        $first_chat = Message::where('capsule_id',$capsule_id)->orderBy('id','desc')->first('message');
 
         $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule, 'first_chat'=>$first_chat];
         return view('capsule.capsule_info',$data);
@@ -117,6 +117,12 @@ class CapsuleController extends Controller{
         $capsule = $this -> capsule_formdata_cast_system($req,$i_am,$capsule);
         $capsule -> save();
         $new_data = Capsule::orderBy("updated_at","desc")->take(1)->get();
+        $new_data_id = $new_data[0] -> id;
+        $message = new Message();
+        $message -> comment_user = "master";
+        $message -> capsule_id = $new_data_id;
+        $message -> message = "さあ、始めよう";
+        $message->save();
         return $new_data[0]->id;
     }
 

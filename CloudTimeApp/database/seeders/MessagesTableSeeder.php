@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use \App\Models\Message;
 
 class MessagesTableSeeder extends Seeder
 {
@@ -16,9 +17,13 @@ class MessagesTableSeeder extends Seeder
         for($i = 1 ; $i <= 10 ; $i++) {
 
             \App\Models\Message::create([
-                'body' => $i .'番目のテキスト'
+                'message' => $i .'番目のテキスト'
             ]);
-    
         }
+        Message::create([
+            'capsule_id' => "1",
+            'message' => "チャットを始めよう",
+            'comment_user' => "1",
+        ]);
     }
 }

@@ -76,7 +76,7 @@
 									<form onsubmit="return false;">
 										<div class="form-outline mb-4">
 											<label class="form-label" for="entry_code">ワードで検索</label>
-											<input type="text" name="entry_code" id="address" class="form-control" value="東京駅" />
+											<input type="text" name="entry_code" id="address" class="form-control" value="" />
 										</div>
 										<input type="button" class="btn-primary btn-block text-center waves-effect p-2" value="検索" id="map_button" style="border-radius:15px;">
 									</form>
