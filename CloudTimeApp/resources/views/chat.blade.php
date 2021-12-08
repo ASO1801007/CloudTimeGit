@@ -12,13 +12,10 @@
         <hr>
 
         <div v-for="m in messages">
-
-            <!-- 登録された日時 -->
-            <span v-text="m.created_at"></span>：&nbsp;
-
             <!-- メッセージ内容 -->
             <span v-text="m.message"></span>
-
+            <span v-text="m.user_name"></span>
+            <span v-text="m.me_or_you"></span>
         </div>
 
     </div>
@@ -65,8 +62,20 @@
                 send() {
 
                     const url = '/ajax/message_create';
+                    const capsule_url = '/ajax/capsule_id_create'
                     let element = document.getElementById('capsule_id');
                     this.capsule_id = element.getAttribute('value');
+                    //const params = { message: this.message , capsule_id: this.capsule_id};
+                    // axios.get(capsule_url, {
+                    //     params: {
+                    //         capsule_id: this.capsule_id,
+                    //     }
+                    // })
+                    //     .then((response) => {
+                    //         // 成功したらカプセルIDをクリア
+                    //         this.capsule_id = '';
+
+                    //     })
                     axios.get(url, {
                         params: {
                             capsule_id: this.capsule_id,

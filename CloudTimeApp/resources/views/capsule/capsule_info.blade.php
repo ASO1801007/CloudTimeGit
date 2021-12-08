@@ -71,7 +71,9 @@
 
 	<div class="card p-3 mt-2">
 		最近の投稿<hr>
-		有光：おはよう！
+		<font color="success">
+			<a href="/chat/{{$capsule_data->id}}">{{ $first_chat -> message}}</a>
+		</font>
 	</div>
 	<a href="/member_list/{{$capsule_data->id}}">
 		<div class="card p-3 mt-2">

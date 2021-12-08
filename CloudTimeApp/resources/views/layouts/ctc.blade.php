@@ -132,7 +132,7 @@
                             </a>
                         </div>
                         <div class="col-3">
-                            <a href="">
+                            <a href="{{ route('chat.chatlist') }}">
                                 <i class="bar-icon fa fa-2x fa-comment" aria-hidden="true"></i>
                             </a>
                         </div>

@@ -1,1 +1,506 @@
-'いあうおあえ'
+array (
+  0 => 
+  Illuminate\Database\Eloquent\Collection::__set_state(array(
+     'items' => 
+    array (
+      0 => 
+      App\Models\User::__set_state(array(
+         'fillable' => 
+        array (
+          0 => 'name',
+          1 => 'email',
+          2 => 'password',
+        ),
+         'hidden' => 
+        array (
+          0 => 'password',
+          1 => 'remember_token',
+        ),
+         'casts' => 
+        array (
+          'email_verified_at' => 'datetime',
+        ),
+         'connection' => 'mysql',
+         'table' => 'users',
+         'primaryKey' => 'id',
+         'keyType' => 'int',
+         'incrementing' => true,
+         'with' => 
+        array (
+        ),
+         'withCount' => 
+        array (
+        ),
+         'preventsLazyLoading' => false,
+         'perPage' => 15,
+         'exists' => true,
+         'wasRecentlyCreated' => false,
+         'escapeWhenCastingToString' => false,
+         'attributes' => 
+        array (
+          'name' => '三浦敦志',
+        ),
+         'original' => 
+        array (
+          'name' => '三浦敦志',
+        ),
+         'changes' => 
+        array (
+        ),
+         'classCastCache' => 
+        array (
+        ),
+         'dates' => 
+        array (
+        ),
+         'dateFormat' => NULL,
+         'appends' => 
+        array (
+        ),
+         'dispatchesEvents' => 
+        array (
+        ),
+         'observables' => 
+        array (
+        ),
+         'relations' => 
+        array (
+        ),
+         'touches' => 
+        array (
+        ),
+         'timestamps' => true,
+         'visible' => 
+        array (
+        ),
+         'guarded' => 
+        array (
+          0 => '*',
+        ),
+         'rememberTokenName' => 'remember_token',
+         'accessToken' => NULL,
+      )),
+    ),
+     'escapeWhenCastingToString' => false,
+  )),
+  1 => 
+  Illuminate\Database\Eloquent\Collection::__set_state(array(
+     'items' => 
+    array (
+      0 => 
+      App\Models\User::__set_state(array(
+         'fillable' => 
+        array (
+          0 => 'name',
+          1 => 'email',
+          2 => 'password',
+        ),
+         'hidden' => 
+        array (
+          0 => 'password',
+          1 => 'remember_token',
+        ),
+         'casts' => 
+        array (
+          'email_verified_at' => 'datetime',
+        ),
+         'connection' => 'mysql',
+         'table' => 'users',
+         'primaryKey' => 'id',
+         'keyType' => 'int',
+         'incrementing' => true,
+         'with' => 
+        array (
+        ),
+         'withCount' => 
+        array (
+        ),
+         'preventsLazyLoading' => false,
+         'perPage' => 15,
+         'exists' => true,
+         'wasRecentlyCreated' => false,
+         'escapeWhenCastingToString' => false,
+         'attributes' => 
+        array (
+          'name' => '三浦敦志',
+        ),
+         'original' => 
+        array (
+          'name' => '三浦敦志',
+        ),
+         'changes' => 
+        array (
+        ),
+         'classCastCache' => 
+        array (
+        ),
+         'dates' => 
+        array (
+        ),
+         'dateFormat' => NULL,
+         'appends' => 
+        array (
+        ),
+         'dispatchesEvents' => 
+        array (
+        ),
+         'observables' => 
+        array (
+        ),
+         'relations' => 
+        array (
+        ),
+         'touches' => 
+        array (
+        ),
+         'timestamps' => true,
+         'visible' => 
+        array (
+        ),
+         'guarded' => 
+        array (
+          0 => '*',
+        ),
+         'rememberTokenName' => 'remember_token',
+         'accessToken' => NULL,
+      )),
+    ),
+     'escapeWhenCastingToString' => false,
+  )),
+  2 => 
+  Illuminate\Database\Eloquent\Collection::__set_state(array(
+     'items' => 
+    array (
+      0 => 
+      App\Models\User::__set_state(array(
+         'fillable' => 
+        array (
+          0 => 'name',
+          1 => 'email',
+          2 => 'password',
+        ),
+         'hidden' => 
+        array (
+          0 => 'password',
+          1 => 'remember_token',
+        ),
+         'casts' => 
+        array (
+          'email_verified_at' => 'datetime',
+        ),
+         'connection' => 'mysql',
+         'table' => 'users',
+         'primaryKey' => 'id',
+         'keyType' => 'int',
+         'incrementing' => true,
+         'with' => 
+        array (
+        ),
+         'withCount' => 
+        array (
+        ),
+         'preventsLazyLoading' => false,
+         'perPage' => 15,
+         'exists' => true,
+         'wasRecentlyCreated' => false,
+         'escapeWhenCastingToString' => false,
+         'attributes' => 
+        array (
+          'name' => '鍬崎颯太',
+        ),
+         'original' => 
+        array (
+          'name' => '鍬崎颯太',
+        ),
+         'changes' => 
+        array (
+        ),
+         'classCastCache' => 
+        array (
+        ),
+         'dates' => 
+        array (
+        ),
+         'dateFormat' => NULL,
+         'appends' => 
+        array (
+        ),
+         'dispatchesEvents' => 
+        array (
+        ),
+         'observables' => 
+        array (
+        ),
+         'relations' => 
+        array (
+        ),
+         'touches' => 
+        array (
+        ),
+         'timestamps' => true,
+         'visible' => 
+        array (
+        ),
+         'guarded' => 
+        array (
+          0 => '*',
+        ),
+         'rememberTokenName' => 'remember_token',
+         'accessToken' => NULL,
+      )),
+    ),
+     'escapeWhenCastingToString' => false,
+  )),
+  3 => 
+  Illuminate\Database\Eloquent\Collection::__set_state(array(
+     'items' => 
+    array (
+      0 => 
+      App\Models\User::__set_state(array(
+         'fillable' => 
+        array (
+          0 => 'name',
+          1 => 'email',
+          2 => 'password',
+        ),
+         'hidden' => 
+        array (
+          0 => 'password',
+          1 => 'remember_token',
+        ),
+         'casts' => 
+        array (
+          'email_verified_at' => 'datetime',
+        ),
+         'connection' => 'mysql',
+         'table' => 'users',
+         'primaryKey' => 'id',
+         'keyType' => 'int',
+         'incrementing' => true,
+         'with' => 
+        array (
+        ),
+         'withCount' => 
+        array (
+        ),
+         'preventsLazyLoading' => false,
+         'perPage' => 15,
+         'exists' => true,
+         'wasRecentlyCreated' => false,
+         'escapeWhenCastingToString' => false,
+         'attributes' => 
+        array (
+          'name' => '江崎光',
+        ),
+         'original' => 
+        array (
+          'name' => '江崎光',
+        ),
+         'changes' => 
+        array (
+        ),
+         'classCastCache' => 
+        array (
+        ),
+         'dates' => 
+        array (
+        ),
+         'dateFormat' => NULL,
+         'appends' => 
+        array (
+        ),
+         'dispatchesEvents' => 
+        array (
+        ),
+         'observables' => 
+        array (
+        ),
+         'relations' => 
+        array (
+        ),
+         'touches' => 
+        array (
+        ),
+         'timestamps' => true,
+         'visible' => 
+        array (
+        ),
+         'guarded' => 
+        array (
+          0 => '*',
+        ),
+         'rememberTokenName' => 'remember_token',
+         'accessToken' => NULL,
+      )),
+    ),
+     'escapeWhenCastingToString' => false,
+  )),
+  4 => 
+  Illuminate\Database\Eloquent\Collection::__set_state(array(
+     'items' => 
+    array (
+      0 => 
+      App\Models\User::__set_state(array(
+         'fillable' => 
+        array (
+          0 => 'name',
+          1 => 'email',
+          2 => 'password',
+        ),
+         'hidden' => 
+        array (
+          0 => 'password',
+          1 => 'remember_token',
+        ),
+         'casts' => 
+        array (
+          'email_verified_at' => 'datetime',
+        ),
+         'connection' => 'mysql',
+         'table' => 'users',
+         'primaryKey' => 'id',
+         'keyType' => 'int',
+         'incrementing' => true,
+         'with' => 
+        array (
+        ),
+         'withCount' => 
+        array (
+        ),
+         'preventsLazyLoading' => false,
+         'perPage' => 15,
+         'exists' => true,
+         'wasRecentlyCreated' => false,
+         'escapeWhenCastingToString' => false,
+         'attributes' => 
+        array (
+          'name' => '有光勇毅',
+        ),
+         'original' => 
+        array (
+          'name' => '有光勇毅',
+        ),
+         'changes' => 
+        array (
+        ),
+         'classCastCache' => 
+        array (
+        ),
+         'dates' => 
+        array (
+        ),
+         'dateFormat' => NULL,
+         'appends' => 
+        array (
+        ),
+         'dispatchesEvents' => 
+        array (
+        ),
+         'observables' => 
+        array (
+        ),
+         'relations' => 
+        array (
+        ),
+         'touches' => 
+        array (
+        ),
+         'timestamps' => true,
+         'visible' => 
+        array (
+        ),
+         'guarded' => 
+        array (
+          0 => '*',
+        ),
+         'rememberTokenName' => 'remember_token',
+         'accessToken' => NULL,
+      )),
+    ),
+     'escapeWhenCastingToString' => false,
+  )),
+  5 => 
+  Illuminate\Database\Eloquent\Collection::__set_state(array(
+     'items' => 
+    array (
+      0 => 
+      App\Models\User::__set_state(array(
+         'fillable' => 
+        array (
+          0 => 'name',
+          1 => 'email',
+          2 => 'password',
+        ),
+         'hidden' => 
+        array (
+          0 => 'password',
+          1 => 'remember_token',
+        ),
+         'casts' => 
+        array (
+          'email_verified_at' => 'datetime',
+        ),
+         'connection' => 'mysql',
+         'table' => 'users',
+         'primaryKey' => 'id',
+         'keyType' => 'int',
+         'incrementing' => true,
+         'with' => 
+        array (
+        ),
+         'withCount' => 
+        array (
+        ),
+         'preventsLazyLoading' => false,
+         'perPage' => 15,
+         'exists' => true,
+         'wasRecentlyCreated' => false,
+         'escapeWhenCastingToString' => false,
+         'attributes' => 
+        array (
+          'name' => 'master',
+        ),
+         'original' => 
+        array (
+          'name' => 'master',
+        ),
+         'changes' => 
+        array (
+        ),
+         'classCastCache' => 
+        array (
+        ),
+         'dates' => 
+        array (
+        ),
+         'dateFormat' => NULL,
+         'appends' => 
+        array (
+        ),
+         'dispatchesEvents' => 
+        array (
+        ),
+         'observables' => 
+        array (
+        ),
+         'relations' => 
+        array (
+        ),
+         'touches' => 
+        array (
+        ),
+         'timestamps' => true,
+         'visible' => 
+        array (
+        ),
+         'guarded' => 
+        array (
+          0 => '*',
+        ),
+         'rememberTokenName' => 'remember_token',
+         'accessToken' => NULL,
+      )),
+    ),
+     'escapeWhenCastingToString' => false,
+  )),
+)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Message;
 use App\Models\Capsule;
 use App\Models\User_info;
 use App\Models\Bbs;
@@ -67,7 +68,7 @@ class CapsuleController extends Controller{
     }
 
     //カプセルホーム画面
-    public function show_info($id=0){
+    public function show_info(Request $req, $id=0){
         //ログインしているユーザーのIDを取得
         $i_am = Auth::id();
 
@@ -92,7 +93,11 @@ class CapsuleController extends Controller{
         // 開ける日付を切り取り文字列化
         $capsule->open_date_str = date('Y-n-j',strtotime($capsule->open_date));
 
-        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule];
+        //最新のchat
+        $capsule_id = $req->capsule_id;
+        $first_chat = Message::where('capsule_id',$capsule_id)->orderBy('id','desc')->first();
+
+        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule, 'first_chat'=>$first_chat];
         return view('capsule.capsule_info',$data);
     }
 
@@ -265,4 +270,5 @@ class CapsuleController extends Controller{
         $data = ["capsule_data"=>$join_capsule_id, "count"=>$count];
         return $data;
     }
+
 }
