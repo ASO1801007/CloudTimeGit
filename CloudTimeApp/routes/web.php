@@ -61,6 +61,9 @@ Route::post('/capsule_update',[App\Http\Controllers\CapsuleController::class,'ca
 //カプセル削除->ホーム画面
 Route::post('/capsule_delete',[App\Http\Controllers\CapsuleController::class,'capsule_delete'])->middleware('auth');
 
+//カプセル脱退->ホーム画面
+Route::post('/capsule_exit',[App\Http\Controllers\CapsuleController::class,'capsule_exit'])->name('capsule.capsule_exit')->middleware('auth');
+
 //画像追加画面
 Route::post('/capsule_info/image',[App\Http\Controllers\ImageController::class,'index'])->name('image.index')->middleware('auth');
 Route::post('/capsule_info//image',[App\Http\Controllers\ImageController::class,'store'])->name('image.store')->middleware('auth');

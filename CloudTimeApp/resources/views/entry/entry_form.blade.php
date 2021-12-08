@@ -29,58 +29,66 @@
 
 @if (session('message'))
     <div class="alert alert-success">
-        {{ session('message') }}
+		一致するカプセルが存在しないか、既に参加しているカプセルです。
     </div>
 	<hr>
 @endif
 
 @if(isset($search_data))
 
-<div class="row">
-@foreach( $search_data as $data)
-
-	<div class="col-12 col-sm-6 mb-2" data-toggle="modal" data-target="#modalPreview1">
-		<div class="thum">
-			<img src="{{ $data->thumbnail }}" loading="lazy" class="thum__img">
-			<div class="thum__title">
-				{{$data->name}}(id:{{$data->id}})<br>
-				<h6>開封予定日 : {{$data->open_date_str}}</h6>
-			</div>
+	@if($search_data == 0)
+		<div class="alert alert-success">
+			一致するカプセルが存在しないか、既に参加しているカプセルです。
 		</div>
-	</div>
+	@else
+		<div class="row">
+		@foreach( $search_data as $data)
 
-
-	<!-- 参加前ポップアップ -->
-	<form method="POST" action="{{ url('/entry_commit') }}" enctype="multipart/form-data">
-		@csrf
-		<input type="hidden" name ="capsule_id" value="{{ $data->id }}">
-
-		<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="modalPreviewLabel1">参加します</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" style="padding:40px;">
-						<h6 class="pb-5">□カプセルに参加した場合、参加者に通知されます。<br><br>□参加後は、いつでも脱退することができます。</h6>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn-primary btn-block waves-effect p-3" style="border-radius:15px;">参加する</button>
+			<div class="col-12 col-sm-6 mb-2" data-toggle="modal" data-target="#modalPreview1">
+				<div class="thum">
+					<img src="{{ $data->thumbnail }}" loading="lazy" class="thum__img">
+					<div class="thum__title">
+						{{$data->name}}(id:{{$data->id}})<br>
+						<h6>開封予定日 : {{$data->open_date_str}}</h6>
 					</div>
 				</div>
 			</div>
+
+
+			<!-- 参加前ポップアップ -->
+			<form method="POST" action="{{ url('/entry_commit') }}" enctype="multipart/form-data">
+				@csrf
+				<input type="hidden" name ="capsule_id" value="{{ $data->id }}">
+
+				<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title" id="modalPreviewLabel1">参加します</h3>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" style="padding:40px;">
+								<h6 class="pb-5">□カプセルに参加した場合、参加者に通知されます。<br><br>□参加後は、いつでも脱退することができます。</h6>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn-primary btn-block waves-effect p-3" style="border-radius:15px;">参加する</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+			<!-- 参加前ポップアップ- -->
+
+
+		@endforeach
 		</div>
+	
+	@endif
 
-	</form>
-	<!-- 参加前ポップアップ- -->
-
-
-@endforeach
-</div>
-
+@else
 @endif
 
 

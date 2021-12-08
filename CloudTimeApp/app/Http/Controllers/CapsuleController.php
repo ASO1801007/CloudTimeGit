@@ -68,6 +68,11 @@ class CapsuleController extends Controller{
         return redirect()->route('top.top');
     }
 
+    // カプセル脱退ボタン押下時
+    public function capsule_exit(){
+        return 0;
+    }
+
     //カプセルホーム画面
     public function show_info(Request $req, $id=0){
         //ログインしているユーザーのIDを取得

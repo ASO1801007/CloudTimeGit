@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-12 text-center" style="margin-top:135px;">
+	<div class="col-12 text-center" style="margin-top:120px;">
 		<img src="{{$user_data->profile_pic}}" class="prf_img">
 	</div>
 	<div class="col-12 text-center mt-3">

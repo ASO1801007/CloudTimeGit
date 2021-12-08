@@ -43,26 +43,26 @@
 	<!-- 追加ボタンor開封ボタンの有無 -->
 
 	@if( $open_flag == 1 )
-	<form method="POST" action="{{ route('image.index') }}">
-	@csrf
-	@if( $capsule_data->lat == null)
-		<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-		<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
-		
-	@else
-		<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-		<input type = "submit" name = "add" value="+">
-		<input type = "hidden" id = "lat" name = "lat" value = "">
-		<input type = "hidden" id = "lng"  name = "lng" value = "">
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
-		<script src="{{ asset('/js/futachi.js') }}"></script>
-		開封する
-	@endif
-	</form>
+		<form method="POST" action="{{ route('image.index') }}">
+		@csrf
+		@if( $capsule_data->lat == null)
+			<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
+			<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
+			
+		@else
+			<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
+			<input type = "submit" name = "add" value="+">
+			<input type = "hidden" id = "lat" name = "lat" value = "">
+			<input type = "hidden" id = "lng"  name = "lng" value = "">
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
+			<script src="{{ asset('/js/futachi.js') }}"></script>
+			開封する
+		@endif
+		</form>
 	@elseif( $open_flag == 0 )
-	<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
-		写真を追加
-	</div>
+		<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
+			写真を追加
+		</div>
 	@else
 	open_flagの値が適切ではありません。
 	@endif
@@ -111,7 +111,7 @@
 		タイムカプセルを破棄
 	</div>
 	@elseif( $admin_flag == 0 )
-	<div class="btn-light m-2 p-3 text-center text-white waves-effect" style="border-radius: 15px;">
+	<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview2" style="border-radius: 15px;">
 		タイムカプセルから脱退
 	</div>
 	@else
@@ -163,16 +163,43 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3 class="modal-title" id="modalPreviewLabel1">タイムカプセルを破棄</h3>
+					<h3 class="modal-title" id="modalPreviewLabel1" style="color:black;">タイムカプセルを破棄</h3>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body" style="padding:40px;">
-					<h6 class="pb-5">□このカプセルを削除します。この操作は取り消せません。<br><br>※この操作を実行すると、カプセルとその中身、チャットも完全に削除されます。</h6>
+					<h6 class="pb-5" style="color:black;">□このカプセルを削除します。この操作は取り消せません。<br><br>※この操作を実行すると、カプセルとその中身、チャットも完全に削除されます。</h6>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger btn-block waves-effect">OK(Beta)</button>
+					<button type="submit" class="btn btn-danger btn-block waves-effect" style="border-radius:15px;">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>
+<!-- 破棄前ポップアップ- -->
+
+<!-- 破棄前ポップアップ -->
+<form method="POST" action="{{ url('/capsule_exit') }}" enctype="multipart/form-data">
+    @csrf
+	<input type="hidden" name ="capsule_id" value="{{$capsule_data->id}}">
+
+	<div class="modal fade right" id="modalPreview2" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="modalPreviewLabel2" style="color:black;">脱退します</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding:40px;">
+					<h6 class="pb-5" style="color:black;">カプセル名:<br>{{$capsule_data->name}}<br><br>□このカプセルから脱退します。この操作は取り消せません。
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-block waves-effect" style="border-radius:15px;">OK</button>
 				</div>
 			</div>
 		</div>

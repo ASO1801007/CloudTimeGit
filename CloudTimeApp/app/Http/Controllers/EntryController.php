@@ -75,11 +75,11 @@ class EntryController extends Controller
             $ret_capsule = $this -> open_date_str_system($ret_capsule);
             $data = ['search_data' => $ret_capsule];
             dd($ret_capsule);
-            return view('entry.entry_form',$data);
         }
         else{
-            return view('entry.entry_form')->with('message','一致するカプセルが存在しないか、既に参加しているカプセルです。');
+            $data = ['search_data' => 0];
         }
+        return view('entry.entry_form',$data);
     }
 
     public function entry_commit(Request $req){
