@@ -7,6 +7,7 @@ use App\Models\Capsule;
 use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
+use App\Models\Message;
 use Auth;
 use App\Models\Img;
 use Illuminate\Http\Request;
@@ -91,7 +92,11 @@ class ImageController extends Controller
             return view('error.error_page');
         }
         $capsule->open_date_str = date('Y月-n日-j日',strtotime($capsule->open_date));
-        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule];
+        //最新のchat
+        $capsule_id = $request->capsule_id;
+        $first_chat = Message::where('capsule_id',$capsule_id)->orderBy('id','desc')->first('message');
+
+        $data = ['open_flag'=>$open_flag, 'admin_flag'=>$admin_flag, 'capsule_data'=>$capsule, 'first_chat'=>$first_chat];
         return view('capsule.capsule_info',$data)->with('message','思い出を追加したよ！');
     }
 
