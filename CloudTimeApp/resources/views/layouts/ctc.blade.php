@@ -33,7 +33,7 @@
         body {
             /* background-image: url('/image/scale_r.jpg');
             background-size:cover; */
-            background-color: #660033;
+            background-color: #ecefbc;
             color: white;
         }
         .bar-icon{
@@ -51,7 +51,7 @@
             width: 50px;
             height: 50px;
             color: #ffffff;
-            background-color: #2779ff;
+            background-color: #6da9a0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -63,12 +63,12 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #770000;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #6da9a0;">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" style="background-color: #992222;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" style="background-color: #4d8980;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -124,7 +124,7 @@
         </main>
 
         <div class="fixed-bottom">
-            <div class="container py-2" style="border:solid; border-width: 1px 0 0 0; background-color: #770000;">
+            <div class="container py-2" style="border:solid; border-width: 1px 0 0 0; background-color: #6da9a0;">
                 <div card="card" style="bar-dom border-radius:10px 10px 0 0;">
                     <div class="row text-center p-1">
 

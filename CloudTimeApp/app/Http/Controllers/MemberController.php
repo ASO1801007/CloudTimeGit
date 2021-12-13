@@ -86,7 +86,6 @@ class MemberController extends Controller{
                 if($friend_list[$i]->user_id == $unq_count[$j]){
                     $unq_count[] = $friend_list[$i]->user_id;
                     unset($friend_list[$i]);
-                    dd($friend_list);
                 }
             }
         }

@@ -55,28 +55,6 @@
 
 <!-- 学歴カード -->
 
-<hr>
-
-<!-- 蛇足カード -->
-
-<div hidden class="school_card card p-4">
-	<div class="row">
-		<div class="col-3 text-center">
-			<i class="fa fa-2x fa-user" aria-hidden="true"></i>
-		</div>
-		<div class="col-9">
-			<h7>E-mail</h7>
-			<h6>{{ $user_data->email }}</h6>
-		</div>
-		<div class="col-3"></div>
-		<div class="col-9">
-			<h7>BirthDay</h7>
-			<h6>{{ $user_data->birthday }}</h6>
-		</div>
-	</div>
-</div>
-
-<!-- 蛇足カード -->
 
 
 <div>
@@ -123,15 +101,17 @@ h7{
 	border-radius: 50%;
 	width=:100px;
 	height:100px;
-	border: 4px solid #FFFFFF;
+	border: 4px solid #ecefbc;
 }
 .name_tag{
 	font-size:25px;
+	color:#000000;
 	font-weight:bold;
 }
 .sub_tag{
 	font-size:15px;
-	color:#AAAAAA;
+	/* color:#AAAAAA; */
+	color:#000000;
 }
 .introbox-top {
   position: relative;
@@ -142,7 +122,7 @@ h7{
   max-width: 100%;
   color: #555;
   font-size: 16px;
-  background: #e0edff;
+  background: #6da9a0;
   border-radius: 10px;
 }
 .introbox-top:before {
@@ -152,7 +132,7 @@ h7{
   left: 50%;
   margin-left: -15px;
   border: 15px solid transparent;
-  border-bottom: 15px solid #e0edff;
+  border-bottom: 15px solid #6da9a0;
 }
 .introbox-top p {
   margin: 0;

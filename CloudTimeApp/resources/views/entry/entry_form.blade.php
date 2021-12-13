@@ -27,20 +27,15 @@
 
 <!-- 検索カード -->
 
-@if (session('message'))
-    <div class="alert alert-success">
-		一致するカプセルが存在しないか、既に参加しているカプセルです。
+@if (isset($message))
+    <div class="alert alert-danger">
+		{{ $message }}
     </div>
 	<hr>
 @endif
 
 @if(isset($search_data))
 
-	@if($search_data == 0)
-		<div class="alert alert-success">
-			一致するカプセルが存在しないか、既に参加しているカプセルです。
-		</div>
-	@else
 		<div class="row">
 		@foreach( $search_data as $data)
 
@@ -82,14 +77,13 @@
 			</form>
 			<!-- 参加前ポップアップ- -->
 
-
 		@endforeach
 		</div>
-	
-	@endif
 
 @else
+
 @endif
+
 
 
 

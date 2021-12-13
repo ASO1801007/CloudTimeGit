@@ -39,7 +39,6 @@ class EntryController extends Controller
         $ret_member_id = array_values($ret_member_id);
 
         $ret_member = Member::whereIn('capsule_id',$ret_member_id)->get();
-        dd($ret_member_id);
 
         $data = ['member_data' => $ret_member];
 
@@ -73,13 +72,14 @@ class EntryController extends Controller
         if(count($ret_capsule) > 0){
             // 開ける日付を切り取り文字列化
             $ret_capsule = $this -> open_date_str_system($ret_capsule);
+            // dd($ret_capsule);
             $data = ['search_data' => $ret_capsule];
-            dd($ret_capsule);
+            return view('entry.entry_form',$data);
         }
         else{
-            $data = ['search_data' => 0];
+            $data = ['message' => '一致するカプセルが存在しないか、既に参加しているカプセルです。'];
+            return view('entry.entry_form')->with('message','一致するカプセルが存在しないか、既に参加しているカプセルです。');
         }
-        return view('entry.entry_form',$data);
     }
 
     public function entry_commit(Request $req){
