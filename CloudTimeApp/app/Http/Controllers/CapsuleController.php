@@ -127,7 +127,7 @@ class CapsuleController extends Controller{
         $new_data = Capsule::orderBy("updated_at","desc")->take(1)->get();
         $new_data_id = $new_data[0] -> id;
         $message = new Message();
-        $message -> comment_user = "master";
+        $message -> comment_user = "1";
         $message -> capsule_id = $new_data_id;
         $message -> message = "さあ、始めよう";
         $message->save();

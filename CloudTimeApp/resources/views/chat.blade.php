@@ -50,13 +50,10 @@
                         .then((response) => {
 
                             this.messages = response.data;
+                            console.log(this.messages);
                             this.capsule_id = '';
 
                         })
-                        .catch(error => {
-                            console.info(error)
-                        })
-
                 },
                 //保存したい！！
                 send() {

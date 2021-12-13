@@ -16,7 +16,6 @@ class ChatController extends Controller
     public $public_capsule_id;
     public function index(Request $request) {// capsule_idごとにメッセージを取得
 
-        //file_put_contents("test.txt", var_export($request, true));
         $capsule_id = $request->capsule_id;
         $message = Message::where('capsule_id',$capsule_id) -> orderBy('id', 'desc')->get();
         //ログインしているユーザーのIDを取得
@@ -24,19 +23,23 @@ class ChatController extends Controller
 
         //ログインしているユーザーIDを取得
         $user_id = User::find($login)->id;
+        $a=0;
         //コメントした人の名前を取得
         foreach($message as $messages){
             $comment_user_id = $messages['comment_user'];
             $comment_user = User::where('id',$comment_user_id) -> get();
-            $messages -> user_name = $comment_user[0] -> name;
+            $message[$a] -> user_name = $comment_user[0] -> name;
+            // file_put_contents("test.txt", var_export($message, true));
             if($user_id == $comment_user_id){
                 $me_or_you = 1;//コメントしたユーザーは自分
             }else{
                 $me_or_you = 0;//コメントしたユーザーは自分以外
             }
-            $messages -> me_or_you = $me_or_you;
+            $message[$a] -> me_or_you = $me_or_you;
+            $a+=1;
         }
-        // file_put_contents("test.txt", var_export($comment_user_name, true));
+
+        file_put_contents("test.txt", var_export($message, true));
 
         return $message;
     }
@@ -61,12 +64,6 @@ class ChatController extends Controller
             'capsule_id' => $capsule_id,
             'message' => $message,
         ]);
-        //データベース登録
-        // $message = new Mssage;
-        // $message -> comment_user = $i_user_id;
-        // $message -> capsule_id = $request -> capsule_id;
-        // $message -> body = $request -> message;
-        // $message -> save();
         event(new MessageCreated($message));
     }
 }
