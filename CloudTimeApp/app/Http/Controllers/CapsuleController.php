@@ -9,6 +9,7 @@ use App\Models\Capsule;
 use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
+use App\Models\Img;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Validator;
@@ -63,7 +64,15 @@ class CapsuleController extends Controller{
 
     // カプセル削除ボタン押下時
     public function capsule_delete(Request $req){
-        $delete_image = Img::where('capsule_id',$req->capsule_id)->delete();
+        $delete_image_count = Img::where('capsule_id',$req->capsule_id)->count();
+        for($a=0;$a<$delete_image_count;$a++){
+            $s3_delete_image = Img::where('capsule_id',$req->capsule_id)->first();
+            $delete_path = basename($s3_delete_image->image);
+            $delete_path = str_replace('https://example.s3-ap-northeast-1.amazonaws.com/', '', $delete_path);
+            $disk = Storage::disk('s3');
+            $disk->delete($delete_path);
+            $delete_image = Img::where('capsule_id',$req->capsule_id)->first()->delete();
+        }
         $this -> capsule_grand_delete_system($req->capsule_id);
         return redirect('/top')->with('message','カプセルを削除しました。');
     }

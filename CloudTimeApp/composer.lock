@@ -3162,16 +3162,16 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "7.0.1",
+            "version": "7.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "7757a09209d20ff95b077ae48dc25f49a6ad94a2"
+                "reference": "af3eeaefc0c7959f5b3852f0a4dd5547245d33df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/7757a09209d20ff95b077ae48dc25f49a6ad94a2",
-                "reference": "7757a09209d20ff95b077ae48dc25f49a6ad94a2",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/af3eeaefc0c7959f5b3852f0a4dd5547245d33df",
+                "reference": "af3eeaefc0c7959f5b3852f0a4dd5547245d33df",
                 "shasum": ""
             },
             "require": {
@@ -3180,7 +3180,7 @@
                 "guzzlehttp/guzzle": "^7.2",
                 "paragonie/sodium_compat": "^1.6",
                 "php": "^7.3|^8.0",
-                "psr/log": "^1.0"
+                "psr/log": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
                 "overtrue/phplint": "^2.3",
@@ -3215,11 +3215,7 @@
                 "rest",
                 "trigger"
             ],
-            "support": {
-                "issues": "https://github.com/pusher/pusher-http-php/issues",
-                "source": "https://github.com/pusher/pusher-http-php/tree/7.0.1"
-            },
-            "time": "2021-05-26T11:22:28+00:00"
+            "time": "2021-12-07T13:09:00+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -3515,6 +3511,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "symfony/mailer",
             "time": "2021-10-18T15:26:12+00:00"
         },
         {
@@ -8548,5 +8545,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "1.1.0"
 }
