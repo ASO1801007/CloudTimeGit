@@ -16,4 +16,12 @@ class ChatController extends Controller
     public function view(){
         return view('chat.chat');
     }
+
+    public function view2(){
+        return view('chat.chat2');
+    }
+
+    public function view3(){
+        return view('chat.chat3');
+    }
 }
