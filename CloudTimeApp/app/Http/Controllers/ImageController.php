@@ -8,6 +8,7 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use App\Models\Message;
+use App\Models\Letter;
 use Auth;
 use App\Models\Img;
 use Illuminate\Http\Request;
@@ -79,6 +80,15 @@ class ImageController extends Controller
             $image->title = $request->title;
             $image->save();
             unset($image);
+        }
+
+        //手紙を選択していたら保存処理を実行する
+        if($request->has('letter')){
+            $letter = new Letter();
+            $letter->capsule_id = $request->capsule_id;
+            $letter->title = $request->title;
+            $letter->text = $request->letter;
+            $letter->save();
         }
 
         //CapusuleControllerからコピペ

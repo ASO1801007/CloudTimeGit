@@ -10,6 +10,7 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use App\Models\Img;
+use App\Models\Letter;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Validator;
@@ -73,6 +74,7 @@ class CapsuleController extends Controller{
             $disk->delete($delete_path);
             $delete_image = Img::where('capsule_id',$req->capsule_id)->first()->delete();
         }
+        $delete_text = Letter::where('capsule_id',$req->capsule_id)->delete();
         $this -> capsule_grand_delete_system($req->capsule_id);
         return redirect('/top')->with('message','カプセルを削除しました。');
     }
