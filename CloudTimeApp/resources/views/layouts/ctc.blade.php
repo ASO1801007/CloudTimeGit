@@ -28,6 +28,9 @@
     <!-- icon -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
+    <!-- Lightbox2 画像ポップアップ -->
+    <link rel="stylesheet" href="/css/lightbox.min.css">
+
     <style>
         a{color:white;}
         body {
@@ -163,6 +166,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+    <!-- 画像ポップアップ -->
+    <script type="text/javascript" src="/js/lightbox-plus-jquery.min.js"></script>
 
 </body>
 </html>

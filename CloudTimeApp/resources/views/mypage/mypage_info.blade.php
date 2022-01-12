@@ -6,7 +6,11 @@
 
 <div class="row">
 	<div class="col-12 text-center" style="margin-top:120px;">
-		<img src="{{$user_data->profile_pic}}" class="prf_img">
+		@if($user_data->profile_pic == "0")
+			<img src="/noImage.png" class="prf_img">
+		@else
+			<img src="{{$user_data->profile_pic}}" class="prf_img">
+		@endif
 	</div>
 	<div class="col-12 text-center mt-3">
 		<div class="name_tag">{{ $user_data->name }}</div>
