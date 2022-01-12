@@ -73,9 +73,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #6da9a0;">
             <div class="container">
-                <a class="navbar-brand text-white" href="{{ url('/') }}">
+                <div class="navbar-brand text-white">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                    <i class="fa fa-question-circle" data-toggle="modal" aria-hidden="true" data-target="#modalHelp"></i>
+                </div>
                 <button class="navbar-toggler" type="button" style="background-color: #4d8980;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -164,6 +165,27 @@
 
 
     </div>
+
+    <!-- ヘルプポップアップ -->
+    <div class="modal fade right" id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="modalHelpLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalHelpLabel" style="color:black;">ヘルプ</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:40px;">
+                    <h6 class="pb-5" style="color:black;">カプセル名:<br><br><br>□このカプセルから脱退します。この操作は取り消せません。
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block waves-effect" data-dismiss="modal" style="border-radius:15px;">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ヘルプポップアップ- -->
 
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
