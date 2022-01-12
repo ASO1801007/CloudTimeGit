@@ -124,7 +124,7 @@ body{
 	border-radius: 50%;
 	width=:100px;
 	height:100px;
-	border: 4px solid #FFFFFF;
+	border: 4px solid #ecefbc;
 }
 
 </style>

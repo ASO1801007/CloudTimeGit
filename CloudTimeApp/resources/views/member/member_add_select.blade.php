@@ -11,6 +11,9 @@
 @section('content')
 
 <div>
+    <div>
+    <img src="https://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AF%20http://127.0.0.1:8000/mypage_info%20%E3%81%A7%E3%81%99%E3%80%82&choe=Shift_JIS" alt="QRコード">
+    </div>
     <form method="POST" action="{{ route('member.member_update') }}">
         @csrf
         <input type = "hidden" name = "capsule_id" value = "{{ $capsule_data->id }}">

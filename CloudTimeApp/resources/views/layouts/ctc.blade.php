@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- アプリアイコン -->
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('image/ctc_app_icon.png')}}" sizes="180x180">
+    <link rel="icon" type="image/png" href="{{ asset('image/ctc_app_icon.png')}}" sizes="192x192">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

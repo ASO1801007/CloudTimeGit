@@ -5,82 +5,82 @@
 @section('content')
 
 <div class="row">
-	<div class="col-12 text-center" style="margin-top:120px;">
-		@if($user_data->profile_pic == "0")
-			<img src="/noImage.png" class="prf_img">
-		@else
-			<img src="{{$user_data->profile_pic}}" class="prf_img">
-		@endif
-	</div>
-	<div class="col-12 text-center mt-3">
-		<div class="name_tag">{{ $user_data->name }}</div>
-	</div>
-	<div class="col-12 text-center mt-1">
-		<div class="sub_tag">{{ $user_data->birthday }}</div>
-		<div class="sub_tag">{{ $user_data->location }}・{{ $user_data->job }}</div>
-	</div>
-	<div class="col-12 text-center">
-		<div class="introbox-top">
-			<p>{{ $user_data->intro }}</p>
-		</div>
-	</div>
-</div>
-<hr>
-@if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-	<hr>
-@endif
-
-<!-- 学歴カード -->
-
-<div class="school_card card p-4">
-	<div class="row">
-		<div class="col-3 text-center">
-			<i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i>
-		</div>
-		<div class="col-9">
-			<h7>high school</h7>
-			<h6>{{ $user_data->high }}</h6>
-		</div>
-		<div class="col-3"></div>
-		<div class="col-9">
-			<h7>junior high school</h7>
-			<h6>{{ $user_data->junior_high }}</h6>
-		</div>
-		<div class="col-3"></div>
-		<div class="col-9">
-			<h7>elementary school</h7>
-			<h6>{{ $user_data->elementary }}</h6>
-		</div>
-	</div>
-</div>
-
-<!-- 学歴カード -->
-
-
-
-<div>
-
-	<div>
-		@if( $i_am_flag == 0 )
-		<a href="/invitation/{{$user_data->id}}">
-			<div class="btn-primary mt-2 p-3 text-center waves-effect" style="border-radius:15px;">
-				カプセルに招待する
+	<div class="col-12 col-sm-6">
+		<div class="row">
+			<div class="col-12 text-center" style="margin-top:120px;">
+				@if($user_data->profile_pic == "0")
+					<img src="/noImage.png" class="prf_img">
+				@else
+					<img src="{{$user_data->profile_pic}}" class="prf_img">
+				@endif
 			</div>
-		</a>
-		@elseif( $i_am_flag == 1 )
-		<div class="point_button">
-			<a href="{{ url('/mypage_edit') }}" style="color:white;">
-				<i class="fa fa-pencil" aria-hidden="true"></i>
-			</a>
+			
+			<div class="col-12 text-center mt-3">
+				<div class="name_tag">{{ $user_data->name }}</div>
+			</div>
+			<div class="col-12 text-center mt-1">
+				<div class="sub_tag">{{ $user_data->birthday }}</div>
+				<div class="sub_tag">{{ $user_data->location }}・{{ $user_data->job }}</div>
+			</div>
+			<div class="col-12 text-center">
+				<div class="introbox-top">
+					<p>{{ $user_data->intro }}</p>
+				</div>
+			</div>
 		</div>
+		@if (session('message'))
+			<hr>
+			<div class="alert alert-success">
+				{{ session('message') }}
+			</div>
 		@endif
+		
+		<!-- 学歴カード -->
 		<hr>
+		<div class="school_card card p-4">
+			<div class="row">
+				<div class="col-3 text-center">
+					<i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i>
+				</div>
+				<div class="col-9">
+					<h7>high school</h7>
+					<h6>{{ $user_data->high }}</h6>
+				</div>
+				<div class="col-3"></div>
+				<div class="col-9">
+					<h7>junior high school</h7>
+					<h6>{{ $user_data->junior_high }}</h6>
+				</div>
+				<div class="col-3"></div>
+				<div class="col-9">
+					<h7>elementary school</h7>
+					<h6>{{ $user_data->elementary }}</h6>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<!-- 学歴カード -->
+
+		<!-- 招待 or 右下ボタン -->
+		<div>
+			<div>
+				@if( $i_am_flag == 0 )
+				<a href="/invitation/{{$user_data->id}}">
+					<div class="btn-primary mt-2 p-3 text-center waves-effect" style="border-radius:15px;">
+						カプセルに招待する
+					</div>
+				</a>
+				@elseif( $i_am_flag == 1 )
+				<div class="point_button">
+					<a href="{{ url('/mypage_edit') }}" style="color:white;">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+					</a>
+				</div>
+				@endif
+			</div>
+		</div>
+		<!-- 招待 or 右下ボタン -->
 	</div>
-
-
 </div>
 
 
@@ -103,7 +103,7 @@ h7{
 
 .prf_img{
 	border-radius: 50%;
-	width=:100px;
+	width:100px;
 	height:100px;
 	border: 4px solid #ecefbc;
 }
