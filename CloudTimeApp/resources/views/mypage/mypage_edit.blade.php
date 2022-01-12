@@ -122,7 +122,7 @@ body{
 
 .prf_img{
 	border-radius: 50%;
-	width=:100px;
+	width:100px;
 	height:100px;
 	border: 4px solid #ecefbc;
 }
