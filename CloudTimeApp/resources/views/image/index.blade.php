@@ -10,24 +10,28 @@
 
 <div id ="photo" class="photo" style ="display:none;">
     @if( $open_flg == 1)
-        @foreach($images as $image)
-            <div>
-                {{$image->title}} <br>
-                <a href="{{ $image->image }}" data-lightbox="group"><img src="{{ $image->image }}" style="width: 30%; height: auto;"/></a>
-            </div>
-        @endforeach
+        <div class="row">
+            @foreach($images as $image)
+                <div class="col-6 col-sm-4 mb-2">
+                    <a href="{{ $image->image }}" data-lightbox="group"><img src="{{ $image->image }}" style="width: 100%; height: 180px; object-fit: cover; border-radius:7px;"/></a>
+                    <div style="color:black;">{{$image->title}}</div>
+                </div>
+            @endforeach
+        </div>
     @endif
 </div>
 
 <div id="letter" class="letter" style ="display:none;">
     @if( $open_flg == 1)
-        @foreach($letters as $letter)
-            <div>
-                {{$letter->title}} {{$letter->created_at}} <br>
-                <img src="/image/letter_back.jpg">
-                <p>{{$letter->text}}</p>
-            </div>
-        @endforeach
+        <div class="row">
+            @foreach($letters as $letter)
+                <div class="col-12 col-sm-6">
+                    <div style="color:black;">{{$letter->title}} {{$letter->created_at}}</div>
+                    <img src="/image/letter_back.jpg">
+                    <p>{{$letter->text}}</p>
+                </div>
+            @endforeach
+        </div>
     @endif
 </div>
 

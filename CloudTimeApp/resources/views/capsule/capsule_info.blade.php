@@ -32,7 +32,7 @@
 		</div>
 	</a>
 
-	<div><!-- 概要 -->
+	<div style="color:black;"><!-- 概要 -->
 		<hr>
 		{{$capsule_data->intro}}
 		<hr>
