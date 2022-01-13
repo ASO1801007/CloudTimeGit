@@ -177,8 +177,23 @@
                     </button>
                 </div>
                 <div class="modal-body" style="padding:40px;">
-                    <h6 class="pb-5" style="color:black;">カプセル名:<br><br><br>□このカプセルから脱退します。この操作は取り消せません。
+                    <h4 class="pb-5" style="color:black;">Cloud Time Capsule
+                    <h6 class="pb-5" style="color:black;">①ホーム<br><br> <img src="/image/home.png"><br>
+                    参加しているカプセルが表示されます。
+                    右下の+ボタンを押すことでカプセルを新規作成することができます。
+                    <h6 class="pb-5" style="color:black;">②グループチャット<br><br>三浦待ち。
+                    <h6 class="pb-5" style="color:black;">③メンバー招待<br><br><img src="/image/menber.png"><br>
+                    招待コードを入力し、<br>一致したカプセルを表示します。<br>
+                    タップすることで参加が完了します。
+                    <h6 class="pb-5" style="color:black;">④プロフィール<br><br><img src="/image/my.png"><br>
+                    自分の情報を確認することができます。<br>
+                    右下のペンボタンを押すことで編集することができます。
+                    <h6 class="pb-5" style="color:black;">⑤カプセル内<br><br><img src="/image/capsule.png"><br>
+                    ホーム画面に表示されているカプセルをタップすることで遷移します。<br>
+                    この画面で思い出の追加、グループチャット、メンバー確認、カプセル詳細の変更を
+                    することができます。
                 </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn-block waves-effect" data-dismiss="modal" style="border-radius:15px;">OK</button>
                 </div>

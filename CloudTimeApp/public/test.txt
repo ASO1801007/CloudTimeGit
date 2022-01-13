@@ -31,107 +31,23 @@ Illuminate\Database\Eloquent\Collection::__set_state(array(
        'escapeWhenCastingToString' => false,
        'attributes' => 
       array (
-        'id' => 26,
-        'comment_user' => '7',
-        'capsule_id' => '4',
-        'message' => 'aaa',
-        'created_at' => '2021-12-13 11:43:12',
-        'updated_at' => '2021-12-13 11:43:12',
-        'user_name' => '三浦敦志',
-        'me_or_you' => 1,
-      ),
-       'original' => 
-      array (
-        'id' => 26,
-        'comment_user' => '7',
-        'capsule_id' => '4',
-        'message' => 'aaa',
-        'created_at' => '2021-12-13 11:43:12',
-        'updated_at' => '2021-12-13 11:43:12',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    1 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 25,
+        'id' => 11,
         'comment_user' => '1',
-        'capsule_id' => '4',
-        'message' => 'さあ、始めよう',
-        'created_at' => '2021-12-09 12:20:38',
-        'updated_at' => '2021-12-09 12:20:38',
+        'capsule_id' => '1',
+        'message' => 'チャットを始めよう',
+        'created_at' => '2021-12-20 13:51:22',
+        'updated_at' => '2021-12-20 13:51:22',
         'user_name' => 'master',
         'me_or_you' => 0,
       ),
        'original' => 
       array (
-        'id' => 25,
+        'id' => 11,
         'comment_user' => '1',
-        'capsule_id' => '4',
-        'message' => 'さあ、始めよう',
-        'created_at' => '2021-12-09 12:20:38',
-        'updated_at' => '2021-12-09 12:20:38',
+        'capsule_id' => '1',
+        'message' => 'チャットを始めよう',
+        'created_at' => '2021-12-20 13:51:22',
+        'updated_at' => '2021-12-20 13:51:22',
       ),
        'changes' => 
       array (
