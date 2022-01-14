@@ -42,7 +42,7 @@
 				<div class="thum">
 					<img src="{{ $data->thumbnail }}" loading="lazy" class="thum__img">
 					<div class="thum__title">
-						{{$data->name}}(id:{{$data->id}})<br>
+						{{$data->name}}<br>
 						<h6>開封予定日 : {{$data->open_date_str}}</h6>
 					</div>
 				</div>

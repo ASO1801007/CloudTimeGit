@@ -27,7 +27,7 @@
 			<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
 		@endif
 		<div class="thum__title">
-			{{$capsule_data->name}}(id:{{$capsule_data->id}})<br>
+			{{$capsule_data->name}}<br>
 			開封予定日 : {{$capsule_data->open_date_str}}
 		</div>
 	</a>
@@ -61,7 +61,7 @@
 		</form>
 	@elseif( $open_flag == 0 )
 		<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
-			写真を追加
+			思い出を追加
 		</div>
 	@else
 	open_flagの値が適切ではありません。
@@ -162,7 +162,8 @@
 								<h7>タイトル:</h7>
 								<input type="text" name="title" placeholder="(例)あの時の君へ">
 								<div class="md-form">
-									<textarea id="letter" type="text" name="letter" rows="6" cols="50"></textarea><br>
+									<textarea id="letter" type="text" name="letter" rows="6" cols="35" onkeyup="ShowLength(value);"></textarea><br>
+									<p id="inputlength">0文字</p>
 								</div>
 								<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
 							</div>
@@ -347,6 +348,9 @@ $('#image').on('change', function (ev) {
 	}
 	reader.readAsDataURL(this.files[0]);
 })
+function ShowLength( str ) {
+   document.getElementById("inputlength").innerHTML = str.length + "文字";
+}
 </script>
 
 @endsection

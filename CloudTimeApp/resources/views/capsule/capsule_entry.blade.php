@@ -59,13 +59,6 @@
 					</div>
 				</div>
 
-				<div class="">
-					<div class="md-form amber-textarea active-amber-textarea-2">
-						<textarea id="form2" name="intro" class="md-textarea form-control" rows="3">説明</textarea>
-						<label for="form2">概要を書く</label>
-					</div>
-				</div>
-
 				<div>
 					<label style="color:black;"><input type="checkbox" id="" name="map＿" onclick="checkdiv(this,'checkBox')">位置情報を使用する</label>
 					<div id="checkBox" class="mb-2" style="display:none;">

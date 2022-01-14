@@ -171,27 +171,45 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="modalHelpLabel" style="color:black;">ヘルプ</h3>
+                    <h3 class="modal-title" id="modalHelpLabel" style="color:black;">説明書</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" style="padding:40px;">
-                    <h4 class="pb-5" style="color:black;">Cloud Time Capsule
-                    <h6 class="pb-5" style="color:black;">①ホーム<br><br> <img src="/image/home.png"><br>
-                    参加しているカプセルが表示されます。
-                    右下の+ボタンを押すことでカプセルを新規作成することができます。
-                    <h6 class="pb-5" style="color:black;">②グループチャット<br><br>三浦待ち。
-                    <h6 class="pb-5" style="color:black;">③メンバー招待<br><br><img src="/image/menber.png"><br>
-                    招待コードを入力し、<br>一致したカプセルを表示します。<br>
-                    タップすることで参加が完了します。
-                    <h6 class="pb-5" style="color:black;">④プロフィール<br><br><img src="/image/my.png"><br>
-                    自分の情報を確認することができます。<br>
-                    右下のペンボタンを押すことで編集することができます。
-                    <h6 class="pb-5" style="color:black;">⑤カプセル内<br><br><img src="/image/capsule.png"><br>
-                    ホーム画面に表示されているカプセルをタップすることで遷移します。<br>
-                    この画面で思い出の追加、グループチャット、メンバー確認、カプセル詳細の変更を
-                    することができます。
+                    <h4 class="pb-5" style="color:black;">これから思い出を作る君へ
+                    <h6 class="pb-5" style="color:black;">手順① カプセルを新しく作ろう！<br><br>
+                    <a href="/image/home2.png" data-lightbox="group"><img src="/image/home2.png" height="300"/></a><br>
+                    ホーム画面の右下にある＋ボタンをタップ！<br><br>
+                    <a href="/image/new_capsule.png" data-lightbox="group"><img src="/image/new_capsule.png" height="300"/></a><br>
+                    新規作成に必要な情報を入力して作成しよう！<br>作成するとホーム画面に追加されるよ！<br><br>
+                    <a href="/image/home3.png" data-lightbox="group"><img src="/image/home3.png" height="300"/></a><br>
+                    <h6 class="pb-5" style="color:black;">手順② 思い出を追加しよう！<br><br>
+                    さっそく思い出を追加していくよ！<br>
+                    さっき作ったカプセルの中にある”思い出を追加”ってボタンをタップしてみて！<br><br>
+                    <a href="/image/capsule_omoide.png" data-lightbox="group"><img src="/image/capsule_omoide.png" height="300"/></a><br>
+                    写真か手紙を選んでタイトルと追加したい写真か本文を入力して<br>アップロードボタンを押してね！<br><br>
+                    <a href="/image/photo_add.png" data-lightbox="group"><img src="/image/photo_add.png" height="300"/></a><br>
+                    アップロードボタンを押した時点でカプセルに追加されるよ！<br>
+                    開封日を過ぎると”思い出追加ボタン”が<br>”開封ボタン”に変わるよ！<br><br>
+                    一度追加した画像は開封日になるまで見れないから楽しみにしててね！<br>
+                    <h6 class="pb-5" style="color:black;">手順③ メンバーを招待しよう！<br><br>
+                    友達に招待コードを入力してもらうことで自分の作ったカプセルに<br>
+                    参加してもらうことができるよ！<br><br>
+                    <a href="/image/capsule_entry.png" data-lightbox="group"><img src="/image/capsule_entry.png" height="300"/></a><br><br>
+                    エントリーコード入力はこんな画面だよ！<br><br>
+                    <a href="/image/entry_code.png" data-lightbox="group"><img src="/image/entry_code.png" height="300"/></a><br><br>
+                    教えてもらった招待コードを入力して、同じものがあったら表示されるよ！<br><br>
+                    <a href="/image/entry_code2.png" data-lightbox="group"><img src="/image/entry_code2.png" height="300"/></a><br><br>
+                    もし招待コードが間違ってたり、既に参加してたら表示されないから気をつけてね！<br>
+                    表示されたカプセルをタップすると参加が完了するよ！！<br>
+                    <h6 class="pb-5" style="color:black;">番外編 チャットをしよう！<br><br>
+                    このアプリケーション内でグループチャットをすることができるよ！<br>
+                    カプセルの中にあるここをタップしてみて！<br>
+                    <a href="/image/capsule_chat.png" data-lightbox="group"><img src="/image/capsule_chat.png" height="300"/></a><br><br>
+                    <!-- 三浦待ち -->
+
+                    説明は以上だよ！<br>たくさん思い出を追加してね！！
                 </div>
                 
                 <div class="modal-footer">

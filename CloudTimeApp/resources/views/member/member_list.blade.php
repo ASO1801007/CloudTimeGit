@@ -16,10 +16,14 @@
                     <div>
                         <div class="row">
                             <div class="col-2">
+                            @if($member_data->user->profile_pic == "0")
+                                <img src="/noImage.png" class="list_prf_img">
+                            @else
                                 <img src="{{$member_data->user->profile_pic}}" class="list_prf_img">
+                            @endif
                             </div>
                             <div class="col-10 list_prf_name_flame">
-                                <div class="list_prf_name">{{$member_data->user->name}}(ID:{{$member_data->id}})</div>
+                                <div class="list_prf_name">{{$member_data->user->name}}</div>
                             </div>
                         </div>
                     </div>

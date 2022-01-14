@@ -13,7 +13,7 @@
         <div class="row">
             @foreach($images as $image)
                 <div class="col-6 col-sm-4 mb-2">
-                    <a href="{{ $image->image }}" data-lightbox="group"><img src="{{ $image->image }}" style="width: 100%; height: 180px; object-fit: cover; border-radius:7px;"/></a>
+                    <a href="{{ $image->image }}" data-lightbox="group" data-title="{{$image->title}}"><img src="{{ $image->image }}" style="width: 100%; height: 180px; object-fit: cover; border-radius:7px;"/></a>
                     <div style="color:black;">{{$image->title}}</div>
                 </div>
             @endforeach
@@ -26,7 +26,7 @@
         <div class="row">
             @foreach($letters as $letter)
                 <div class="col-12 col-sm-6">
-                    <div style="color:black;">{{$letter->title}} {{$letter->created_at}}</div>
+                    <div style="color:black;">{{$letter->title}}</div>
                     <img src="/image/letter_back.jpg">
                     <p>{{$letter->text}}</p>
                 </div>
