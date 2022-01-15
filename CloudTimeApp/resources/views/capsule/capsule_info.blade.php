@@ -29,7 +29,10 @@
 			@endif
 			<div class="thum__title">
 				{{$capsule_data->name}}<br>
-				開封予定日 : {{$capsule_data->open_date_str}}
+				開封予定日 : {{$capsule_data->open_date_str}}<br>
+				@if($capsule_data->open_place != null)
+					開封場所 ： {{$capsule_data->open_place}}
+				@endif
 			</div>
 		</a>
 
@@ -50,15 +53,13 @@
 			@if( $capsule_data->lat == null)
 				<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
 				<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
-				
 			@else
 				<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-				<input type = "submit" name = "add" value="+">
 				<input type = "hidden" id = "lat" name = "lat" value = "">
 				<input type = "hidden" id = "lng"  name = "lng" value = "">
 				<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
 				<script src="{{ asset('/js/futachi.js') }}"></script>
-				開封する
+				<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
 			@endif
 			</form>
 		@elseif( $open_flag == 0 )
