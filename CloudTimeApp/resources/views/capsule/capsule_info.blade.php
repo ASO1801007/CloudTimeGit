@@ -18,107 +18,111 @@
     </div>
 @endif
 
-<div>
+<div class="row">
 
-	<a href="#" class="thum">
-		@if($capsule_data->thumbnail == 'noImage.png')
-			<img src="/noImage.png" loading="lazy" class="thum__img">
-		@else
-			<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
-		@endif
-		<div class="thum__title">
-			{{$capsule_data->name}}<br>
-			開封予定日 : {{$capsule_data->open_date_str}}
+	<div class="col-12 col-sm-6">
+		<a href="#" class="thum">
+			@if($capsule_data->thumbnail == 'noImage.png')
+				<img src="/noImage.png" loading="lazy" class="thum__img">
+			@else
+				<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
+			@endif
+			<div class="thum__title">
+				{{$capsule_data->name}}<br>
+				開封予定日 : {{$capsule_data->open_date_str}}
+			</div>
+		</a>
+
+		<div style="color:black;"><!-- 概要 -->
+			<hr>
+			{{$capsule_data->intro}}
+			<hr>
 		</div>
-	</a>
-
-	<div style="color:black;"><!-- 概要 -->
-		<hr>
-		{{$capsule_data->intro}}
-		<hr>
 	</div>
 
 
 
-	<!-- 追加ボタンor開封ボタンの有無 -->
-
-	@if( $open_flag == 1 )
-		<form method="POST" action="{{ route('image.index') }}">
-		@csrf
-		@if( $capsule_data->lat == null)
-			<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-			<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
-			
+	<div class="col-12 col-sm-6">
+		<!-- 追加ボタンor開封ボタンの有無 -->
+		@if( $open_flag == 1 )
+			<form method="POST" action="{{ route('image.index') }}">
+			@csrf
+			@if( $capsule_data->lat == null)
+				<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
+				<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
+				
+			@else
+				<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
+				<input type = "submit" name = "add" value="+">
+				<input type = "hidden" id = "lat" name = "lat" value = "">
+				<input type = "hidden" id = "lng"  name = "lng" value = "">
+				<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
+				<script src="{{ asset('/js/futachi.js') }}"></script>
+				開封する
+			@endif
+			</form>
+		@elseif( $open_flag == 0 )
+			<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
+				思い出を追加
+			</div>
 		@else
-			<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-			<input type = "submit" name = "add" value="+">
-			<input type = "hidden" id = "lat" name = "lat" value = "">
-			<input type = "hidden" id = "lng"  name = "lng" value = "">
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
-			<script src="{{ asset('/js/futachi.js') }}"></script>
-			開封する
+		open_flagの値が適切ではありません。
 		@endif
-		</form>
-	@elseif( $open_flag == 0 )
-		<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
-			思い出を追加
-		</div>
-	@else
-	open_flagの値が適切ではありません。
-	@endif
 
-	<!-- 追加ボタンor開封ボタン -->
+		<!-- 追加ボタンor開封ボタン -->
 
-	<div class="card p-3 mt-2">
-		最近の投稿<hr>
-		<font color="success">
-			<a href="/chat/{{$capsule_data->id}}">{{ $first_chat -> message}}</a>
-		</font>
-	</div>
-	<a href="/member_list/{{$capsule_data->id}}">
 		<div class="card p-3 mt-2">
-			メンバー一覧
+			最近の投稿<hr>
+			<font color="success">
+				<a href="/chat/{{$capsule_data->id}}">{{ $first_chat -> message}}</a>
+			</font>
 		</div>
-	</a>
-	<div class="card p-3 mt-2">
-		招待する
-		<hr>
-		<div class="row">
-			<div class="col-5">
-				招待コード :<br>
-				{{ $capsule_data->entry_code }}
+		<a href="/member_list/{{$capsule_data->id}}">
+			<div class="card p-3 mt-2">
+				メンバー一覧
 			</div>
-			<div class="col-7">
-				<a href="/member_add_select/{{$capsule_data->id}}">
-					<div class="btn btn-primary text-center"  style="border-radius: 15px;">
-						直接招待
-					</div>
-				</a>
+		</a>
+		<div class="card p-3 mt-2">
+			招待する
+			<hr>
+			<div class="row">
+				<div class="col-5">
+					招待コード :<br>
+					{{ $capsule_data->entry_code }}
+				</div>
+				<div class="col-7">
+					<a href="/member_add_select/{{$capsule_data->id}}">
+						<div class="btn btn-primary text-center"  style="border-radius: 15px;">
+							直接招待
+						</div>
+					</a>
+				</div>
 			</div>
+			
 		</div>
-		
-	</div>
 
-	<!-- カプセル破棄ボタンの有無 -->
+		<!-- カプセル破棄ボタンの有無 -->
 
-	@if( $admin_flag == 1 )
-	<a href="/capsule_edit/{{$capsule_data->id}}">
-		<div class="btn-primary m-2 p-3 text-center waves-effect" style="border-radius:15px;">
-			タイムカプセルを編集
+		@if( $admin_flag == 1 )
+		<a href="/capsule_edit/{{$capsule_data->id}}">
+			<div class="btn-primary m-2 p-3 text-center waves-effect" style="border-radius:15px;">
+				タイムカプセルを編集
+			</div>
+		</a>
+		<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1" style="border-radius:15px;">
+			タイムカプセルを破棄
 		</div>
-	</a>
-	<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview1" style="border-radius:15px;">
-		タイムカプセルを破棄
-	</div>
-	@elseif( $admin_flag == 0 )
-	<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview2" style="border-radius: 15px;">
-		タイムカプセルから脱退
-	</div>
-	@else
-	※admin_flagの値が適切ではありません。※
-	@endif
+		@elseif( $admin_flag == 0 )
+		<div class="btn-danger m-2 p-3 text-center waves-effect" data-toggle="modal" data-target="#modalPreview2" style="border-radius: 15px;">
+			タイムカプセルから脱退
+		</div>
+		@else
+		※admin_flagの値が適切ではありません。※
+		@endif
 
-	<!-- カプセル破棄ボタンの有無 -->
+		<!-- カプセル破棄ボタンの有無 -->
+	</div>
+
 </div>
 
 <!-- 思い出追加ポップアップ -->

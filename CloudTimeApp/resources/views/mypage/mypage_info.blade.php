@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-12 col-sm-6">
+	<div class="col-12 col-sm-12">
 		<div class="row">
 			<div class="col-12 text-center" style="margin-top:120px;">
 				@if($user_data->profile_pic == "0")
@@ -170,7 +170,9 @@ h7{
   transition:1s;
   border-radius:100px;
 }
+/* PC版プロフィール用 */
 
+/* PC版プロフィール用 */
 
 
 </style>

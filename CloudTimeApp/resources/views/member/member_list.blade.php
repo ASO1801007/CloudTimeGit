@@ -48,6 +48,7 @@
 }
 .list_prf_name{
 	font-weight:bold;
+    color:#000000;
 }
 </style>
 

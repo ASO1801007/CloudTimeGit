@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('image/ctc_app_icon.png')}}" sizes="180x180">
     <link rel="icon" type="image/png" href="{{ asset('image/ctc_app_icon.png')}}" sizes="192x192">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="dedault">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
