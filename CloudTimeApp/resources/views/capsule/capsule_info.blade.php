@@ -29,16 +29,19 @@
 			@endif
 			<div class="thum__title">
 				{{$capsule_data->name}}<br>
-				開封予定日 : {{$capsule_data->open_date_str}}<br>
-				@if($capsule_data->open_place != null)
-					開封場所 ： {{$capsule_data->open_place}}
-				@endif
+				開封予定日 : {{$capsule_data->open_date_str}}
 			</div>
 		</a>
 
-		<div style="color:black;"><!-- 概要 -->
+		<div><!-- 概要 -->
 			<hr>
-			{{$capsule_data->intro}}
+			<div style="color:black;">{{$capsule_data->intro}}</div>
+			@if($capsule_data->open_place != null)
+				<div style="color:#888888;">
+					開封場所が指定されています :<br>
+					{{$capsule_data->open_place}}付近でのみ開封ができます
+				</div>
+			@endif
 			<hr>
 		</div>
 	</div>
