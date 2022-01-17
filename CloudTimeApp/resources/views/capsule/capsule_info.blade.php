@@ -170,7 +170,7 @@
 								<h7>タイトル:</h7>
 								<input type="text" name="title" placeholder="(例)あの時の君へ">
 								<div class="md-form">
-									<textarea id="letter" type="text" name="letter" rows="6" cols="35" onkeyup="ShowLength(value);"></textarea><br>
+									<textarea id="letter" type="text" name="letter" rows="6" cols="35" maxlength="40" onkeyup="ShowLength(value);"></textarea><br>
 									<p id="inputlength">0文字</p>
 								</div>
 								<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
