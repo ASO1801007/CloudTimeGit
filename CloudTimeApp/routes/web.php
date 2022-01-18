@@ -20,6 +20,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 //トップ画面
 Route::get('/top', [App\Http\Controllers\TopController::class, 'top'])->name('top.top')->middleware('auth');
+Route::get('/home', [App\Http\Controllers\TopController::class, 'top'])->name('top.top')->middleware('auth');
 
 //チャットリスト画面
 Route::get('/chatlist', [App\Http\Controllers\ChatListController::class, 'chat_list'])->name('chat.chatlist')->middleware('auth');

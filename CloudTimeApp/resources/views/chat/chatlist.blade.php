@@ -14,12 +14,8 @@
 @endif
 
 <div>
-
-
-
     <div class="row">
         @foreach($capsule_data as $capsule_data)
-
             <div class="col-12 col-sm-6 mb-2">
                 <a href="/chat/{{$capsule_data->capsule->id}}" class="thum">
                     <img src="{{ $capsule_data->capsule->thumbnail }}" loading="lazy" class="thum__img">
