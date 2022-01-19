@@ -8,6 +8,7 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use App\Models\Message;
+use App\Models\Letter;
 use Auth;
 use App\Models\Img;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class ImageController extends Controller
     {
         $capsule_id = $data->capsule_id;
         $images = Img::where('capsule_id',$capsule_id)->get();
+        $letters = Letter::where('capsule_id',$capsule_id)->get();
         $open_date = Capsule::find($capsule_id)->open_date;
         if(Capsule::find($capsule_id)->lat != null){
             $lat1 = Capsule::find($capsule_id)->lat;
@@ -50,10 +52,10 @@ class ImageController extends Controller
             }
             if($d>=500){
                 $genzaiti = 1;
-                return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
+                return view('image.index', ['images'=>$images, 'letters'=>$letters, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
             }else{
                 $genzaiti = 0;
-                return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
+                return view('image.index', ['images'=>$images, 'letters'=>$letters, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
             }
         }
         $ret_data = 0;
@@ -63,22 +65,40 @@ class ImageController extends Controller
             $ret_data = 1;
         }
         $genzaiti = 0;
-        return view('image.index', ['images'=>$images, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
+        return view('image.index', ['images'=>$images, 'letters'=>$letters, 'capsule_id'=>$capsule_id, 'open_flg'=>$ret_data, 'genzaiti'=>$genzaiti]);
     }
 
     //画像保存処理
     public function store(Request $request)
     {
         //画像を選択していたら保存処理を実行する
-        if($request->has('image')){
+        if(!(is_null($request->image))){
             $image = new Img();
             $uploadImg = $image->image = $request->file('image');
             $path = Storage::disk('s3')->putFile('/', $uploadImg, 'public');
             $image->image = Storage::disk('s3')->url($path);
             $image->capsule_id = $request->capsule_id;
-            $image->title = $request->title;
+            if($request->title == NULL){
+                $image->title = "あの頃の思い出";
+            }else{
+                $image->title = $request->title;
+            }
             $image->save();
             unset($image);
+        }
+
+        //手紙を選択していたら保存処理を実行する
+        if(!(is_null($request->letter))){
+            $letter = new Letter();
+            $letter->capsule_id = $request->capsule_id;
+            if($request->title == NULL){
+                $letter->title = "あの頃の君へ";
+            }else{
+                $letter->title = $request->title;
+            }
+            $letter->text = $request->letter;
+            $letter->save();
+            unset($letter);
         }
 
         //CapusuleControllerからコピペ

@@ -29,14 +29,15 @@ class ChatListController extends Controller
 
         $count=0;
         //自分が参加しているカプセルの最初のチャットを取得
+        $first_chat = array();
         foreach($member_data as $capsule) {
             $capsule_id = $capsule->capsule_id;
             $first_chat[] = Message::where('capsule_id',$capsule_id)->orderBy('id','desc')->first();
         }
-        //dd($first_chat);
+        // dd($first_chat);
         $a=0;
         //変数のままじゃ送れないため、代入
-        $data = ["capsule_data"=>$member_data, "first_chat"=>$first_chat,"a"=>$a];
+        $data = ["capsule_data"=>$member_data, "first_chat"=>$first_chat, "a"=>$a];
         return view('chat.chatlist',$data);
     }
 }

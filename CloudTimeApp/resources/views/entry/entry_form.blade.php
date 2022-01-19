@@ -4,8 +4,6 @@
 
 @section('content')
 
-<div>招待</div>
-
 <!-- 検索カード -->
 
 <div class="school_card card p-4 mb-2">
@@ -13,10 +11,10 @@
 		<form action="{{ url('/entry_search') }}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="col-12">
-				<div>参加者から教えてもらった6桁の招待コードを入力してください。</div>
+				<div> 他者が作ったタイムカプセルに参加する為のページです。<br> 参加者から教えてもらった6桁の招待コードを入力してください。</div>
 				<hr color="#FFFFFF">
-				<div class="form-outline mb-4">
-					<label class="form-label" for="entry_code">招待コード</label>
+				<div class="form-outline mb-4 text-center">
+					<label class="form-label" for="entry_code">招待コード検索</label>
 					<input type="text" name="entry_code" id="entry_code" class="form-control" value="" />
 				</div>
 				<input type="submit" class="btn-primary btn-block p-3 text-center waves-effect" style="border-radius:15px;" value="検索"></input>
@@ -28,6 +26,7 @@
 <!-- 検索カード -->
 
 @if (isset($message))
+	<hr>
     <div class="alert alert-danger">
 		{{ $message }}
     </div>
@@ -43,7 +42,7 @@
 				<div class="thum">
 					<img src="{{ $data->thumbnail }}" loading="lazy" class="thum__img">
 					<div class="thum__title">
-						{{$data->name}}(id:{{$data->id}})<br>
+						{{$data->name}}<br>
 						<h6>開封予定日 : {{$data->open_date_str}}</h6>
 					</div>
 				</div>
@@ -57,7 +56,7 @@
 
 				<div class="modal fade right" id="modalPreview1" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel1" aria-hidden="true">
 					<div class="modal-dialog" role="document">
-						<div class="modal-content">
+						<div class="modal-content" style="color:black;">
 							<div class="modal-header">
 								<h3 class="modal-title" id="modalPreviewLabel1">参加します</h3>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">

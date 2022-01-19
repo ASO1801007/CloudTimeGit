@@ -20,21 +20,17 @@ class MailController extends Controller
             ->where('user_id', $auth)
             ->get();
         //dd($capsules_id);
-        foreach ($capsules_id as $cap_id) {
+        $my_cap = DB::table('capsules')
+            ->get();
 
-            $my_cap = DB::table('capsules')
-                ->where('id', $cap_id->capsule_id)
-                ->get();
-        }
-
-        //dd($my_cap);
         //一週間前に通知
-        $sendday = date("Y-m-d", strtotime("+7 day"));
+        $nowtime = date('Y/m/d H:i:s',strtotime("+1 week"));
+        $a = 0;
+        //dd($my_cap[0]->open_date);
         foreach ($my_cap as $data) {
-            $open_day = date("Y-m-d", $data->open_date);
-            if ($sendday == $open_day) {
+            $open_day = $data->open_date;
+            if ($nowtime >= $open_day) {
                 //メール処理
-
                 $user_name = User::find($auth)->name;
                 $user_email = User::find($auth)->email;
                 // テキストメール送信
@@ -42,7 +38,7 @@ class MailController extends Controller
                 $mail_content = "もうすぐでカプセルが開きます!楽しみですね!\n" .
                     env('APP_URL');
                 $email = User::find($auth)->email;
-                dd($email);
+                //dd($email);
                 $from_email = env('MAIL_FROM_ADDRESS');
                 $from_name = "Cloud Time Capsule";
                 \Mail::send([], [], function ($message) use ($from_email, $from_name, $mail_subject, $mail_content, $email) {

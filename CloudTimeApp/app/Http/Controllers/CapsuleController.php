@@ -10,6 +10,7 @@ use App\Models\User_info;
 use App\Models\Bbs;
 use App\Models\Member;
 use App\Models\Img;
+use App\Models\Letter;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Validator;
@@ -44,6 +45,11 @@ class CapsuleController extends Controller{
 
     //カプセル更新処理
     public function capsule_update(Request $req){
+        $validator = $this -> capsule_create_validate_system($req);
+        if($validator->fails()){
+            return redirect('/capsule_entry')
+            ->withErrors($validator);
+        }
         $capsule = Capsule::find($req -> id);
         $capsule -> name = $req -> name;
         $capsule -> open_date = $req -> open_date;
@@ -57,6 +63,16 @@ class CapsuleController extends Controller{
             $capsule->thumbnail = Storage::disk('s3')->url($path);
         }
         $capsule -> intro = $req -> intro;
+        if($req->open_place == null){
+            $capsule -> open_place = null;
+            $capsule -> lat = null;
+            $capsule -> lng = null;
+        }else{
+            $capsule -> open_place = $req -> entry_code;
+            $capsule -> lat = $req -> lat;
+            $capsule -> lng = $req -> lng;
+        }
+        $capsule -> open_place = $req -> entry_code;
         $capsule -> save();
         unset($capsule);
         return redirect()->route('capsule.show_info', ['capsule_id' => $req -> id]);
@@ -73,6 +89,7 @@ class CapsuleController extends Controller{
             $disk->delete($delete_path);
             $delete_image = Img::where('capsule_id',$req->capsule_id)->first()->delete();
         }
+        $delete_text = Letter::where('capsule_id',$req->capsule_id)->delete();
         $this -> capsule_grand_delete_system($req->capsule_id);
         return redirect('/top')->with('message','カプセルを削除しました。');
     }
@@ -157,6 +174,7 @@ class CapsuleController extends Controller{
         $capsule -> intro = $req -> intro;
         $capsule -> entry_code = $this -> make_entry_code_system();
         $capsule -> user_id = $i_am;
+        $capsule -> open_place = $req -> entry_code;
         $capsule -> lat = $req -> lat;
         $capsule -> lng = $req -> lng;
         return $capsule;
@@ -170,15 +188,15 @@ class CapsuleController extends Controller{
             'name' => 'required',
             'open_date' => 'required',
         ];
-        if(isset($req['map'])){
-            $rulus += array('lat' => 'required', 'lng' => 'required');
+        if(!is_null($req['entry_code'])){
+            $rulus += array('lat' => 'required');
         }
         $message = [
             'name.required' => 'カプセル名を入力してください',
             'open_date.required' => '開封日を入力してください（例 2000-01-11）'
         ];
-        if(isset($req['map'])){
-            $message += array('lat.required' => '緯度 空白にしないでください', 'lng.required' => '軽度 空白にしないでください');
+        if(!is_null($req['entry_code'])){
+            $message += array('lat.required' => '位置情報の検索ワードを入力したあと検索ボタンを押してください');
         }
 
         $ret_data = Validator::make($req->all(), $rulus, $message);

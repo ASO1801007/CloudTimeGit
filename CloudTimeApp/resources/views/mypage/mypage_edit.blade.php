@@ -29,7 +29,11 @@
 	@csrf
 	<div class="row">
 		<div class="col-12 text-center" style="margin-top:135px;">
-			<img id="img_prv" src="{{$user_data->profile_pic}}" class="prf_img">
+			@if($user_data->profile_pic == "0")
+				<img src="/noImage.png" class="prf_img">
+			@else
+				<img id="img_prv" src="{{$user_data->profile_pic}}" class="prf_img">
+			@endif
 			<input id="image" type="file" name="image" value="{{ $user_data->profile_pic }}" accept=".png,.jpg,.jpeg,image/png,image/jpg">
 		</div>
 		<i hidden class="fa fa-question-circle-o text-primary waves-effect" aria-hidden="true" data-toggle="modal" data-target="#helpPop"></i>
@@ -122,9 +126,9 @@ body{
 
 .prf_img{
 	border-radius: 50%;
-	width=:100px;
+	width:100px;
 	height:100px;
-	border: 4px solid #FFFFFF;
+	border: 4px solid #ecefbc;
 }
 
 </style>

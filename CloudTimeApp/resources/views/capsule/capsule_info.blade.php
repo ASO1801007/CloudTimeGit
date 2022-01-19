@@ -21,7 +21,6 @@
 <div class="row">
 
 	<div class="col-12 col-sm-6">
-		<!-- サムネイル -->
 		<a href="#" class="thum">
 			@if($capsule_data->thumbnail == 'noImage.png')
 				<img src="/noImage.png" loading="lazy" class="thum__img">
@@ -29,25 +28,27 @@
 				<img src="{{ $capsule_data->thumbnail }}" loading="lazy" class="thum__img">
 			@endif
 			<div class="thum__title">
-				{{$capsule_data->name}}(id:{{$capsule_data->id}})<br>
+				{{$capsule_data->name}}<br>
 				開封予定日 : {{$capsule_data->open_date_str}}
 			</div>
 		</a>
-		<!-- サムネイル -->
 
-		<!-- 概要 -->
-		<div>
-			<hr color="#000000">
-				<div style="color:#000000;">{{$capsule_data->intro}}</div>
-			<hr color="#000000">
+		<div><!-- 概要 -->
+			<hr>
+			<div style="color:black;">{{$capsule_data->intro}}</div>
+			@if($capsule_data->open_place != null)
+				<div style="color:#888888;">
+					開封場所が指定されています :<br>
+					{{$capsule_data->open_place}}付近でのみ開封ができます
+				</div>
+			@endif
+			<hr>
 		</div>
-		<!-- 概要 -->
-
 	</div>
 
+
+
 	<div class="col-12 col-sm-6">
-
-
 		<!-- 追加ボタンor開封ボタンの有無 -->
 		@if( $open_flag == 1 )
 			<form method="POST" action="{{ route('image.index') }}">
@@ -55,44 +56,36 @@
 			@if( $capsule_data->lat == null)
 				<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
 				<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
-				
 			@else
 				<input type = "hidden" name = "capsule_id" value = "{{$capsule_data->id}}">
-				<input type = "submit" name = "add" value="+">
 				<input type = "hidden" id = "lat" name = "lat" value = "">
 				<input type = "hidden" id = "lng"  name = "lng" value = "">
 				<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
 				<script src="{{ asset('/js/futachi.js') }}"></script>
-				開封する
+				<input type="submit" class="btn-warning btn-block p-3 text-center waves-effect" style="border-radius:15px;" name="add" value="開封する">
 			@endif
 			</form>
 		@elseif( $open_flag == 0 )
 			<div id="modalActivate" class="btn-primary p-1 text-center waves-effect p-4" data-toggle="modal" data-target="#modalPreview0"  style="border-radius: 15px;">
-				写真を追加
+				思い出を追加
 			</div>
 		@else
 		open_flagの値が適切ではありません。
 		@endif
+
 		<!-- 追加ボタンor開封ボタン -->
 
-		<!-- チャットパネル -->
 		<div class="card p-3 mt-2">
 			最近の投稿<hr>
 			<font color="success">
 				<a href="/chat/{{$capsule_data->id}}">{{ $first_chat -> message}}</a>
 			</font>
 		</div>
-		<!-- チャットパネル -->
-
-		<!-- メンバーボタン -->
 		<a href="/member_list/{{$capsule_data->id}}">
 			<div class="card p-3 mt-2">
 				メンバー一覧
 			</div>
 		</a>
-		<!-- メンバーボタン -->
-
-		<!-- 招待ボタン -->
 		<div class="card p-3 mt-2">
 			招待する
 			<hr>
@@ -109,10 +102,10 @@
 					</a>
 				</div>
 			</div>
+			
 		</div>
-		<!-- 招待ボタン -->
 
-		<!-- カプセル操作ボタンの有無 -->
+		<!-- カプセル破棄ボタンの有無 -->
 
 		@if( $admin_flag == 1 )
 		<a href="/capsule_edit/{{$capsule_data->id}}">
@@ -131,7 +124,7 @@
 		※admin_flagの値が適切ではありません。※
 		@endif
 
-		<!-- カプセル操作ボタンの有無 -->
+		<!-- カプセル破棄ボタンの有無 -->
 	</div>
 
 </div>
@@ -139,7 +132,7 @@
 <!-- 思い出追加ポップアップ -->
 <form method="POST" action="{{ route('image.store') }}" enctype="multipart/form-data">
     @csrf
-	<div class="modal fade right" id="modalPreview0" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel0" aria-hidden="true">
+	<div class="modal fade right" id="modalPreview0" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel0" aria-hidden="true" style="color:black;">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
@@ -149,16 +142,43 @@
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body" style="padding:40px;">
-					<h6 class="pb-2">・写真を選択し、思い出をアップロードしてください。<br></h6>
-					<h7>タイトル:</h7>
-					<input type="text" name="title" placeholder="(例)あの頃の一枚">
-					<div class="md-form">
-						<img id="img_prv" src="{{ asset('/noImage.png') }}">
-						<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
+				
+				<div class="tabs">
+					<input id="all" type="radio" name="tab_item" checked>
+					<label class="tab_item" for="all">写真</label>
+					<input id="programming" type="radio" name="tab_item">
+					<label class="tab_item" for="programming">手紙</label>
+					<div class="tab_content" id="all_content">
+						<div class="tab_content_description">
+							<div class="modal-body" style="padding:40px;">
+								<h6 class="pb-2">・写真を選択し、思い出をアップロードしてください。<br></h6>
+								<h7>タイトル:</h7>
+								<input type="text" name="title" placeholder="(例)あの頃の一枚">
+								<div class="md-form">
+									<img id="img_prv" src="{{ asset('/noImage.png') }}">
+									<input id="image" type="file" name="image" accept=".png,.jpg,.jpeg,image/png,image/jpg"><br>
+								</div>
+								<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
+							</div>
+						</div>
 					</div>
-					<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
+
+					<div class="tab_content" id="programming_content">
+						<div class="tab_content_description">
+							<div class="modal-body" style="padding:40px;">
+								<h6 class="pb-2">・手紙を書き、思い出をアップロードしてください。<br></h6>
+								<h7>タイトル:</h7>
+								<input type="text" name="title" placeholder="(例)あの時の君へ">
+								<div class="md-form">
+									<textarea id="letter" type="text" name="letter" rows="6" cols="35" maxlength="40" onkeyup="ShowLength(value);"></textarea><br>
+									<p id="inputlength">0文字</p>
+								</div>
+								<input type="hidden" name = "capsule_id" value="{{$capsule_data->id}}">
+							</div>
+						</div>
+					</div>
 				</div>
+				
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary btn-block waves-effect p-3" style="border-radius:15px;">アップロード</button>
 				</div>
@@ -264,6 +284,60 @@
   transform: scale(1.3); /* 画像を拡大 */
 }
 
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 0 auto;}
+
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100%/2);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
 
 </style>
 
@@ -282,6 +356,9 @@ $('#image').on('change', function (ev) {
 	}
 	reader.readAsDataURL(this.files[0]);
 })
+function ShowLength( str ) {
+   document.getElementById("inputlength").innerHTML = str.length + "文字";
+}
 </script>
 
 @endsection

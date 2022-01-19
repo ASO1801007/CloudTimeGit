@@ -55,8 +55,50 @@
 				<div class="">
 				<label for="form4">サムネイルを決める</label>
 					<div class="md-form">
-							<img id="img_prv" src="{{ $data->thumbnail }}" style="width:100%">
+						@if(strcmp("noImage.png",$data->thumbnail) == 0)
+							<img id="img_prv" src="/noImage.png">
+						@else
+							<img id="img_prv" src="{{ $data->thumbnail }}">
+						@endif
 							<input type="file" id="image" name="thumbnail" size="50" maxlength="20" class="form-control" accept=".png,.jpg,.jpeg,image/png,image/jpg">
+					</div>
+				</div>
+
+				<div>
+					<label style="color:black;"><input type="checkbox" id="" name="map＿" onclick="checkdiv(this,'checkBox')">位置情報を使用する</label>
+					<div id="checkBox" class="mb-2" style="display:none;">
+						<div class="row">
+							<div class="col-12">
+								<div class="card p-3">
+									<p>住所や駅名、目印などで検索できます。</p>
+									<form onsubmit="return false;">
+										<div class="form-outline mb-4">
+											<label class="form-label" for="entry_code">ワードで検索</label>
+											<input type="text" name="entry_code" id="address" class="form-control" value="" />
+										</div>
+										<input type="button" class="btn-primary btn-block text-center waves-effect p-2" value="検索" id="map_button" style="border-radius:15px;">
+									</form>
+									<!-- 地図を表示させる要素 -->
+									<div class="map_box01 mt-2">
+										<div id="map-canvas" style="width: 100%;height: 350px; border-radius:15px; "></div>
+									</div>
+									
+									<p class="mt-2">
+										地図上のマーカーをクリックすると<br>
+										マーカーを移動できます。
+									</p>
+
+									<div hidden>
+										緯度 <input type="text" id="lat" name="lat" value=""><br>
+										経度 <input type="text" id="lng" name="lng" value=""><br>
+									</div>
+									
+									<!-- APIを取得 -->
+									<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANCqtHnmILMQAAIBMx0KLYKRwxZVOu96o&callback=initMap"></script>
+									<script src="{{ asset('/js/map.js') }}"></script>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -93,6 +135,25 @@ $('#image').on('change', function (ev) {
 	reader.readAsDataURL(this.files[0]);
 })
 </script>
+
+<script type="text/javascript">
+function checkdiv( obj,id ) {
+if( obj.checked ){
+document.getElementById(id).style.display = "block";
+}
+else {
+document.getElementById(id).style.display = "none";
+}
+}
+</script>
+
+<style>
+.card{
+	background-image: url('/image/scale_r.jpg');
+	background-size:cover;
+	color:white;
+}
+</style>
 
 @endsection
 	

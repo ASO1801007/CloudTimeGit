@@ -28,7 +28,7 @@
 	{{ csrf_field() }}
 
 		<div class="card_before">
-			新しいタイムカプセルを作成します。情報を入力してください。<br><hr>
+			<div style="color:black;">新しいタイムカプセルを作成します。情報を入力してください。</div><hr>
 			<div class="">
 				<div class="">
 					<div class="md-form">
@@ -52,23 +52,16 @@
 				</div>
 
 				<div class="">
-				<label for="form4">サムネイルを決める</label>
+				<label for="form4" style="color:black;">サムネイルを決める</label>
 					<div class="md-form">
 							<img id="img_prv" src="{{ asset('/noImage.png') }}">
 							<input type="file" id="image" name="thumbnail" size="50" maxlength="20" class="form-control" accept=".png,.jpg,.jpeg,image/png,image/jpg">
 					</div>
 				</div>
 
-				<div class="">
-					<div class="md-form amber-textarea active-amber-textarea-2">
-						<textarea id="form2" name="intro" class="md-textarea form-control" rows="3">説明</textarea>
-						<label for="form2">概要を書く</label>
-					</div>
-				</div>
-
 				<div>
-					<label><input type="checkbox" id="" name="map＿" onclick="checkdiv(this,'checkBox')">位置情報を使用する</label>
-					<div id="checkBox" style="display:none;">
+					<label style="color:black;"><input type="checkbox" id="" name="map＿" onclick="checkdiv(this,'checkBox')">位置情報を使用する</label>
+					<div id="checkBox" class="mb-2" style="display:none;">
 						<div class="row">
 							<div class="col-12">
 								<div class="card p-3">
@@ -85,7 +78,7 @@
 										<div id="map-canvas" style="width: 100%;height: 350px; border-radius:15px; "></div>
 									</div>
 									
-									<p>
+									<p class="mt-2">
 										地図上のマーカーをクリックすると<br>
 										マーカーを移動できます。
 									</p>
@@ -105,7 +98,7 @@
 				</div>
 
 				<div class="">
-					<button type="submit" class="btn btn-primary btn-block waves-effect">OK</button>
+					<button type="submit" class="btn-primary btn-block waves-effect p-3" style="border-radius:15px;">作成する</button>
 				</div>
 
 			</div>

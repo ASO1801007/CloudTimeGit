@@ -23,7 +23,7 @@
                 <a href="/capsule_info/{{$capsule_data->capsule->id}}" class="thum">
                     <img src="{{ $capsule_data->capsule->thumbnail }}" loading="lazy" class="thum__img">
                     <div class="thum__title">
-                        {{$capsule_data->capsule->name}}(id:{{$capsule_data->capsule->id}})<br>
+                        {{$capsule_data->capsule->name}}<br>
                         <h6>開封予定日 : {{$capsule_data->open_date_str}}</h6>
                     </div>
                 </a>
