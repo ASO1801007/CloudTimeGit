@@ -17,7 +17,7 @@ class ChatController extends Controller
     public function index(Request $request) {// capsule_idごとにメッセージを取得
 
         $capsule_id = $request->capsule_id;
-        $message = Message::where('capsule_id',$capsule_id) -> orderBy('id', 'desc')->get();
+        $message = Message::where('capsule_id',$capsule_id) -> orderBy('id', 'asc')->get();
         //ログインしているユーザーのIDを取得
         $login = Auth::id();
 

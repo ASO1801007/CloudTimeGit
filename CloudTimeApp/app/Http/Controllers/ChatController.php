@@ -9,19 +9,18 @@ class ChatController extends Controller
     public function index($capsule_id) {
         $data = [ 'capsule_id' => $capsule_id ];
 
-        return view('chat',$data); // フォームページのビュー
-    
+        return view('chat.newchat',$data); // フォームページのビュー
     }
 
-    public function view(){
-        return view('chat.chat');
-    }
+    // public function view(){
+    //     return view('chat.chat');
+    // }
 
-    public function view2(){
-        return view('chat.chat2');
-    }
+    // public function view2(){
+    //     return view('chat.chat2');
+    // }
 
-    public function view3(){
-        return view('chat.chat3');
-    }
+    // public function view3(){
+    //     return view('chat.chat3');
+    // }
 }

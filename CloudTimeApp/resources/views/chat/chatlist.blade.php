@@ -24,8 +24,8 @@
                 <a href="/chat/{{$capsule_data->capsule->id}}" class="thum">
                     <img src="{{ $capsule_data->capsule->thumbnail }}" loading="lazy" class="thum__img">
                     <div class="thum__title">
-                        {{$capsule_data->capsule->name}}<br>
-                        {{$first_chat[$a]->message}}
+                        {{$first_chat[$a]->message}}<br>
+                        <h6>{{$capsule_data->capsule->name}}</h6>
                     </div>
                 </a>
             </div>
@@ -67,7 +67,7 @@
 .thum__img {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 100px;
   object-fit: cover; /* 縦横比維持 */
   filter: brightness(70%); /* フィルター */
   transition: 0.3s; /* トランジション */
