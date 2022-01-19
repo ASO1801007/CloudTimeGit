@@ -28,26 +28,25 @@ Illuminate\Database\Eloquent\Collection::__set_state(array(
        'perPage' => 15,
        'exists' => true,
        'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
        'attributes' => 
       array (
-        'id' => 61,
+        'id' => 14,
         'comment_user' => '1',
-        'capsule_id' => '7',
+        'capsule_id' => '4',
         'message' => 'さあ、始めよう',
-        'created_at' => '2022-01-16 23:39:00',
-        'updated_at' => '2022-01-16 23:39:00',
+        'created_at' => '2022-01-18 19:13:18',
+        'updated_at' => '2022-01-18 19:13:18',
         'user_name' => 'master',
         'me_or_you' => 0,
       ),
        'original' => 
       array (
-        'id' => 61,
+        'id' => 14,
         'comment_user' => '1',
-        'capsule_id' => '7',
+        'capsule_id' => '4',
         'message' => 'さあ、始めよう',
-        'created_at' => '2022-01-16 23:39:00',
-        'updated_at' => '2022-01-16 23:39:00',
+        'created_at' => '2022-01-18 19:13:18',
+        'updated_at' => '2022-01-18 19:13:18',
       ),
        'changes' => 
       array (
@@ -112,26 +111,25 @@ Illuminate\Database\Eloquent\Collection::__set_state(array(
        'perPage' => 15,
        'exists' => true,
        'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
        'attributes' => 
       array (
-        'id' => 62,
-        'comment_user' => '7',
-        'capsule_id' => '7',
-        'message' => 'こんにちは',
-        'created_at' => '2022-01-16 23:40:03',
-        'updated_at' => '2022-01-16 23:40:03',
-        'user_name' => '三浦敦志',
+        'id' => 17,
+        'comment_user' => '3',
+        'capsule_id' => '4',
+        'message' => 'a',
+        'created_at' => '2022-01-19 12:31:09',
+        'updated_at' => '2022-01-19 12:31:09',
+        'user_name' => '江崎光',
         'me_or_you' => 1,
       ),
        'original' => 
       array (
-        'id' => 62,
-        'comment_user' => '7',
-        'capsule_id' => '7',
-        'message' => 'こんにちは',
-        'created_at' => '2022-01-16 23:40:03',
-        'updated_at' => '2022-01-16 23:40:03',
+        'id' => 17,
+        'comment_user' => '3',
+        'capsule_id' => '4',
+        'message' => 'a',
+        'created_at' => '2022-01-19 12:31:09',
+        'updated_at' => '2022-01-19 12:31:09',
       ),
        'changes' => 
       array (
@@ -196,530 +194,25 @@ Illuminate\Database\Eloquent\Collection::__set_state(array(
        'perPage' => 15,
        'exists' => true,
        'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
        'attributes' => 
       array (
-        'id' => 63,
-        'comment_user' => '6',
-        'capsule_id' => '7',
-        'message' => 'こんにちは',
-        'created_at' => '2022-01-16 23:43:21',
-        'updated_at' => '2022-01-16 23:43:21',
-        'user_name' => '田辺元気',
-        'me_or_you' => 0,
-      ),
-       'original' => 
-      array (
-        'id' => 63,
-        'comment_user' => '6',
-        'capsule_id' => '7',
-        'message' => 'こんにちは',
-        'created_at' => '2022-01-16 23:43:21',
-        'updated_at' => '2022-01-16 23:43:21',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    3 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 64,
-        'comment_user' => '5',
-        'capsule_id' => '7',
-        'message' => 'こんにちは',
-        'created_at' => '2022-01-16 23:44:12',
-        'updated_at' => '2022-01-16 23:44:12',
-        'user_name' => '鍬崎颯太',
-        'me_or_you' => 0,
-      ),
-       'original' => 
-      array (
-        'id' => 64,
-        'comment_user' => '5',
-        'capsule_id' => '7',
-        'message' => 'こんにちは',
-        'created_at' => '2022-01-16 23:44:12',
-        'updated_at' => '2022-01-16 23:44:12',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    4 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 65,
-        'comment_user' => '6',
-        'capsule_id' => '7',
-        'message' => 'みんなで久しぶりに遊ぼうよ！',
-        'created_at' => '2022-01-16 23:47:19',
-        'updated_at' => '2022-01-16 23:47:19',
-        'user_name' => '田辺元気',
-        'me_or_you' => 0,
-      ),
-       'original' => 
-      array (
-        'id' => 65,
-        'comment_user' => '6',
-        'capsule_id' => '7',
-        'message' => 'みんなで久しぶりに遊ぼうよ！',
-        'created_at' => '2022-01-16 23:47:19',
-        'updated_at' => '2022-01-16 23:47:19',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    5 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 66,
-        'comment_user' => '7',
-        'capsule_id' => '7',
-        'message' => 'いいよ！',
-        'created_at' => '2022-01-16 23:47:29',
-        'updated_at' => '2022-01-16 23:47:29',
-        'user_name' => '三浦敦志',
+        'id' => 18,
+        'comment_user' => '3',
+        'capsule_id' => '4',
+        'message' => 'kk',
+        'created_at' => '2022-01-19 12:31:17',
+        'updated_at' => '2022-01-19 12:31:17',
+        'user_name' => '江崎光',
         'me_or_you' => 1,
       ),
        'original' => 
       array (
-        'id' => 66,
-        'comment_user' => '7',
-        'capsule_id' => '7',
-        'message' => 'いいよ！',
-        'created_at' => '2022-01-16 23:47:29',
-        'updated_at' => '2022-01-16 23:47:29',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    6 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 67,
-        'comment_user' => '7',
-        'capsule_id' => '7',
-        'message' => 'じゃあ、1月の20日に博多駅集合ね！',
-        'created_at' => '2022-01-16 23:48:07',
-        'updated_at' => '2022-01-16 23:48:07',
-        'user_name' => '三浦敦志',
-        'me_or_you' => 1,
-      ),
-       'original' => 
-      array (
-        'id' => 67,
-        'comment_user' => '7',
-        'capsule_id' => '7',
-        'message' => 'じゃあ、1月の20日に博多駅集合ね！',
-        'created_at' => '2022-01-16 23:48:07',
-        'updated_at' => '2022-01-16 23:48:07',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    7 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 68,
-        'comment_user' => '6',
-        'capsule_id' => '7',
-        'message' => '了解！',
-        'created_at' => '2022-01-16 23:48:20',
-        'updated_at' => '2022-01-16 23:48:20',
-        'user_name' => '田辺元気',
-        'me_or_you' => 0,
-      ),
-       'original' => 
-      array (
-        'id' => 68,
-        'comment_user' => '6',
-        'capsule_id' => '7',
-        'message' => '了解！',
-        'created_at' => '2022-01-16 23:48:20',
-        'updated_at' => '2022-01-16 23:48:20',
-      ),
-       'changes' => 
-      array (
-      ),
-       'casts' => 
-      array (
-      ),
-       'classCastCache' => 
-      array (
-      ),
-       'dates' => 
-      array (
-      ),
-       'dateFormat' => NULL,
-       'appends' => 
-      array (
-      ),
-       'dispatchesEvents' => 
-      array (
-      ),
-       'observables' => 
-      array (
-      ),
-       'relations' => 
-      array (
-      ),
-       'touches' => 
-      array (
-      ),
-       'timestamps' => true,
-       'hidden' => 
-      array (
-      ),
-       'visible' => 
-      array (
-      ),
-    )),
-    8 => 
-    App\Models\Message::__set_state(array(
-       'guarded' => 
-      array (
-        0 => 'id',
-      ),
-       'fillable' => 
-      array (
-        0 => 'message',
-        1 => 'capsule_id',
-        2 => 'comment_user',
-      ),
-       'connection' => 'mysql',
-       'table' => 'messages',
-       'primaryKey' => 'id',
-       'keyType' => 'int',
-       'incrementing' => true,
-       'with' => 
-      array (
-      ),
-       'withCount' => 
-      array (
-      ),
-       'preventsLazyLoading' => false,
-       'perPage' => 15,
-       'exists' => true,
-       'wasRecentlyCreated' => false,
-       'escapeWhenCastingToString' => false,
-       'attributes' => 
-      array (
-        'id' => 69,
-        'comment_user' => '5',
-        'capsule_id' => '7',
-        'message' => 'OK',
-        'created_at' => '2022-01-16 23:49:00',
-        'updated_at' => '2022-01-16 23:49:00',
-        'user_name' => '鍬崎颯太',
-        'me_or_you' => 0,
-      ),
-       'original' => 
-      array (
-        'id' => 69,
-        'comment_user' => '5',
-        'capsule_id' => '7',
-        'message' => 'OK',
-        'created_at' => '2022-01-16 23:49:00',
-        'updated_at' => '2022-01-16 23:49:00',
+        'id' => 18,
+        'comment_user' => '3',
+        'capsule_id' => '4',
+        'message' => 'kk',
+        'created_at' => '2022-01-19 12:31:17',
+        'updated_at' => '2022-01-19 12:31:17',
       ),
        'changes' => 
       array (
@@ -758,5 +251,4 @@ Illuminate\Database\Eloquent\Collection::__set_state(array(
       ),
     )),
   ),
-   'escapeWhenCastingToString' => false,
 ))

@@ -24,13 +24,17 @@ class MemberController extends Controller{
 
     // メンバー直接招待機能
     public function member_update(Request $req){
-        foreach($req->user_id as $i){
-            $member = new Member;
-            $member -> user_id = $i;
-            $member -> capsule_id = $req -> capsule_id;
-            $member -> save();
+        if(isset($req->user_id)){
+            foreach($req->user_id as $i){
+                $member = new Member;
+                $member -> user_id = $i;
+                $member -> capsule_id = $req -> capsule_id;
+                $member -> save();
+                return redirect()->route('capsule.show_info', ['capsule_id' => $req -> capsule_id])->with('message','メンバーを'.count($req->user_id).'名追加しました');
+            }
+        }else{
+            return redirect()->route('capsule.show_info', ['capsule_id' => $req -> capsule_id])->with('message','メンバーを追加しませんでした。');
         }
-        return redirect()->route('capsule.show_info', ['capsule_id' => $req -> capsule_id])->with('message','メンバーを'.count($req->user_id).'名追加しました');
     }
 
     // メンバー直接招待画面表示
